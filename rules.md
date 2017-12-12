@@ -35,7 +35,7 @@
 ```json
 {
 	"type": "enter landmark",
-	"landmarkIds": []
+	"landmarkId": ""
 }
 ```
 
@@ -43,7 +43,7 @@
 ```json
 {
 	"type": "exit landmark",
-	"landmarkIds": []
+	"landmarkId": ""
 }
 ```
 
@@ -51,7 +51,7 @@
 ```json
 {
 	"type": "landmark has all tags",
-	"channelId": "", // will use this to get an array of landmarks that belong to this channel
+	"landmarkId": "",
 	"tags": []
 }
 ```
@@ -60,7 +60,7 @@
 ```json
 {
 	"type": "landmark has any tags",
-	"channelId": "", // will use this to get an array of landmarks that belong to this channel
+	"landmarkId": "",
 	"tags": []
 }
 ```
