@@ -89,15 +89,6 @@
 }
 ```
 
-###### first n devices
-```json
-{
-	"type": "first n devices",
-	"globoId": "",
-	"n": 0
-}
-```
-
 ###### event occurred after
 ```json
 {
