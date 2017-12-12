@@ -39,22 +39,6 @@
 }
 ```
 
-###### enter landmark that has all tags
-```json
-{
-	"type": "enter landmark that has all tags",
-	"tags": []
-}
-```
-
-###### enter landmark that has any tags
-```json
-{
-	"type": "enter landmark that has any tags",
-	"tags": []
-}
-```
-
 ###### exit landmark
 ```json
 {
@@ -63,18 +47,20 @@
 }
 ```
 
-###### exit landmark
+###### landmark has all tags
 ```json
 {
-	"type": "exit landmark",
+	"type": "landmark has all tags",
+	"channelId": "", // will use this to get an array of landmarks that belong to this channel
 	"tags": []
 }
 ```
 
-###### exit landmark that has all tags
+###### landmark has any tags
 ```json
 {
-	"type": "exit landmark that has all tags",
+	"type": "landmark has any tags",
+	"channelId": "", // will use this to get an array of landmarks that belong to this channel
 	"tags": []
 }
 ```
@@ -112,19 +98,21 @@
 }
 ```
 
-###### event occured after
+###### event occurred after
 ```json
 {
-	"type": "event occured after",
-	"moment": "2017-01-01T00:00:00Z"
+	"type": "event occurred after",
+	"moment": "2017-01-01T00:00:00Z",
+	"timeZone": ""
 }
 ```
 
-###### event occured before
+###### event occurred before
 ```json
 {
-	"type": "event occured before",
-	"moment": "2017-01-01T00:00:00Z"
+	"type": "event occurred before",
+	"moment": "2017-01-01T00:00:00Z",
+	"timeZone": ""
 }
 ```
 
@@ -134,7 +122,7 @@
 	"type": "event occurred between times of day",
 	"startInSecondsSinceMidnight": 0,
 	"endInSecondsSinceMidnight": 0,
-	"timeZone": []
+	"timeZone": ""
 }
 ```
 
@@ -143,7 +131,7 @@
 {
 	"type": "event occurred on day of week",
 	"dayOfWeek": 0,
-	"timeZone": []
+	"timeZone": ""
 }
 ```
 
