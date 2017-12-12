@@ -69,7 +69,7 @@
 ```json
 {
 	"type": "inside landmark",
-	"landmarkIds": []
+	"landmarkId": ""
 }
 ```
 
@@ -77,7 +77,7 @@
 ```json
 {
 	"type": "outside landmark",
-	"landmarkIds": []
+	"landmarkId": ""
 }
 ```
 
