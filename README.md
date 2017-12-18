@@ -18,4 +18,4 @@ The Sense Ingress API enables data ingress into the Sense platform.  Ingress dat
 
 The Sense Reach SDK for iOS provides a convenient SDK for interacting with the Sense Ingress API on iOS devices.  
 
-[Sense Reach SDK Documentation](ios-sdk-objc.wiki)
+[Sense Reach SDK Documentation](ios-sdk-objc-docs/user-guide.md)

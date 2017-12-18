@@ -1,7 +1,7 @@
 # Sixgill Reach v2 iOS SDK Wiki
 
 ## User Documents
-- [User Guide: SDK Setup](https://github.com/Sixgill/ios-sdk-objc/wiki/Guide:-SDK-Setup)
+- [User Guide: SDK Setup](user-guide.md)
 
 ## Dev Documents
-- [Project Walkthrough](https://github.com/Sixgill/ios-sdk-objc/wiki/Project-Walkthrough)
+- [Project Walkthrough](Project-Walkthrough.md)
