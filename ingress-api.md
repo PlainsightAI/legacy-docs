@@ -46,9 +46,6 @@ curl -X POST "https://ingress.sixgill.com/v1/registration"  -d '{
 curl "https://ingress.sixgill.com/v1/mobile/configuration"  -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
 ```
 
-Ref
-- TODO link to properties
-
 ### Protobuf Support
 
 JSON is the default serialization format for the Ingresss API, but mobile endpoints support Protobuf as well.  The API serves Protobuf content if the Accept header is set to "application/protobuf".  "Content-Type" is required for the request to be correctly parsed.  
@@ -138,9 +135,6 @@ curl -X POST "https://ingress.sixgill.com/v1/mobile/events" -H "Authorization: B
 
 > A successful update will return a 204 NO CONTENT Status Code
 
-Ref
-- TODO link to events
-
 ### GET /v1/mobile/configuration
 
 Mobile devices are assigned a configuration from the server.  The configuration controls the sensor collection cadence, which sensors to use, TTL of local data, and whether the SDK should be enabled at all.
@@ -160,9 +154,6 @@ curl "https://ingress.sixgill.com/v1/mobile/configuration" -H "Authorization: Be
     "maxStorage":6000000
 }
 ```
-
-Ref
-- TODO link to config
 
 ### GET /v1/mobile/ibeacons?count=20
 
@@ -184,9 +175,6 @@ curl "https://ingress.sixgill.com/v1/mobile/ibeacons" -H "Authorization: Bearer 
   }]
 }
 ```
-
-Ref
-- TODO link to beacons
 
 ## IoT
 

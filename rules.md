@@ -1,5 +1,9 @@
 # Rules
 
+## Introduction
+
+Rules define how the Sense Pipeline and Rule Engine response to events coming from mobile and IoT devices.  There are three major components name, logicalCondition, and actions.  Name is the user displayable name for the rule.  logicalCondition is the condition that if true triggers the rule.  Actions is a list of actions that are executed as the result of the logicalCondition evaluating to true. 
+
 ```json
 {
 	"name": "",
