@@ -2,6 +2,8 @@
 
 ## Introduction
 
+The Sense API allows third parties to access most parts of the Sixgill Sense platform.  It includes two forms of authentication: API Key and User Authentication.  The Sense API exposes a HTTP REST interface that accepts requests and sends responses in JSON.  
+
 ## API Key Authentication
 
 The primary method of interacting with the API is via an API key.  When using an API key, all requests to the API will be scoped to the organization to which the key belongs.  An organization's API key can be found using the dashboard.
