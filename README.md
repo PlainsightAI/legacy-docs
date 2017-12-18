@@ -1,6 +1,6 @@
 # API Documentation
 
-Welcome to the Sixgill Sense API docs.  Two separate APIs are exposed in our platform: Sense API and Sense Ingress API.  Most clients will use the Sense API to view data outputted by the Sixgill Platform.  The Sense Ingress API can be used in lieu of using the Sense Reach SDK.  
+Welcome to the Sixgill Sense API docs.  This page lists the different parts of our system that are available for third party use.  Please use the links below to view in depth documentation about each respective component.   
 
 ## Sense API
 
