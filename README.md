@@ -1,39 +1,38 @@
 # API Documentation
 
-Welcome to the Sixgill Sense API docs.  This page lists the different parts of our system that are available for third party use.  Please use the links below to view in depth documentation about each respective component.   
+Welcome to the Sixgill Sense API. Below are links to detailed documentation on the various major components of the Sixgill Sense platform.
 
 ## Sense API
 
-The Sense API exposes the vast majority of Sense so that third party developers can fully utilize the platform.  
+The Sense API is where third party developers can access the majority of the Sense platform's functionality.
 
 [Sense API Documentation](sense-api.md)
 
 ## Sense Ingress API
 
-The Sense Ingress API enables data ingress into the Sense platform.  Ingress data is sent to the Sense Pipeline which includes our rules engine.  
+The Sense Ingress API allows mobile and IoT devices to send data to the the Sense platform.
 
 [Sense Ingress API Documentation](ingress-api.md)
-
 ## Sense Reach SDK (iOS)
 
-The Sense Reach SDK for iOS provides a convenient SDK for interacting with the Sense Ingress API on iOS devices.  
+The Sense Reach iOS SDK is a convenient way to connect iOS devices to the the Sense Ingress API.
 
 [Sense Reach SDK Documentation](ios-sdk-objc-docs/user-guide.md)
 
 ## Data Model
 
-Data models used by and returned from the Sense APIs
+This document lists the main data models that the Sense API's use.
 
 [Data Models](data-model.md)
 
 ## Rules
 
-Rule structure and values
+Rules are used by the Sense API's to determine when and dictate how events are fired.
 
 [Rules](rules.md)
 
 ## Edge Rules
 
-Edge rule structure and values
+Edge rules are a specified subset of rules that the Sense platform can reliably use with edge node processing.
 
 [Edge Rules](edge-rules-v0.8.md)

@@ -2,17 +2,15 @@
 
 ## Introduction
 
-The Ingress API allows devices to register with Sixgill Sense, send device event data, and recieve configuration and other required metadata.  It supports event data from mobile (currently iOS and Android) and generic data from IoT devices.  The Ingress API exposes a HTTP REST interface that accepts requests and sends responses in JSON with [Protobuf](https://developers.google.com/protocol-buffers/) being additional supported for mobile.  
+The Ingress API allows devices to register with the Sixgill Sense Platform, send device event data and receive required metadata, such as device configuration. Currently, the API is compatible with mobile (iOS, Android) and generic IoT devices. To interact with the platform, developers can use its RESTful HTTP interface, which supports both JSON and [Protobuf](https://developers.google.com/protocol-buffers/) formatted data.
 
-The API is deviced into two sections: mobile and IoT.  The mobile portion of the API is intended to be used by the Sixgill Reach SDKs for iOS and Android.  The Iot section consists of a single endpoint /iot/events which ingests generic JSON data.  Both sections share the same device registration flow.    
+The API is separated into two main sections: mobile and IoT. The mobile portion of the API is intended to be used by the Sixgill Reach SDKs for iOS and Android. The IoT section consists of a single endpoint that ingests generic JSON data. Both sections register devices in the same way.
 
 ## Mobile
 
 ### Authentication
 
-Devices supply an API Key and a token is returned for interacting with the rest of the API.  An API Key belongs to a channel and can be generated using the dashboard.  
-
-> API Key and device properties supplied to the registration endpoint
+To register with the Ingress API, devices must provide an valid API Key, which can be generated in the "Channels" section of the Dashboard. In exchange they'll receive a token that they can use to interact with the remainder of the app. Below is a sample registration request:
 
 ```shell
 curl -X POST "https://ingress.sixgill.com/v1/registration"  -d '{
@@ -30,7 +28,7 @@ curl -X POST "https://ingress.sixgill.com/v1/registration"  -d '{
 }'
 ```
 
-> A successful registration will generate a JWT (JSON Web Token) and return the organization id and device id:
+A successful registration returns a JSON Web Token, the id for the newly registered device and the id of the organization with which it was registered. E.g.:
 
 ```json
 {
@@ -40,7 +38,7 @@ curl -X POST "https://ingress.sixgill.com/v1/registration"  -d '{
 }
 ```
 
-> Authenticated endpoints check for the token in the Authorization header:
+Devices can then use this token to interact with the rest of the API, by sending it in the Authorization header of HTTP requests like so:
 
 ```shell
 curl "https://ingress.sixgill.com/v1/mobile/configuration"  -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
@@ -48,7 +46,7 @@ curl "https://ingress.sixgill.com/v1/mobile/configuration"  -H "Authorization: B
 
 ### Protobuf Support
 
-JSON is the default serialization format for the Ingresss API, but mobile endpoints support Protobuf as well.  The API serves Protobuf content if the Accept header is set to "application/protobuf".  "Content-Type" is required for the request to be correctly parsed.  
+JSON is the default serialization format for the Ingresss API, but mobile endpoints support Protobuf as well. The API serves Protobuf content if the Accept headers are set to "application/protobuf." To send data as Protobuf, the request's the Content-Type header must also be set to "application/protobuf".
 
 > Tell the API that you can accept a protobuf reponse:
 ```shell
@@ -62,7 +60,7 @@ curl -X POST "https://ingress.sixgill.com/v1/mobile/events" -H "Authorization: B
 
 ### POST /v1/mobile/events
 
-Mobiles devices create an event on a cadence set by the configuration.  The device reports location, power, and activity state readings as well as nearby beacons and wifis.  Each reading is timestamped with the time of collection.  Mobile updates are guaranteed to be in FIFO order so downstream data processing can assume each update is the most recent.  Configuration, properties, and attributes are only sent if the values have changed.  
+Mobiles devices can create 'events' that fire on a cadence specified in their configuration. Events send information on a device's location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire 'updates', or data readings, in FIFO order, downstream data processing can assume each new update is the most recent. Lastly, updates do not include event configuration info, properties or attributes, unless one of those values has changed since the last update.
 
 > POST request of event sensor data within a collection period:
 
@@ -137,7 +135,7 @@ curl -X POST "https://ingress.sixgill.com/v1/mobile/events" -H "Authorization: B
 
 ### GET /v1/mobile/configuration
 
-Mobile devices are assigned a configuration from the server.  The configuration controls the sensor collection cadence, which sensors to use, TTL of local data, and whether the SDK should be enabled at all.
+The Ingress API assigns every mobile device a configuration. This configuration specifies whether or not the device's SDK should be enabled; how often the device should send data, or its collection cadence; what type of sensors it should use; and how long its local data should persist, or its event TTL.
 
 > GET request for the configuration
 ```shell
@@ -157,7 +155,7 @@ curl "https://ingress.sixgill.com/v1/mobile/configuration" -H "Authorization: Be
 
 ### GET /v1/mobile/ibeacons?count=20
 
-iOS requires beacon UUIDs to be whitelisted in order to listen for them.  The iBeacons endpoint returns beacons most relevent to the device state.  A count can be supplied to limit the response.  
+The iBeacons endpoint returns beacons most relevant to the state of the device specified in the JWT. One can limit the amount of iBeacons received with a 'count' url parameter. N.B.: in order to listen for beacon UUIDs, iOS requires that the beacons be whitelisted.   
 
 > GET request for whitelist of beacons
 ```shell
@@ -180,7 +178,7 @@ curl "https://ingress.sixgill.com/v1/mobile/ibeacons" -H "Authorization: Bearer 
 
 ### POST /v1/iot/events
 
-IoT devices post data to the IoT events endpoint.  The data is schemaless and send directly to the pipeline.  
+IoT devices send data 'updates' to the IoT events endpoint. This endpoint accepts said data in a schema agnostic format and sends it directly to the ingestion pipeline.  
 
 ```shell
 curl -X POST "https://ingress.sixgill.com/v1/iot/events" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -d '

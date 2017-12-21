@@ -2,17 +2,23 @@
 
 ## Introduction
 
-The Sense API allows third parties to access most parts of the Sixgill Sense platform.  It includes two forms of authentication: API Key and User Authentication.  The Sense API exposes a HTTP REST interface that accepts requests and sends responses in JSON.  
+The Sense API is where third party developers can access the majority of the Sense platform's functionality. It is a RESTful JSON API that accepts HTTP requests.
 
-## API Key Authentication
 
-The primary method of interacting with the API is via an API key.  When using an API key, all requests to the API will be scoped to the organization to which the key belongs.  An organization's API key can be found using the dashboard.
+
+## Authentication
+
+The API authenticates requests by either an API Key or a user specific JSON Web Token, depending on the type of request. While developers will probably prefer to use the former method in their own apps or devices, the Sense Dashboard primarily uses the latter.
+
+### 1. API Key Authentication
+
+The first method uses an API key, which can be found in the 'Channels' section of the dashboard. When using an API key, all requests will be scoped to the organization to which the key belongs.
 
 ```
 Example API Key: 01BWHNJHFCZXDVDYPTK8080WC1
 ```  
 
-The API uses [Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication) for authenticating with API keys.  The API key is supplied as the username and there is no password.  
+The API uses [Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication) for authenticating with API keys. The key is supplied as the username and there is no password.  
 
 > Example /v2/users/me request with authorization header which will return a 200 OK
 
@@ -28,9 +34,9 @@ curl "http://localhost:5001/v2/users/me" -H "Authorization: Basic MDFCV0hOSkhGQ1
 curl "http://localhost:5001/v2/users/me"
 ```
 
-## User Authentication
+### 2. User Authentication
 
-The Sense API exposes a login endpoint for letting the user supply an email and password combination in order to authenticate.  If the user supplies a valid email and password combination, they are rewarded with an authentication token.  **NOTE** Email validation is required for login. 
+The second method uses a JSON Web Token, which a user can generate by sending a valid email and password combination to the login endpoint. N.B: Users must validate emails to create accounts.
 
 > The user logs in with their email and password combination.
 
@@ -38,9 +44,9 @@ The Sense API exposes a login endpoint for letting the user supply an email and 
 ```shell
 curl -X POST http://localhost:5001/v2/login -H 'content-type: application/json' -d '{
     "email":"lspears@sixgill.com",
-    "password":"password1" 
+    "password":"password1"
 }'
-``` 
+```
 
 > A 200 OK response returns the generated authentication token.
 
@@ -50,7 +56,7 @@ curl -X POST http://localhost:5001/v2/login -H 'content-type: application/json' 
 }
 ```
 
-Once a token has been granted, it is used in the authorization header to access authenticated parts of the Sense API. 
+Once a token has been generated, one can use it in the authorization header to access parts of the Sense API that require authentication.
 
 > Example /v2/users/me request with authorization header which will return a 200 OK
 

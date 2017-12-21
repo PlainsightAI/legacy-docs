@@ -4,7 +4,7 @@
 
 ### Event
 
-Events are a sensor collection payload with deltas updates of configuration, properties, and attributes.
+Events are sensor collection payloads whose configuration, properties and attributes values can be updated.
 
 Field|Type|Description
 -|-|-
@@ -30,7 +30,7 @@ rssi | int | rssi value of signal strength
 
 ### iBeacon
 
-iBeacons detected that support the iBeacon BLE protocol.  
+iBeacons are detected access points that support the iBeacon BLE protocol.  
 
 Field|Type|Description
 -|-|-
@@ -44,7 +44,7 @@ accuracy | double | accuracy in meters
 
 ### Power
 
-Power reading from a device.
+Power is the battery reading from a device.
 
 Field|Type|Description
 -|-|-
@@ -54,7 +54,7 @@ batteryLevel | int | battery percentage of full
 
 ### Activity
 
-Activity state that the device is in.  
+Activity is a general reading of a device's velocity.
 
 Field|Type|Description
 -|-|-
@@ -65,7 +65,7 @@ confidencePercentage | int | confidence as a percentage
 
 ### Configuration
 
-A device's configuration is a set of values that can alter SDK functionality.  
+Configuration is a set of values that can alter a device's SDK's functionality.  
 
 Field|Type|Description
 -|-|-
@@ -77,7 +77,7 @@ maxStorage | int | storeage size in bytes of local event cache
 
 ### Properties
 
-Properties are hardware and software aspects about the device creating events.
+The properties object is a collection of general information on a device's hardware and software components.
 
 Field|Type|Description
 -|-|-
@@ -93,7 +93,7 @@ sensors | [string]| Sensors available on device
 
 ### Push
 
-Push represents push notification information for Android or iOS.
+Push is an overview of an event's Android or iOS push notification information.
 
 Field|Type|Description
 -|-|-
