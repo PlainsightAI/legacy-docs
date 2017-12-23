@@ -21,18 +21,18 @@ The Sense Reach iOS SDK is a convenient way to connect iOS devices to the the Se
 
 ## Data Model
 
-This document lists the main data models that the Sense API's use.
+This document details the main data models that the Sense APIs use.
 
 [Data Models](data-model.md)
 
 ## Rules
 
-Rules are used by the Sense API's to determine when and dictate how events are fired.
+Rules are used by the Sense APIs to determine when and dictate how events are fired.
 
 [Rules](rules.md)
 
 ## Edge Rules
 
-Edge rules are a specified subset of rules that the Sense platform can reliably use with edge node processing.
+Edge rules are a specific subset of rules that the Sense platform can reliably use with edge node processing.
 
 [Edge Rules](edge-rules-v0.8.md)

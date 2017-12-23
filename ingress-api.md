@@ -2,15 +2,15 @@
 
 ## Introduction
 
-The Ingress API allows devices to register with the Sixgill Sense Platform, send device event data and receive required metadata, such as device configuration. Currently, the API is compatible with mobile (iOS, Android) and generic IoT devices. To interact with the platform, developers can use its RESTful HTTP interface, which supports both JSON and [Protobuf](https://developers.google.com/protocol-buffers/) formatted data.
+The Ingress API allows devices to register with and send data to the Sixgill Sense platform. Currently, the API is is compatible with mobile (iOS, Android) and generic IoT devices; and it supports both JSON and [Protobuf](https://developers.google.com/protocol-buffers/) formatted data.
 
-The API is separated into two main sections: mobile and IoT. The mobile portion of the API is intended to be used by the Sixgill Reach SDKs for iOS and Android. The IoT section consists of a single endpoint that ingests generic JSON data. Both sections register devices in the same way.
+The API is separated into two main sections: mobile and IoT. The former is intended to be used by the Sixgill Reach SDKs for iOS and Android; the latter is a single endpoint that ingests generic JSON data. Both sections register devices the same way.
 
 ## Mobile
 
 ### Authentication
 
-To register with the Ingress API, devices must provide an valid API Key, which can be generated in the "Channels" section of the Dashboard. In exchange they'll receive a token that they can use to interact with the remainder of the app. Below is a sample registration request:
+To register with the Ingress API, devices must post their info and a valid API Key, which can be generated in the "channels" section of the Dashboard, to the "registration" endpoint. In exchange they'll receive a JSON Web Token with which they can interact with the remainder of the app. Below is a sample registration request:
 
 ```shell
 curl -X POST "https://ingress.sixgill.com/v1/registration"  -d '{
@@ -38,7 +38,7 @@ A successful registration returns a JSON Web Token, the id for the newly registe
 }
 ```
 
-Devices can then use this token to interact with the rest of the API, by sending it in the Authorization header of HTTP requests like so:
+Devices can then authenticate HTTP requests by placing this token in Authorization headers of said requests, like so:
 
 ```shell
 curl "https://ingress.sixgill.com/v1/mobile/configuration"  -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
@@ -46,7 +46,7 @@ curl "https://ingress.sixgill.com/v1/mobile/configuration"  -H "Authorization: B
 
 ### Protobuf Support
 
-JSON is the default serialization format for the Ingresss API, but mobile endpoints support Protobuf as well. The API serves Protobuf content if the Accept headers are set to "application/protobuf." To send data as Protobuf, the request's the Content-Type header must also be set to "application/protobuf".
+JSON is the default serialization format for the Ingresss API, but the mobile endpoints support Protobuf as well. The API serves Protobuf content if the request's Accept header is set to "application/protobuf." To send data as Protobuf, the request's Content-Type header must also be set to "application/protobuf".
 
 > Tell the API that you can accept a protobuf reponse:
 ```shell
@@ -60,7 +60,7 @@ curl -X POST "https://ingress.sixgill.com/v1/mobile/events" -H "Authorization: B
 
 ### POST /v1/mobile/events
 
-Mobiles devices can create 'events' that fire on a cadence specified in their configuration. Events send information on a device's location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire 'updates', or data readings, in FIFO order, downstream data processing can assume each new update is the most recent. Lastly, updates do not include event configuration info, properties or attributes, unless one of those values has changed since the last update.
+Mobile devices can create "events" that fire on a cadence specified in their configuration. Events send information on a device's location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire "updates", or data readings, in FIFO order, downstream data processing can assume each new update is the most recent. Lastly, updates do not include event configuration, device properties or user attributes unless one of them has changed since the last update.
 
 > POST request of event sensor data within a collection period:
 

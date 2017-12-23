@@ -8,17 +8,17 @@ The Sense API is where third party developers can access the majority of the Sen
 
 ## Authentication
 
-The API authenticates requests by either an API Key or a user specific JSON Web Token, depending on the type of request. While developers will probably prefer to use the former method in their own apps or devices, the Sense Dashboard primarily uses the latter.
+The API authenticates requests by either an API Key or a user-specific JSON Web Token, depending on the type of request. Developers will probably use API keys for the majority of their interactions with the Sense platform, but for administrative tasks, such as creating channels or rules, they will find JWTs preferable.
 
-### 1. API Key Authentication
+### API Key Authentication
 
-The first method uses an API key, which can be found in the 'Channels' section of the dashboard. When using an API key, all requests will be scoped to the organization to which the key belongs.
+API keys belong to a channels and can be found in the "channels" section of the dashboard. When using an API key, all requests will be scoped to the organization to which the key belongs.
 
 ```
 Example API Key: 01BWHNJHFCZXDVDYPTK8080WC1
 ```  
 
-The API uses [Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication) for authenticating with API keys. The key is supplied as the username and there is no password.  
+The API uses [Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication) to authenticate with API keys. The key is supplied as the username and there is no password.  
 
 > Example /v2/users/me request with authorization header which will return a 200 OK
 
@@ -34,9 +34,9 @@ curl "http://localhost:5001/v2/users/me" -H "Authorization: Basic MDFCV0hOSkhGQ1
 curl "http://localhost:5001/v2/users/me"
 ```
 
-### 2. User Authentication
+### User JSON Web Token Authentication
 
-The second method uses a JSON Web Token, which a user can generate by sending a valid email and password combination to the login endpoint. N.B: Users must validate emails to create accounts.
+Users can generate a JSON Web Token by sending a valid email and password combination to the "login" endpoint. N.B: Users must validate emails to create accounts.
 
 > The user logs in with their email and password combination.
 
@@ -56,7 +56,7 @@ curl -X POST http://localhost:5001/v2/login -H 'content-type: application/json' 
 }
 ```
 
-Once a token has been generated, one can use it in the authorization header to access parts of the Sense API that require authentication.
+Once a token has been generated, one can authenticate requests by placing it in the authorization header.
 
 > Example /v2/users/me request with authorization header which will return a 200 OK
 
