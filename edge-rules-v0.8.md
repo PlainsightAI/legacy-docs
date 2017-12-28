@@ -1,6 +1,6 @@
 # Edge Rules v0.8
 
-Edge node processing can drastically reduce network traffic between the edge and central services. The Sixgill Sense platform enables edge node processing by supporting a subset of the centralized rules that can perform reliably on mobile and IoT devices.  
+Edge node processing can drastically reduce network traffic between the edge and central services. The Sixgill Sense platform supports edge node processing for a subset of the centralized rules and actions that can be reliably processed on mobile and IoT devices.  
 
 ## Edge Rules Supported
 - Enter Landmark

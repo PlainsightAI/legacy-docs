@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Rules define how the Sense Pipeline and Rule Engine respond to events that come from mobile and IoT devices. Rules have three major components: name, logicalCondition and actions. The first is the rule's user displayable name; the second, the condition that triggers the rule when met; the last, a list of actions that are executed when the logicalCondition evaluates to true.
+Rules define how the Sense Pipeline and Rules Engine respond to events that come from mobile and IoT devices. Rules have three major components: name, logicalCondition and actions. The first is the rule's user displayable name; the second, the condition that triggers the rule when met; the last, a list of actions that are executed when the logicalCondition evaluates to true.
 
 ```json
 {
@@ -208,7 +208,7 @@ The recipient object is a hash of recipient types whose keys map to arrays of in
 ```
 
 ## Message Variables
-Messages can be used to interpolate dynamic data into strings, i.e. `this is a ${ dynamicName }`.
+Messages can be used to interpolate dynamic data into strings, i.e. `this is ${ dynamicName }'s device`.
 
 ##### global variables
 Variable Name | Description

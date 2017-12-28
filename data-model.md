@@ -4,7 +4,7 @@
 
 ### Event
 
-Events are sensor collection payloads whose configuration, properties and attributes values can be updated.
+Events are sensor collection payloads whose configuration, properties and attributes can be updated.
 
 Field|Type|Description
 -|-|-
@@ -65,7 +65,7 @@ confidencePercentage | int | confidence as a percentage
 
 ### Configuration
 
-Configuration is a set of values that can alter a device's SDK's functionality.  
+Configuration is a set of values that dictates a device's behavior.  
 
 Field|Type|Description
 -|-|-
@@ -73,11 +73,11 @@ enabled | boolean | whether or not the SDK is functioning
 cadence | int | duration in milliseconds between event collection periods
 sensors | [string] | whitelist of sensors to use for event collection
 eventTTL | int | duration in milliseconds to keep events locally after creation
-maxStorage | int | storeage size in bytes of local event cache
+maxStorage | int | storage size in bytes of local event cache
 
 ### Properties
 
-The properties object is a collection of general information on a device's hardware and software components.
+Properties is a collection of general information on a device's hardware and software components.
 
 Field|Type|Description
 -|-|-

@@ -8,17 +8,17 @@ The Sense API is where third party developers can access the majority of the Sen
 
 ## Authentication
 
-The API authenticates requests by either an API Key or a user-specific JSON Web Token, depending on the type of request. Developers will probably use API keys for the majority of their interactions with the Sense platform, but for administrative tasks, such as creating channels or rules, they will find JWTs preferable.
+The API authenticates requests with either an API Key or a user-specific JSON Web Token, depending on the type of request. Developers will probably use API keys for the majority of their interactions with the Sense platform, but for administrative tasks, such as creating channels or rules, they may find JWTs preferable.
 
 ### API Key Authentication
 
-API keys belong to a channels and can be found in the "channels" section of the dashboard. When using an API key, all requests will be scoped to the organization to which the key belongs.
+API keys can be found in the "channels" section of the dashboard. When using an API key, all requests will be scoped to the organization to which the key belongs.
 
 ```
 Example API Key: 01BWHNJHFCZXDVDYPTK8080WC1
 ```  
 
-The API uses [Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication) to authenticate with API keys. The key is supplied as the username and there is no password.  
+The API uses [Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication) to authenticate with API keys. The key is the username and there is no password.  
 
 > Example /v2/users/me request with authorization header which will return a 200 OK
 

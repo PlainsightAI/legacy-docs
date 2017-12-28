@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Ingress API allows devices to register with and send data to the Sixgill Sense platform. Currently, the API is is compatible with mobile (iOS, Android) and generic IoT devices; and it supports both JSON and [Protobuf](https://developers.google.com/protocol-buffers/) formatted data.
+The Ingress API allows devices to register with and send data to the Sixgill Sense platform. Currently, the API is is compatible with mobile (iOS, Android) and generic IoT devices, and it supports both JSON and [Protobuf](https://developers.google.com/protocol-buffers/) formatted data.
 
 The API is separated into two main sections: mobile and IoT. The former is intended to be used by the Sixgill Reach SDKs for iOS and Android; the latter is a single endpoint that ingests generic JSON data. Both sections register devices the same way.
 
@@ -10,7 +10,7 @@ The API is separated into two main sections: mobile and IoT. The former is inten
 
 ### Authentication
 
-To register with the Ingress API, devices must post their info and a valid API Key, which can be generated in the "channels" section of the Dashboard, to the "registration" endpoint. In exchange they'll receive a JSON Web Token with which they can interact with the remainder of the app. Below is a sample registration request:
+To register with the Ingress API, devices must send their info and a valid API Key, which can be generated in the "channels" section of the Dashboard, to the "registration" endpoint. In exchange they'll receive a JSON Web Token with which they can interact with the remainder of the app. Below is a sample registration request:
 
 ```shell
 curl -X POST "https://ingress.sixgill.com/v1/registration"  -d '{
@@ -38,7 +38,7 @@ A successful registration returns a JSON Web Token, the id for the newly registe
 }
 ```
 
-Devices can then authenticate HTTP requests by placing this token in Authorization headers of said requests, like so:
+Devices can then authenticate HTTP requests by placing this token in their Authorization headers, like so:
 
 ```shell
 curl "https://ingress.sixgill.com/v1/mobile/configuration"  -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
@@ -60,7 +60,7 @@ curl -X POST "https://ingress.sixgill.com/v1/mobile/events" -H "Authorization: B
 
 ### POST /v1/mobile/events
 
-Mobile devices can create "events" that fire on a cadence specified in their configuration. Events send information on a device's location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire "updates", or data readings, in FIFO order, downstream data processing can assume each new update is the most recent. Lastly, updates do not include event configuration, device properties or user attributes unless one of them has changed since the last update.
+Mobile devices can create "events" that fire on a cadence specified in their configuration. Events send information on a device's location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire "updates" in FIFO order, downstream data processing can assume that each new update is the most recent. Updates do not include event configuration, device properties or user attributes unless one of them has changed since the last update.
 
 > POST request of event sensor data within a collection period:
 
@@ -178,7 +178,7 @@ curl "https://ingress.sixgill.com/v1/mobile/ibeacons" -H "Authorization: Bearer 
 
 ### POST /v1/iot/events
 
-IoT devices send data 'updates' to the IoT events endpoint. This endpoint accepts said data in a schema agnostic format and sends it directly to the ingestion pipeline.  
+IoT devices send data "updates" to the IoT events endpoint. This endpoint accepts said data in a schema agnostic format and sends it directly to the ingestion pipeline.  
 
 ```shell
 curl -X POST "https://ingress.sixgill.com/v1/iot/events" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -d '
