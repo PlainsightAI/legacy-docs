@@ -133,7 +133,7 @@ DELETE | /v2/projects/:projectID | 204 | [link](#delete-v2projectsprojectid)
         "timezone": "Local"
     },
     "name": "bossman",
-    "organizationName": "gill_god",
+    "organizationName": "gillz",
     "password": "password1"
 }
 ```
@@ -349,7 +349,7 @@ no content
 ##### POST /v2/channels
 ```json
 {
-    "name": "rick the dick",
+    "name": "rick",
     "type": "Android"
 }
 ```
@@ -368,7 +368,7 @@ no content
         ],
         "enabled": false,
         "id": "01C18YBMV80QPD89HR0BFY0T0A",
-        "name": "rick the dick",
+        "name": "rick",
         "type": "Android"
     }
 }
@@ -381,7 +381,7 @@ no content
     "data": {
         "enabled": false,
         "id": "01C18YBMV80QPD89HR0BFY0T0A",
-        "name": "rick the dick",
+        "name": "rick",
         "type": "Android"
     }
 }
@@ -395,7 +395,7 @@ no content
         {
             "enabled": false,
             "id": "01C18YBMV80QPD89HR0BFY0T0A",
-            "name": "rick the dick",
+            "name": "rick",
             "type": "Android"
         }
     ],
@@ -705,7 +705,7 @@ no content
     "channelIDs": [
         "01C18YBMV80QPD89HR0BFY0T0A"
     ],
-    "name": "tricky ricky"
+    "name": "ricky"
 }
 ```
 `Code: 201`
@@ -716,14 +716,14 @@ no content
             {
                 "enabled": false,
                 "id": "01C18YBMV80QPD89HR0BFY0T0A",
-                "name": "rick the dick",
+                "name": "rick",
                 "type": "Android"
             }
         ],
         "createdAt": "2017-12-13T22:01:45Z",
         "enabled": false,
         "id": "01C18YBNJCE3KBCNZJHKV5R55Y",
-        "name": "tricky ricky"
+        "name": "ricky"
     }
 }
 ```
@@ -737,14 +737,14 @@ no content
             {
                 "enabled": false,
                 "id": "01C18YBMV80QPD89HR0BFY0T0A",
-                "name": "rick the dick",
+                "name": "rick",
                 "type": "Android"
             }
         ],
         "createdAt": "2017-12-13T22:01:45Z",
         "enabled": false,
         "id": "01C18YBNJCE3KBCNZJHKV5R55Y",
-        "name": "tricky ricky"
+        "name": "ricky"
     }
 }
 ```
@@ -752,7 +752,7 @@ no content
 ##### PUT /v2/projects/:projectID
 ```json
 {
-    "name": "tricky ricky2"
+    "name": "ricky"
 }
 ```
 `Code: 200`
@@ -763,7 +763,7 @@ no content
         "createdAt": "2017-12-13T22:01:45Z",
         "enabled": false,
         "id": "01C18YBNJCE3KBCNZJHKV5R55Y",
-        "name": "tricky ricky2"
+        "name": "ricky"
     }
 }
 ```
@@ -778,7 +778,7 @@ no content
             "createdAt": "2017-12-13T22:01:45Z",
             "enabled": false,
             "id": "01C18YBNJCE3KBCNZJHKV5R55Y",
-            "name": "tricky ricky2"
+            "name": "ricky"
         }
     ],
     "meta": {
@@ -809,7 +809,7 @@ no content
         {
             "enabled": false,
             "id": "01C18YBMV80QPD89HR0BFY0T0A",
-            "name": "rick the dick",
+            "name": "rick",
             "type": "Android"
         }
     ]
@@ -830,7 +830,7 @@ no content
         },
         "type": "circle"
     },
-    "name": "pickle rick",
+    "name": "rick",
     "type": "geometry"
 }
 ```
@@ -856,7 +856,7 @@ no content
         },
         "type": "rectangle"
     },
-    "name": "pickle rick",
+    "name": "rick",
     "type": "geometry"
 }
 ```
@@ -892,7 +892,7 @@ no content
         },
         "type": "polygon"
     },
-    "name": "pickle rick",
+    "name": "rick",
     "type": "geometry"
 }
 ```
@@ -926,7 +926,7 @@ no content
             },
             "type": "polygon"
         },
-        "name": "pickle rick",
+        "name": "rick",
         "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
         "tags": null,
         "type": "geometry"
@@ -965,7 +965,7 @@ no content
             },
             "type": "polygon"
         },
-        "name": "pickle rick",
+        "name": "rick",
         "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
         "tags": null,
         "type": "geometry"
@@ -992,7 +992,7 @@ no content
                 },
                 "type": "circle"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1014,7 +1014,7 @@ no content
                 },
                 "type": "rectangle"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1046,7 +1046,7 @@ no content
                 },
                 "type": "polygon"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1063,7 +1063,7 @@ no content
 ##### POST /v2/landmarks/search
 ```json
 {
-    "name": "pickle rick"
+    "name": "rick"
 }
 ```
 `Code: 200`
@@ -1084,7 +1084,7 @@ no content
                 },
                 "type": "circle"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1106,7 +1106,7 @@ no content
                 },
                 "type": "rectangle"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1138,7 +1138,7 @@ no content
                 },
                 "type": "polygon"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1155,7 +1155,7 @@ no content
 ##### POST /v2/landmarks/search
 ```json
 {
-    "name": "pickle rick"
+    "name": "rick"
 }
 ```
 `Code: 200`
@@ -1176,7 +1176,7 @@ no content
                 },
                 "type": "circle"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1198,7 +1198,7 @@ no content
                 },
                 "type": "rectangle"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1230,7 +1230,7 @@ no content
                 },
                 "type": "polygon"
             },
-            "name": "pickle rick",
+            "name": "rick",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1261,7 +1261,7 @@ no content
     "logicalCondition": {
         "type": "always true"
     },
-    "name": "pickle rick"
+    "name": "rick"
 }
 ```
 `Code: 201`
@@ -1279,7 +1279,7 @@ no content
         "logicalCondition": {
             "type": "always true"
         },
-        "name": "pickle rick"
+        "name": "rick"
     }
 }
 ```
@@ -1301,7 +1301,7 @@ no content
             "logicalCondition": {
                 "type": "always true"
             },
-            "name": "pickle rick"
+            "name": "rick"
         }
     ],
     "meta": {
@@ -1328,7 +1328,7 @@ no content
         "logicalCondition": {
             "type": "always true"
         },
-        "name": "pickle rick"
+        "name": "rick"
     }
 }
 ```
