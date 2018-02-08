@@ -17,7 +17,13 @@ The Sense Ingress API allows mobile and IoT devices to send data to the the Sens
 
 The Sense Reach iOS SDK is a convenient way to connect iOS devices to the the Sense Ingress API.
 
-[Sense Reach SDK Documentation](ios-sdk-objc-docs/user-guide.md)
+[Sense Reach iOS SDK Documentation](ios-sdk-objc-docs/user-guide.md)
+
+## Sense Reach SDK (Android)
+
+The Sense Reach Android SDK is a convenient way to connect Android devices to the the Sense Ingress API.
+
+[Sense Reach Android SDK Documentation](android-user-guide.md)
 
 ## Data Model
 
