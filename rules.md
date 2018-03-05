@@ -12,7 +12,6 @@ Rules define how the Sense Pipeline and Rules Engine respond to events that come
 }
 ```
 
-
 ## Logical Conditions
 
 
@@ -206,33 +205,3 @@ The recipient object is a hash of recipient types whose keys map to arrays of in
 	"reflect": ["triggering device"]
 }
 ```
-
-## Message Variables
-Messages can be used to interpolate dynamic data into strings, i.e. `this is ${ dynamicName }'s device`.
-
-##### global variables
-Variable Name | Description
--|-
-eventTime | time of event
-triggeringDevice | access to info about the triggering device
-triggeringLandmark | access to info about the triggering landmark
-
-
-##### triggering device
-
-Example: `${triggeringDevice.lat}`
-
-Variable Name | Description
--|-
-id | device id
-lat | latitude at time of event
-lon | longitude at time of event
-
-##### triggering landmark
-
-Example: `${triggeringLandmark.name}`
-
-Variable Name | Description
--|-
-id | landmark id
-name | landmark name

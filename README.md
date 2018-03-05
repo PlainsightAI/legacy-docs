@@ -42,3 +42,9 @@ Rules are used by the Sense APIs to determine when and dictate how events are fi
 Edge rules are a specific subset of rules that the Sense platform can reliably use with edge node processing.
 
 [Edge Rules](edge-rules-v0.8.md)
+
+## Template
+
+Actions can contain template variables for dynmaic email, sms, and push messages.   
+
+[Template](templates.md)
