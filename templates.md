@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Templates provide a way for emails, sms, and push messages to be dynamic.  For example lets say you want to send a slightly different sms based on whats OS a device is running on.  The message could be
+Templates provide a way for emails, sms, and push messages to be dynamic.  
+
+For example lets say you want to send a slightly different sms based on whats OS a device is running on.  The message could be
 
 ```
 {% raw %}
@@ -12,6 +14,25 @@ https://itunes.apple.com/us/app/american-airlines/id382698565?mt=8
 {{else if eq .Device.OS "Android"}}
 https://play.google.com/store/apps/details?id=com.aa.android&hl=en
 {{end}}
+{% endraw %}
+```
+
+Or you wanted to send a JSON body to a Webook with a device's location:
+
+```
+{% raw %}
+http://username:password@host/Thingworx/Things/{{.Device.ID.String}}/Properties/Location
+{% endraw %}
+```
+
+```
+{% raw %}
+{
+    "Location": {
+        "latitude":{{.Device.State.Location.Latitude}},
+        "longitude":{{.Device.State.Location.Longitude}}
+    }
+}
 {% endraw %}
 ```
 
@@ -27,6 +48,7 @@ The Template Data Model is the data fed into the text of the template to be rend
 
 Field|Type|Description
 -|-|-
+ID | ULID | Unique Identifier (.Device.ID.String to get string value)
 CreatedAt | time.Time | When the device was created
 UpdatedAt | time.Time | When the device was update
 Manufacturer | string | Name of the manufacturer
