@@ -5,12 +5,14 @@
 Templates provide a way for emails, sms, and push messages to be dynamic.  For example lets say you want to send a slightly different sms based on whats OS a device is running on.  The message could be
 
 ```
+{% raw %}
 Welcome to the airport.  Download our app for its cool features:
 {{if eq .Device.OS "iOS"}}
 https://itunes.apple.com/us/app/american-airlines/id382698565?mt=8
 {{else if eq .Device.OS "Android"}}
 https://play.google.com/store/apps/details?id=com.aa.android&hl=en
 {{end}}
+{% endraw %}
 ```
 
 ## Template Language
