@@ -45,6 +45,6 @@ Edge rules are a specific subset of rules that the Sense platform can reliably u
 
 ## Template
 
-Actions can contain template variables for dynmaic email, sms, and push messages.   
+Actions can contain template variables for dynamic email, sms, and push messages.   
 
 [Template](templates.md)

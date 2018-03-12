@@ -8,35 +8,7 @@ The Sense API is where third party developers can access the majority of the Sen
 
 ## Authentication
 
-The API authenticates requests with either an API Key or a user-specific JSON Web Token, depending on the type of request. Developers will probably use API keys for the majority of their interactions with the Sense platform, but for administrative tasks, such as creating channels or rules, they may find JWTs preferable.
-
-### API Key Authentication
-
-API keys can be found in the "channels" section of the dashboard. When using an API key, all requests will be scoped to the organization to which the key belongs.
-
-```
-Example API Key: 01BWHNJHFCZXDVDYPTK8080WC1
-```  
-
-The API uses [Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication) to authenticate with API keys. The key is the username and there is no password.  
-
-> Example /v2/users/me request with authorization header which will return a 200 OK
-
-**GET /v2/users/me**
-```shell
-curl "http://localhost:5001/v2/users/me" -H "Authorization: Basic MDFCV0hOSkhGQ1pYRFZEWVBUSzgwODBXQzE6"
-```    
-
-> Example /v2/users/me request without authorization header which will return a 401 Unauthorized
-
-**GET /v2/users/me**
-```shell
-curl "http://localhost:5001/v2/users/me"
-```
-
-### User JSON Web Token Authentication
-
-Users can generate a JSON Web Token by sending a valid email and password combination to the "login" endpoint. N.B: Users must validate emails to create accounts.
+The API authenticates requests with a user-specific JSON Web Token. Users can generate a JSON Web Token by sending a valid email and password combination to the "login" endpoint. N.B: Users must validate emails to create accounts.
 
 > The user logs in with their email and password combination.
 
