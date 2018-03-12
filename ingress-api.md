@@ -13,7 +13,7 @@ The API is separated into two main sections: mobile and IoT. The former is inten
 To register with the Ingress API, devices must send their info and a valid API Key, which can be generated in the "channels" section of the Dashboard, to the "registration" endpoint. In exchange they'll receive a JSON Web Token with which they can interact with the remainder of the app. Below is a sample registration request:
 
 ```shell
-curl -X POST "https://ingress.sixgill.com/v1/registration"  -d '{
+curl -X POST "https://sense-ingress-api.sixgill.com/v1/registration"  -d '{
     "apiKey":"EXAMPLE_API_KEY",
     "properties":{
       "timestamp":1,
@@ -41,7 +41,7 @@ A successful registration returns a JSON Web Token, the id for the newly registe
 Devices can then authenticate HTTP requests by placing this token in their Authorization headers, like so:
 
 ```shell
-curl "https://ingress.sixgill.com/v1/mobile/configuration"  -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
+curl "https://sense-ingress-api.sixgill.com/v1/mobile/configuration"  -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
 ```
 
 ### Protobuf Support
@@ -50,12 +50,12 @@ JSON is the default serialization format for the Ingresss API, but the mobile en
 
 > Tell the API that you can accept a protobuf reponse:
 ```shell
-curl "https://ingress.sixgill.com/v1/mobile/configuration"  -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -H "Accept: application/protobuf"
+curl "https://sense-ingress-api.sixgill.com/v1/mobile/configuration"  -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -H "Accept: application/protobuf"
 ```
 
 > Tell the API that you are sending protobuf in the body:
 ```shell
-curl -X POST "https://ingress.sixgill.com/v1/mobile/events" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -H "Content-Type: application/protobuf"
+curl -X POST "https://sense-ingress-api.sixgill.com/v1/mobile/events" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -H "Content-Type: application/protobuf"
 ```
 
 ### POST /v1/mobile/events
@@ -65,7 +65,7 @@ Mobile devices can create "events" that fire on a cadence specified in their con
 > POST request of event sensor data within a collection period:
 
 ```shell
-curl -X POST "https://ingress.sixgill.com/v1/mobile/events" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -d '{
+curl -X POST "https://sense-ingress-api.sixgill.com/v1/mobile/events" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -d '{
   "timestamp":123456789,
   "locations":[{
     "timestamp":123456789,
@@ -139,7 +139,7 @@ The Ingress API assigns every mobile device a configuration. This configuration 
 
 > GET request for the configuration
 ```shell
-curl "https://ingress.sixgill.com/v1/mobile/configuration" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
+curl "https://sense-ingress-api.sixgill.com/v1/mobile/configuration" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
 ```
 
 > Resulting JSON
@@ -159,7 +159,7 @@ The iBeacons endpoint returns beacons most relevant to the state of the device s
 
 > GET request for whitelist of beacons
 ```shell
-curl "https://ingress.sixgill.com/v1/mobile/ibeacons" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
+curl "https://sense-ingress-api.sixgill.com/v1/mobile/ibeacons" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN"
 ```
 
 > Resulting JSON
@@ -181,7 +181,7 @@ curl "https://ingress.sixgill.com/v1/mobile/ibeacons" -H "Authorization: Bearer 
 IoT devices send data "updates" to the IoT events endpoint. This endpoint accepts said data in a schema agnostic format and sends it directly to the ingestion pipeline.  
 
 ```shell
-curl -X POST "https://ingress.sixgill.com/v1/iot/events" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -d '
+curl -X POST "https://sense-ingress-api.sixgill.com/v1/iot/events" -H "Authorization: Bearer EXAMPLE_JWT_TOKEN" -d '
 {
   "data":{
     "tempF":72,
