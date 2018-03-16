@@ -5,18 +5,16 @@ Sense 2.0 : Getting Started with Sense 2.0
 On-boarding users and devices in the Sense 2.0 platform
 
 *   [Create a Sixgill Sense 2.0 account](#CreateAccount)
-*   [Creating a Channel](#GettingStartedwithSense2.0-CreatingaChannel)
-*   [Configuring a Channel for Push](#GettingStartedwithSense2.0-ConfiguringaChannelforPush)
-*   [Connecting Devices](#GettingStartedwithSense2.0-ConnectingDevices)
-    *   [iOS](#GettingStartedwithSense2.0-iOS)
-    *   [Android](#GettingStartedwithSense2.0-Android)
-    *   [IoT Devices](#GettingStartedwithSense2.0-IoTDevices)
-*   [Creating a Rule](#GettingStartedwithSense2.0-CreatingaRule)
-*   [Using the Sense API](#GettingStartedwithSense2.0-UsingtheSenseAPI)
-*   [Related articles](#GettingStartedwithSense2.0-Relatedarticles)
+*   [Creating a Channel](#CreateChannel)
+*   [Configuring a Channel for Push](#ConfigurePush)
+*   [Connecting Devices](#ConnectDevices)
+    *   [iOS](#ConnectDevices-iOS)
+    *   [Android](#ConnectDevices-Android)
+    *   [IoT Devices](#ConnectDevices-IoT)
+*   [Creating a Rule](#CreateRule)
+*   [Using the Sense API](#UsingAPI)
 
-<a name="CreateAccount"></a>
-Create a Sixgill Sense 2.0 account
+<a name="CreateAccount"></a>Create a Sixgill Sense 2.0 account
 ----------------------------------
 
 You will need an account to get started with Sixgill Sense.  
@@ -25,7 +23,7 @@ You will need an account to get started with Sixgill Sense.  
     
 2.  Once you are signed in, you can add other users to your account through the Admin tab.
 
-Creating a Channel
+<a name="CreateChannel"></a>Creating a Channel
 ------------------
 
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API.
@@ -41,23 +39,23 @@ A data Channel is a source of data that flows into the Sense platform. For examp
 
 This will create a Channel for the type of data you wish to ingest.
 
-Configuring a Channel for Push
+<a name="ConfigurePush"></aConfiguring a Channel for Push
 ------------------------------
 
 TODO
 
-Connecting Devices
+<a name="ConnectDevices"></a>Connecting Devices
 ------------------
 
 Device sensor data is ingested into Sense 2.0 through the [Ingress API](http://docs.sixgill.com/ingress-api.html). For Android and iOS devices, this can be done by integrating the Sense SDK into a mobile app. The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. The SDKs are authenticated using the API keys for the channel.
 
-### iOS
+<a name="ConnectDevices-iOS"></a>### iOS
 
 Sense Reach iOS SDK v1.0.0 _(released March 9, 2018)_
 
 [Sixgill Reach iOS SDK User Guide](http://docs.sixgill.com/ios-sdk-objc-docs/user-guide.html)
 
-### Android
+<a name="ConnectDevices-Android"></a>### Android
 
 Sense Reach Android SDK v1.0.0 _(released March 9, 2018)_
 
@@ -90,7 +88,7 @@ If using Sense 2.0 account credentials, you will be asked to select your project
 
   
 
-### IoT Devices
+<a name="ConnectDevices-IoT"></a>### IoT Devices
 
 The platform is able to ingest generic IoT sensor data. Developers will need to use the [Ingress API](http://docs.sixgill.com/ingress-api.html) to send data to the IoT events endpoint.
 
@@ -101,14 +99,14 @@ The platform is able to ingest generic IoT sensor data. Developers will need to 
 
   
 
-Creating a Rule
+<a name="CreateRule"></a>Creating a Rule
 ---------------
 
 Rules are at the heart of device interactivity within the Sense platform. Rules define conditions around devices and sensor data and specify the actions to trigger when the conditions are met. For example, devices entering a geofence or coming within range of a beacon could trigger a notification to another device, send an email to a recipient, or post data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
 
   
 
-Using the Sense API
+<a name="UsingAPI"></a>Using the Sense API
 -------------------
 
   
