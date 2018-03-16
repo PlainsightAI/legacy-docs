@@ -77,7 +77,7 @@ Sixgill Sync 2.0 for Android (link)
 1.  Download the app on your device using the link above
 2.  Login with your Sense 2.0 account credentials, OR use the QR code of the appropriate channel for this devices. iOS devices should use an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
 
-![](images/508297263.png&s=200)
+![](images/508297263.png?&s=200)
 
 _Note: To get the QR code for your Channel, go to Channels and select the channel. The QR code is available next to the API key._
 
