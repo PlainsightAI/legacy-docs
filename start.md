@@ -6,8 +6,6 @@ Created by Carm Bartley, last modified on Mar 15, 2018
 
 On-boarding users and devices in the Sense 2.0 platform
 
-/*<!\[CDATA\[*/ div.rbtoc1521206045875 {padding: 0px;} div.rbtoc1521206045875 ul {list-style: disc;margin-left: 0px;} div.rbtoc1521206045875 li {margin-left: 0px;padding-left: 0px;} /*\]\]>*/
-
 *   [Create a Sixgill Sense 2.0 account](#GettingStartedwithSense2.0-CreateaSixgillSense2.0account)
 *   [Creating a Channel](#GettingStartedwithSense2.0-CreatingaChannel)
 *   [Configuring a Channel for Push](#GettingStartedwithSense2.0-ConfiguringaChannelforPush)
