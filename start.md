@@ -1,6 +1,3 @@
-Sense 2.0 : Getting Started with Sense 2.0  
-
-1.  [Sense 2.0](index.html)
 
 Sense 2.0 : Getting Started with Sense 2.0
 ==========================================
@@ -8,8 +5,6 @@ Sense 2.0 : Getting Started with Sense 2.0
 Created by Carm Bartley, last modified on Mar 15, 2018
 
 On-boarding users and devices in the Sense 2.0 platform
-
-/*<!\[CDATA\[*/ div.rbtoc1521206045875 {padding: 0px;} div.rbtoc1521206045875 ul {list-style: disc;margin-left: 0px;} div.rbtoc1521206045875 li {margin-left: 0px;padding-left: 0px;} /*\]\]>*/
 
 *   [Create a Sixgill Sense 2.0 account](#GettingStartedwithSense2.0-CreateaSixgillSense2.0account)
 *   [Creating a Channel](#GettingStartedwithSense2.0-CreatingaChannel)
@@ -36,7 +31,7 @@ Creating a Channel
 
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API.
 
-![](attachments/506331140/508329985.png?height=250)
+![](images/508329985.png?height=250)
 
 1.  Go to Channels
 2.  Click on the type of channel you would like to create
@@ -82,7 +77,7 @@ Sixgill Sync 2.0 for Android (link)
 1.  Download the app on your device using the link above
 2.  Login with your Sense 2.0 account credentials, OR use the QR code of the appropriate channel for this devices. iOS devices should use an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
 
-![](attachments/506331140/508297263.png?height=250)
+![](images/508297263.png?height=250)
 
 _Note: To get the QR code for your Channel, go to Channels and select the channel. The QR code is available next to the API key._
 
@@ -90,7 +85,7 @@ _Note: To get the QR code for your Channel, go to Channels and select the channe
 
 If using Sense 2.0 account credentials, you will be asked to select your project and channel.
 
-![](attachments/506331140/508297271.png?height=250)![](attachments/506331140/508330046.png?height=250)
+![](images/508297271.png?height=250)![](images/508330046.png?height=250)
 
 3\. Your device is now connected to your Channel. The app will begin collection sensor data events for ingestion by the Sense platform.
 
@@ -121,39 +116,8 @@ Using the Sense API
 
   
 
-Related articles
-----------------
-
-*   Page:
-    
-    [Getting Started with Sense 2.0](/wiki/spaces/S2/pages/506331140/Getting+Started+with+Sense+2.0)
-    
 
   
 
   
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-Attachments:
-------------
-
-![](images/icons/bullet_blue.gif) [Screenshot 2018-03-14 22.08.38.png](attachments/506331140/508297220.png) (image/png)  
-![](images/icons/bullet_blue.gif) [Screenshot 2018-03-14 22.08.38.png](attachments/506331140/508329985.png) (image/png)  
-![](images/icons/bullet_blue.gif) [IMG_2879.PNG](attachments/506331140/508330034.png) (image/png)  
-![](images/icons/bullet_blue.gif) [IMG_2880.PNG](attachments/506331140/507871276.png) (image/png)  
-![](images/icons/bullet_blue.gif) [IMG_2879.PNG](attachments/506331140/508297263.png) (image/png)  
-![](images/icons/bullet_blue.gif) [IMG_2880.PNG](attachments/506331140/508297271.png) (image/png)  
-![](images/icons/bullet_blue.gif) [IMG_2881.PNG](attachments/506331140/508330046.png) (image/png)  
