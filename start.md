@@ -77,7 +77,7 @@ Sixgill Sync 2.0 for Android (link)
 1.  Download the app on your device using the link above
 2.  Login with your Sense 2.0 account credentials, OR use the QR code of the appropriate channel for this devices. iOS devices should use an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
 
-![](images/508297263.png?height=250)
+![](images/508297263.png?height=100)
 
 _Note: To get the QR code for your Channel, go to Channels and select the channel. The QR code is available next to the API key._
 
@@ -85,7 +85,7 @@ _Note: To get the QR code for your Channel, go to Channels and select the channe
 
 If using Sense 2.0 account credentials, you will be asked to select your project and channel.
 
-![](images/508297271.png?height=250)![](images/508330046.png?height=250)
+![](images/508297271.png?height=100)![](images/508330046.png?height=100)
 
 3\. Your device is now connected to your Channel. The app will begin collection sensor data events for ingestion by the Sense platform.
 
