@@ -39,7 +39,7 @@ A data Channel is a source of data that flows into the Sense platform. For examp
 
 This will create a Channel for the type of data you wish to ingest.
 
-<a name="ConfigurePush"></aConfiguring a Channel for Push
+<a name="ConfigurePush"></a>Configuring a Channel for Push
 ------------------------------
 
 TODO
