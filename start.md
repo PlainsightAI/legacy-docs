@@ -2,11 +2,9 @@
 Sense 2.0 : Getting Started with Sense 2.0
 ==========================================
 
-Created by Carm Bartley, last modified on Mar 15, 2018
-
 On-boarding users and devices in the Sense 2.0 platform
 
-*   [Create a Sixgill Sense 2.0 account](#GettingStartedwithSense2.0-CreateaSixgillSense2.0account)
+*   [Create a Sixgill Sense 2.0 account](#CreateAccount)
 *   [Creating a Channel](#GettingStartedwithSense2.0-CreatingaChannel)
 *   [Configuring a Channel for Push](#GettingStartedwithSense2.0-ConfiguringaChannelforPush)
 *   [Connecting Devices](#GettingStartedwithSense2.0-ConnectingDevices)
@@ -17,6 +15,7 @@ On-boarding users and devices in the Sense 2.0 platform
 *   [Using the Sense API](#GettingStartedwithSense2.0-UsingtheSenseAPI)
 *   [Related articles](#GettingStartedwithSense2.0-Relatedarticles)
 
+<a name="CreateAccount"></a>
 Create a Sixgill Sense 2.0 account
 ----------------------------------
 
