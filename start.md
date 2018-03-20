@@ -106,7 +106,13 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 
 1. In the dashboard, go to Rules
 2. Click **Add New Rule**
-3. 
+3. Enter the condition(s) for the rule. You can choose from a *Landmark Condition* or *Attribute Condition*
+To add a landmark condition:
+- Select a project landmark, or
+- Add a new landmark
+
+For testing purposes, we recommend adding a landmark around your current geographical area
+
   
 
 ## Using the Sense API
