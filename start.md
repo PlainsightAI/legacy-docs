@@ -8,9 +8,9 @@ On-boarding users and devices in the Sense 2.0 platform
 *   [Creating a Channel](#creating-a-channel)
 *   [Configuring a Channel for Push](#configuring-a-channel-for-push)
 *   [Connecting Devices](#connecting-devices)
-    *   [iOS]
-    *   [Android]
-    *   [IoT Devices]
+    *   [iOS](#ios)
+    *   [Android](#android)
+    *   [IoT Devices](#iot-devices)
 *   [Creating a Rule](#creating-a-rule)
 *   [Using the Sense API](#using-the-sense-api)
 
