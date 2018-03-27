@@ -93,7 +93,7 @@ If using Sense 2.0 account credentials, you will be asked to select your project
 The platform is able to ingest generic IoT sensor data. Developers will need to use the [Ingress API](http://docs.sixgill.com/ingress-api.html) to send data to the IoT events endpoint.
 
 1.  Create an **IoT Devices** Channel if you do not have one already.
-2.  **Data Mapping** may be required depending on the format of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel.
+2.  **Data Mapping** may be required depending on the format of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
 3.  Use the Channel API keys to register your IoT device. Use the JSON Web Token in the response to authenticate your future requests.
 4.  You can begin sending sensor data to the IoT events endpoint. See the IoT Events section of the [Ingress API](http://docs.sixgill.com/ingress-api.html) docs for more information.
 
@@ -107,13 +107,27 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 1. In the dashboard, go to Rules
 2. Click **Add New Rule**
 3. Enter the condition(s) for the rule. You can choose from a *Landmark Condition* or *Attribute Condition*
-To add a landmark condition:
-- Select a project landmark, or
+
+### Add a Landmark Condition
+Landmark - A landmark is a geofence around a certain location. It can be a circle, polygonTo add a landmark condition:
+a) Select a project landmark, or
 - Add a new landmark
 
-For testing purposes, we recommend adding a landmark around your current geographical area
+![](images/rule_add_new_landmark.png)
 
-  
+b) Move the map or use Google Addresses to center the map as needed
+c) Use the Drawing Tools to create a geofence around your desired area
+
+d) Click Use Geofence 
+e) Enter a name for the landmark
+f) Click Create Landmark to save
+
+For testing purposes, we recommend adding a landmark around your current geographical area.
+
+### Add an Attribute Condition
+Attribute - a custom condition (also known as a "freeform condition") which allows you to specify attributes/properties and the logical condition to be evaluated. These conditions can be simple using pre-defined attributes (Manufacturer, Device Type) or written to be more complex using the Advanced editor. The attributes being compared in the operations will need to exist in the data stream for the device.
+
+ 
 
 ## Using the Sense API
 -------------------
