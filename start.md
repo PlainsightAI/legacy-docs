@@ -84,7 +84,7 @@ If using Sense 2.0 account credentials, you will be asked to select your project
 
 ![](images/508297271.png)![](images/508330046.png)
 
-3\. Your device is now connected to your Channel. The app will begin collection sensor data events for ingestion by the Sense platform.
+3. Your device will now connect to your selected Channel. The app will begin collection sensor data events for ingestion by the Sense platform.
 
   
 
@@ -97,6 +97,7 @@ The platform is able to ingest generic IoT sensor data. Developers will need to 
 3.  Use the Channel API keys to register your IoT device. Use the JSON Web Token in the response to authenticate your future requests.
 4.  You can begin sending sensor data to the IoT events endpoint. See the IoT Events section of the [Ingress API](http://docs.sixgill.com/ingress-api.html) docs for more information.
 
+![](images/ios_sync_ready.PNG)
   
 
 ## Creating a Rule
