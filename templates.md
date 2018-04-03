@@ -29,8 +29,8 @@ http://username:password@host/Thingworx/Things/{{.Device.ID.String}}/Properties/
 {% raw %}
 {
     "Location": {
-        "latitude":{{.Device.State.Location.Latitude}},
-        "longitude":{{.Device.State.Location.Longitude}}
+        "latitude":{{.Device.State.CurrLocation.Latitude}},
+        "longitude":{{.Device.State.CurrLocation.Longitude}}
     }
 }
 {% endraw %}
