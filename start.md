@@ -86,6 +86,7 @@ If using Sense 2.0 account credentials, you will be asked to select your project
 
 3. Your device will now connect to your selected Channel. The app will begin collection sensor data events for ingestion by the Sense platform.
 
+You will know that Sync is connected by checking your Log Information pane. The Data section should be populated with your device data.
   
 
 ### IoT Devices
@@ -96,8 +97,6 @@ The platform is able to ingest generic IoT sensor data. Developers will need to 
 2.  **Data Mapping** may be required depending on the format of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
 3.  Use the Channel API keys to register your IoT device. Use the JSON Web Token in the response to authenticate your future requests.
 4.  You can begin sending sensor data to the IoT events endpoint. See the IoT Events section of the [Ingress API](http://docs.sixgill.com/ingress-api.html) docs for more information.
-
-![](images/ios_sync_ready.PNG)
   
 
 ## Creating a Rule
