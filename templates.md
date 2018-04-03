@@ -65,12 +65,12 @@ Location | LongLat | The last known location of the device | .Device.State.Locat
 LastUpdatedAt | time.Time | When the device state was updated | .Device.State.LastUpdatedAt
 Payload | key value | Key value data associated with the device state | .Device.State.Payload
 
-### .Device.State.Location
+### .Device.State.CurrLocation
 
 Field|Type|Description|Usage
 -|-|-
-Latitude | float64 | Latitude | .Device.State.Location.Latitude
-Longitude | float64 | Longitude | .Device.State.Location.Longitude
+Latitude | float64 | Latitude | .Device.State.CurrLocation.Latitude
+Longitude | float64 | Longitude | .Device.State.CurrLocation.Longitude
 
 ### .Channel
 
