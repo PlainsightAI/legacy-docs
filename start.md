@@ -7,6 +7,8 @@ On-boarding users and devices in the Sense 2.0 platform
 *   [Create a Sixgill Sense 2.0 account](#creating-an-account)
 *   [Creating a Channel](#creating-a-channel)
 *   [Configuring a Channel for Push](#configuring-a-channel-for-push)
+    *   [Apple Push](#apple-push)
+    *   [Android Push](#android-push)
 *   [Connecting Devices](#connecting-devices)
     *   [iOS](#ios)
     *   [Android](#android)
@@ -41,8 +43,24 @@ This will create a Channel for the type of data you wish to ingest.
 
 ## Configuring a Channel for Push
 ------------------------------
+In order to receive Push notifications, the Channel will need to be configured with mobile keys depending on the app you are using to stream data. For iOS, you will need to upload the Push certificate for your app as a **.p12 file**. For Android, you will need the Firebase key or Google Cloud Messaging key used by the app.
 
-TODO
+1. Go to Channels
+2. Select the mobile channel you wish to add mobile keys for.
+3. Click **Manage Mobile Keys** at the top right corner  
+
+### Apple Push ###
+- If this is an iOS channel, select the type of Environment this certificate is configured for - **Development** or **Production**. This needs to match the certificate type for Push to work so double-check that you have selected the correct option.
+- Click "Choose File" and select the .p12 file from your system.
+- Click **Save**  
+The certificate type should be listed on the left.
+
+### Android Push ###
+- If this is an Android channel, select the messaging type you will be using - **Google Cloud Messaging** or **Firebase Cloud Messaging**. This needs to match the messaging type used by the app, so double-check that you have selected the correct option.
+- Enter the API key
+- Click **Save**  
+The selected messaging type should be listed on the left.
+
 
 ## Connecting Devices
 ------------------
@@ -72,13 +90,12 @@ Sixgill Sync 2.0 for Android (link)
   
 
 1.  Download the app on your device using the link above
-2.  Login with your Sense 2.0 account credentials, OR use the QR code of the appropriate channel for this devices. iOS devices should use an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
+2.  Login with your Sense 2.0 account credentials. iOS devices should use an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
 
 ![](images/508297263.png)
 
-_Note: To get the QR code for your Channel, go to Channels and select the channel. The QR code is available next to the API key._
+_Note: The ability to scan QR codes has been temporarily removed from the Sync app._
 
-  
 
 If using Sense 2.0 account credentials, you will be asked to select your project and channel.
 
@@ -110,8 +127,8 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 
 ### Add a Landmark Condition
 Landmark - A landmark is a geofence around a certain location. It can be a circle, polygonTo add a landmark condition:
-a) Select a project landmark, or  
-- Add a new landmark  
+a) Select a project landmark, or...  
+Add a new landmark  
 
 ![](images/rule_add_new_landmark.png)  
 
@@ -124,16 +141,16 @@ f) Click Create Landmark to save
 For testing purposes, we recommend adding a landmark around your current geographical area.  
 
 ### Add an Attribute Condition
-Attribute - a custom condition (also known as a "freeform condition") which allows you to specify attributes/properties and the logical condition to be evaluated. These conditions can be simple using pre-defined attributes (Manufacturer, Device Type) or written to be more complex using the Advanced editor. The attributes being compared in the operations will need to exist in the data stream for the device.
+Attribute - a custom condition or freeform condition which allows you to specify attributes/properties and the logical condition(s) to be evaluated. These conditions can be simple using pre-defined attributes (Manufacturer, Device Type) or written to be more complex using the Advanced editor. The attributes being compared in the conditions will need to exist in the data stream for the device.
 
+4. When adding conditions, be sure to select whether these are **AND or OR** conditions.  
+**AND** is selected by default, meaning the device will need to satisfy all conditions to trigger the rule. For example, a device needs to be inside a landmark AND also be an iOS device to trigger the rule.  
+**OR** can be used if the device only needs to satisfy one condition to trigger the rule. For example, a device needs to either be inside a landmark OR be an iOS device to trigger the rule.
  
 
 ## Using the Sense API
 -------------------
-TODO
-  
-
-  
+The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. See [Sense API Docs](http://docs.sixgill.com/sense-api.html) for more information.
 
 
   
