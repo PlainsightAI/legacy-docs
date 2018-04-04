@@ -110,19 +110,18 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 
 ### Add a Landmark Condition
 Landmark - A landmark is a geofence around a certain location. It can be a circle, polygonTo add a landmark condition:
-a) Select a project landmark, or
-- Add a new landmark
+a) Select a project landmark, or  
+- Add a new landmark  
 
-![](images/rule_add_new_landmark.png)
+![](images/rule_add_new_landmark.png)  
 
-b) Move the map or use Google Addresses to center the map as needed
-c) Use the Drawing Tools to create a geofence around your desired area
+b) Move the map or use Google Addresses to center the map as needed  
+c) Use the Drawing Tools to create a geofence around your desired area  
+d) Click Use Geofence  
+e) Enter a name for the landmark  
+f) Click Create Landmark to save  
 
-d) Click Use Geofence 
-e) Enter a name for the landmark
-f) Click Create Landmark to save
-
-For testing purposes, we recommend adding a landmark around your current geographical area.
+For testing purposes, we recommend adding a landmark around your current geographical area.  
 
 ### Add an Attribute Condition
 Attribute - a custom condition (also known as a "freeform condition") which allows you to specify attributes/properties and the logical condition to be evaluated. These conditions can be simple using pre-defined attributes (Manufacturer, Device Type) or written to be more complex using the Advanced editor. The attributes being compared in the operations will need to exist in the data stream for the device.
