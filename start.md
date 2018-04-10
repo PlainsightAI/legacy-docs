@@ -63,8 +63,6 @@ The selected messaging type should be listed on the left.
 
 
 ## Connecting Devices
-------------------
-
 Device sensor data is ingested into Sense 2.0 through the [Ingress API](http://docs.sixgill.com/ingress-api.html). For Android and iOS devices, this can be done by integrating the Sense SDK into a mobile app. The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. The SDKs are authenticated using the API keys for the channel.
 
 ### iOS
@@ -117,8 +115,6 @@ The platform is able to ingest generic IoT sensor data. Developers will need to 
   
 
 ## Creating a Rule
----------------
-
 Rules are at the heart of device interactivity within the Sense platform. Rules define conditions around devices and sensor data and specify the actions to trigger when the conditions are met. For example, devices entering a geofence or coming within range of a beacon could trigger a notification to another device, send an email to a recipient, or post data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
 
 1. In the dashboard, go to Rules
@@ -129,15 +125,15 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 
 Landmark - A landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
 
-**When will the event happen**  
+**When will the event happen**   
 To add a landmark condition, first select WHEN the event will trigger in relation to the landmark.  
 a) Inside Area - Trigger when device is inside this landmark
 b) Exit Area - Trigger when the device was previously inside this landmark, and then leaves it   
 c) Enter Area - Trigger when the device was previously outside this landmark, and then enters it    
 d) Outside Area - Trigger when the device is outside this landmark  
 
-**Which location do you want the event to trigger from?**
-Next, select the landmark
+**Which location do you want the event to trigger from?**  
+Next, select the landmark for this condition
 - To use an existing landmark from the project, click **Select From Project Landmarks**. This will display a list of available landmarks, if any. Clicking on the name will display the landmark in the map. You can use the **Search By Landmark Name** search box to filter the list.
 - To create a new landmark, click **Add New Landmark**
 
@@ -162,7 +158,6 @@ Attribute - a custom condition or freeform condition which allows you to specify
  
 
 ## Using the Sense API
--------------------
 The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. See [Sense API Docs](http://docs.sixgill.com/sense-api.html) for more information.
 
 
