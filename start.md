@@ -125,20 +125,33 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 2. Click **Add New Rule**
 3. Enter the condition(s) for the rule. You can choose from a *Landmark Condition* or *Attribute Condition*
 
-### Add a Landmark Condition
-Landmark - A landmark is a geofence around a certain location. It can be a circle, polygonTo add a landmark condition:
-a) Select a project landmark, or...  
-Add a new landmark  
+### Add a Landmark Condition  
+
+Landmark - A landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
+
+**When will the event happen**  
+To add a landmark condition, first select WHEN the event will trigger in relation to the landmark.  
+a) Inside Area - Trigger when device is inside this landmark
+b) Exit Area - Trigger when the device was previously inside this landmark, and then leaves it   
+c) Enter Area - Trigger when the device was previously outside this landmark, and then enters it    
+d) Outside Area - Trigger when the device is outside this landmark  
+
+**Which location do you want the event to trigger from?**
+Next, select the landmark
+- To use an existing landmark from the project, click **Select From Project Landmarks**. This will display a list of available landmarks, if any. Clicking on the name will display the landmark in the map. You can use the **Search By Landmark Name** search box to filter the list.
+- To create a new landmark, click **Add New Landmark**
 
 ![](images/rule_add_new_landmark.png)  
 
-b) Move the map or use Google Addresses to center the map as needed  
-c) Use the Drawing Tools to create a geofence around your desired area  
-d) Click Use Geofence  
-e) Enter a name for the landmark  
-f) Click Create Landmark to save  
+a) Move the map or use Google Addresses to center the map as needed  
+b) Use the Drawing Tools to create a geofence around your desired area  
+c) Click Use Geofence  
+d) Enter a name for the landmark  
+e) Click Create Landmark to save  
 
 For testing purposes, we recommend adding a landmark around your current geographical area.  
+
+Landmarks for the project can also be created separately in the **Landmarks** section. You can then select these landmarks when creating a rule under **Select From Project Landmarks**.
 
 ### Add an Attribute Condition
 Attribute - a custom condition or freeform condition which allows you to specify attributes/properties and the logical condition(s) to be evaluated. These conditions can be simple using pre-defined attributes (Manufacturer, Device Type) or written to be more complex using the Advanced editor. The attributes being compared in the conditions will need to exist in the data stream for the device.
