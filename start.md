@@ -14,6 +14,8 @@ On-boarding users and devices in the Sense 2.0 platform
     *   [Android](#android)
     *   [IoT Devices](#iot-devices)
 *   [Creating a Rule](#creating-a-rule)
+    *   [Adding a Landmark](#-add-a-landmark-condition)
+    *   [Adding an Attribute](#add-an-attribute-condition)
 *   [Using the Sense API](#using-the-sense-api)
 
 ## Creating an Account
