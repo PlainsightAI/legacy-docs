@@ -164,11 +164,20 @@ Attribute - a custom condition or freeform condition which allows you to specify
 An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  
 1. Click *New Action* under the Actions section
 2. Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook  
-- SMS  a) Enter the SMS message to be sent to recipients  b) Enter the recipient phone numbers, numerals only. Hit "Enter" after each number
-- Email  
-- Send Push  
-- Webhook  
+- SMS  a) **Message** - Enter the SMS message to be sent to recipients  b) **Phone Numbers** - Enter the recipient phone numbers, numerals only. Hit "Enter" after each number.
+- Email  a) **Subject** - Enter the subject line of the email  b) **Message** - Enter the desired message body  c) **Recipients** - Enter the recipient email addresses. Hit "Enter" after each address.
+- Send Push  a) **Subject** - Enter the subject line of the message  b) **Message** - Enter the desired message body  c) **Recipients** - Check the **Triggering Device** box (most commonly used). You could also specify a list of device IDs. Hit "Enter" after each device ID.
+- Webhook  a) **URL** - Enter the URL to send the webhook action to.  b) **Method** - Select the HTTP Request method to use for the action.  c) **Body** - (optional) Enter a request payload for the action.  d) **HTTP Username, HTTP Password, Header, Value** - (optional) Fill in the remaining fields as needed
 
+5. Click "Continue to next Step"
+6. **Name** - Enter a name for this rule
+7. **Description** - (optional) Enter a description for the rule
+8. **Minimum Time Between Triggering (in Seconds)** - (optional) The minimum amount of time that must elapse before the rule can be triggered again
+9. **Tags** - (optional) Enter tags for this rule
+10. **Schedule** - (optional) Use this section to set a schedule for the rule. This will set limits on when the rule is enabled. By default, the rule will be enabled within 5 minutes of activation and will run indefinitely  a) **Timezone** - Select the timezone for this rule's schedule.  b) **Set timeframe (start / end)** - Check this box to set the start/end date for the rule.  c) **Only run on specific Day(s) of the week** - Check this box to set a weekly schedule for the rule.  d) **Only run on specific Hours of the Day** - Check this box to set a daily schedule for the rule. For example, you may only want the rule to run between 9:00am and 12:00pm.
+11. Click "Continue to next Step". You will be prompted on whether you want to simply want to "Save" the rule but not activate it, or "Save & Activate" to enable the rule right away.
+
+_Note: Rules will be enabled within 5 minutes of activation._
 
 
 ## Using the Sense API
