@@ -166,8 +166,8 @@ Attribute - a custom condition or freeform condition which allows you to specify
 ### Add an Action
 An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  
 1. Click *New Action* under the Actions section
-2. Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook  
-#### SMS   
+2. Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook
+#### SMS
 - **Message** - Enter the SMS message to be sent to recipients   
 - **Phone Numbers** - Enter the recipient phone numbers, numerals only. Hit "Enter" after each number.
 #### Email  
