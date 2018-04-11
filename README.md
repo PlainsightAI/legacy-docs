@@ -2,6 +2,12 @@
 
 Welcome to the Sixgill Sense API. Below are links to detailed documentation on the various major components of the Sixgill Sense platform.
 
+## Getting Started
+
+The Getting Started Guide will help new users get up and running with the Sense platform.
+
+[Getting Started Guide](start.md)
+
 ## Sense API
 
 The Sense API is where third party developers can access the majority of the Sense platform's functionality.
