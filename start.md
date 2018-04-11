@@ -19,30 +19,36 @@ On-boarding users and devices in the Sense 2.0 platform
 ## Creating an Account
 ----------------------------------
 
-You will need an account to get started with Sixgill Sense.  
+You will need an account to get started with Sixgill Sense. From here, may start your own organization, or you may be invited to join an existing organization via email.
 
 1.  Go to [sense-dashboard.sixgill.com](http://sense-dashboard.sixgill.com) and sign up for an account. You will be required to validate your email address.
     
-2.  Once you are signed in, you can add other users to your account through the Admin tab.
+2.  Once you are signed in, you can add other users to your organization through the Admin tab.
+
+### Joining an Organization
+
+You may receive an email invitation titled "Welcome to Sixgill Sense" inviting you to join an existing organization.
+
+1. In the email, click "Accept Invite" and log into your account.
+
+2. Click on your organization name at the top right corner and select the new organization from the drop-down.
+
 
 ## Creating a Channel
-------------------
-
 A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the Sense SDKs, or of any other devices that write to the Sense Ingress API.
 
 ![](images/508329985.png?height=250)
 
-1.  In the dashboard, go to Channels
+1.  In the dashboard, go to Channels. If this is your organization's first channel, you will be presented with an Intro screen. Click **Add New Channel**
 2.  Click on the type of channel you would like to create
-    1.  Select **iOS Mobile Devices** to create a channel for iOS data for apps using the Sense Reach iOS SDK
-    2.  Select **Android Mobile Devices** to create a channel for Android data for apps using the Sense Reach Android SDK
-    3.  Select **IoT Devices** to create a channel for generic IoT data that will be sent using the Sense Ingress API
+    -  Select **iOS Mobile Devices** to create a channel for iOS data for apps using the Sense Reach iOS SDK
+    -  Select **Android Mobile Devices** to create a channel for Android data for apps using the Sense Reach Android SDK
+    -  Select **IoT Devices** to create a channel for generic IoT data that will be sent using the Sense Ingress API
 3.  Enter a name for your channel. Channel names must be unique to your account.
 
 This will create a Channel for the type of data you wish to ingest.
 
 ## Configuring a Channel for Push
-------------------------------
 In order to receive Push notifications, the Channel will need to be configured with mobile keys depending on the app you are using to stream data. For iOS, you will need to upload the Push certificate for your app as a **.p12 file**. For Android, you will need the Firebase key or Google Cloud Messaging key used by the app.
 
 1. Go to Channels
@@ -62,38 +68,36 @@ The certificate type should be listed on the left.
 The selected messaging type should be listed on the left.
 
 
+_Note: If you would like to configure your Sync 2.0 demo app to use Push, please contact support@sixgill.com_  
+
 ## Connecting Devices
-Device sensor data is ingested into Sense 2.0 through the [Ingress API](http://docs.sixgill.com/ingress-api.html). For Android and iOS devices, this can be done by integrating the Sense SDK into a mobile app. The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. The SDKs are authenticated using the API keys for the channel.
+Device sensor data is ingested into Sense 2.0 through the [Ingress API](http://docs.sixgill.com/ingress-api.html). For Android and iOS devices, this can be done by integrating the Sense SDK into a mobile app. The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. The SDKs are authenticated using the API keys for their channel.
 
 ### iOS
 
-Sense Reach iOS SDK v1.0.0 _(released March 9, 2018)_
+Sense Reach iOS SDK v1.0.0 _(released TBD)_
 
 [Sixgill Reach iOS SDK User Guide](http://docs.sixgill.com/ios-sdk-objc-docs/user-guide.html)
 
 ### Android
 
-Sense Reach Android SDK v1.0.0 _(released March 9, 2018)_
+Sense Reach Android SDK v1.0.0 _(released TBD)_
 
 [Sixgill Reach Android SDK User Guide](http://docs.sixgill.com/android-user-guide.html)
-
   
-
+### Sixgill Sync 2.0
 Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 demo application, available on the App Store and (coming soon) the Google Play Store.
 
 Sixgill Sync 2.0 for iOS (link)
 
 Sixgill Sync 2.0 for Android (link)
 
-  
-
 1.  Download the app on your device using the link above
 2.  Login with your Sense 2.0 account credentials. iOS devices should use an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
 
 ![](images/508297263.png)
 
-_Note: The ability to scan QR codes has been temporarily removed from the Sync app._
-
+_Note: The ability to scan QR codes has been temporarily removed from the Sync app._  
 
 If using Sense 2.0 account credentials, you will be asked to select your project and channel.
 
@@ -125,8 +129,8 @@ Rules are at the heart of device interactivity within the Sense platform. Rules
 
 Landmark - A landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
 
-**When will the event happen**   
-To add a landmark condition, first select WHEN the event will trigger in relation to the landmark.  
+**When will the event happen?**   
+First select WHEN the event will trigger in relation to the landmark.  
 a) Inside Area - Trigger when device is inside this landmark
 b) Exit Area - Trigger when the device was previously inside this landmark, and then leaves it   
 c) Enter Area - Trigger when the device was previously outside this landmark, and then enters it    
@@ -156,6 +160,16 @@ Attribute - a custom condition or freeform condition which allows you to specify
 **AND** is selected by default, meaning the device will need to satisfy all conditions to trigger the rule. For example, a device needs to be inside a landmark AND also be an iOS device to trigger the rule.  
 **OR** can be used if the device only needs to satisfy one condition to trigger the rule. For example, a device needs to either be inside a landmark OR be an iOS device to trigger the rule.
  
+### Add an Action
+An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  
+1. Click *New Action* under the Actions section
+2. Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook  
+- SMS  a) Enter the SMS message to be sent to recipients  b) Enter the recipient phone numbers, numerals only. Hit "Enter" after each number
+- Email  
+- Send Push  
+- Webhook  
+
+
 
 ## Using the Sense API
 The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. See [Sense API Docs](http://docs.sixgill.com/sense-api.html) for more information.
