@@ -170,7 +170,7 @@ An action is the behavior that is executed when the conditions are met. An actio
 
 
 
-#### SMS
+   #### SMS
 - **Message** - Enter the SMS message to be sent to recipients   
 - **Phone Numbers** - Enter the recipient phone numbers, numerals only. Hit "Enter" after each number.
 #### Email  
