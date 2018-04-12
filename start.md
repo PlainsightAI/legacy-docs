@@ -207,8 +207,8 @@ Optionally, use the Schedule section to set a schedule for when the rule is acti
 - **Only run on specific Hours of the Day** - Check this box to set a daily schedule for the rule. For example, you may only want the rule to run between 9:00am and 12:00pm.
 
 ### Activating the Rule
-1. After filling out the rule conditions, actions, name, and other details, click "Continue to next Step"
-2. You will be prompted on whether you want to simply want to "Save" the rule but not activate it, or "Save & Activate" to enable the rule right away. _Note: Rule will be enabled within 5 minutes of activation._
+1. After you have entered the rule conditions, actions, name, and other details, click "Continue to next Step"
+2. You will be prompted to simply "Save" the rule but not activate it, or to "Save & Activate" which will enable the rule right away. _Note: Rule will be enabled within 5 minutes of activation._
 3. You can activate or de-activate any rules in your selected project by going to the **Rules** list and using the toggle under the Actions column to enable/disable your selected rule.
 4. You can edit an existing rule by going to the **Rules** list and clicking the Edit icon under the Actions column to modify your selected rule.
 
