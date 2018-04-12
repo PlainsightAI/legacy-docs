@@ -1,5 +1,4 @@
-
-Sense 2.0 : Getting Started with Sense 2.0
+Getting Started with Sense 2.0
 ==========================================
 
 On-boarding users and devices in the Sense 2.0 platform
