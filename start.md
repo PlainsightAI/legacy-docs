@@ -165,8 +165,8 @@ Attribute - a custom condition or freeform condition which allows you to specify
  
 ### Add an Action
 An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  
-1. Click *New Action* under the Actions section
-2. Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook   
+a) Click *New Action* under the Actions section
+b) Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook   
 
 #### SMS  
 - **Message** - Enter the SMS message to be sent to recipients   
@@ -189,12 +189,12 @@ An action is the behavior that is executed when the conditions are met. An actio
 - **HTTP Username, HTTP Password, Header, Value** - (optional) Fill in the remaining fields as needed   
 
 Add additional actions if needed.
-
 5. Click "Continue to next Step"
 6. **Name** - Enter a name for this rule
 7. **Description** - (optional) Enter a description for the rule
 8. **Minimum Time Between Triggering (in Seconds)** - (optional) The minimum amount of time that must elapse before the rule can be triggered again
-9. **Tags** - (optional) Enter tags for this rule 
+9. **Tags** - (optional) Enter tags for this rule   
+
 #### Schedule
 Optionally, use this section to set a schedule for the rule. This will limit when the rule is enabled. **By default, the rule will be enabled within 5 minutes of activation and will continue to run until it is deactivated**
 
