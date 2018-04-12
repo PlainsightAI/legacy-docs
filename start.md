@@ -15,8 +15,8 @@ On-boarding users and devices in the Sense 2.0 platform
     *   [IoT Devices](#iot-devices)
 *   [Creating a Rule](#creating-a-rule)
     *   [Adding a Landmark](#-add-a-landmark-condition)
-    *   [Adding an Attribute](#add-an-attribute-condition)
-    *   [Adding an Action](#add-an-action)
+    *   [Adding an Attribute](#adding-an-attribute-condition)
+    *   [Adding an Action](#adding-an-action)
 *   [Using the Sense API](#using-the-sense-api)
 
 ## Creating an Account
@@ -124,11 +124,11 @@ The platform is able to ingest generic IoT sensor data. Developers will need to 
 ## Creating a Rule
 Rules are at the heart of device interactivity within the Sense platform. Rules define conditions around devices and sensor data and specify the actions to trigger when the conditions are met. For example, devices entering a geofence or coming within range of a beacon could trigger a notification to another device, send an email to a recipient, or post data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
 
-1. In the dashboard, go to Rules
+1. In the dashboard, go to Projects > Rules
 2. Click **Add New Rule**
 3. Enter the condition(s) for the rule. You can choose from a *Landmark Condition* or *Attribute Condition*
 
-### Add a Landmark Condition  
+### Adding a Landmark Condition  
 
 Landmark - A landmark is a geofence around a certain location. It can be a circle, polygon, or rectable.
 
@@ -156,14 +156,14 @@ For testing purposes, we recommend adding a landmark around your current geograp
 
 Landmarks for the project can also be created separately in the **Landmarks** section. You can then select these landmarks when creating a rule under **Select From Project Landmarks**.
 
-### Add an Attribute Condition
+### Adding an Attribute Condition
 Attribute - a custom condition or freeform condition which allows you to specify attributes/properties and the logical condition(s) to be evaluated. These conditions can be simple using pre-defined attributes (Manufacturer, Device Type) or written to be more complex using the Advanced editor. The attributes being compared in the conditions will need to exist in the data stream for the device.
 
 4. When adding conditions, be sure to select whether these are **AND or OR** conditions.  
 **AND** is selected by default, meaning the device will need to satisfy all conditions to trigger the rule. For example, a device needs to be inside a landmark AND also be an iOS device to trigger the rule.  
 **OR** can be used if the device only needs to satisfy one condition to trigger the rule. For example, a device needs to either be inside a landmark OR be an iOS device to trigger the rule.
  
-### Add an Action
+### Adding an Action
 An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  
 a) Click *New Action* under the Actions section
 b) Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook   
@@ -204,12 +204,13 @@ Optionally, use this section to set a schedule for the rule. This will limit whe
 - **Only run on specific Day(s) of the week** - Check this box to set a weekly schedule for the rule.  
 - **Only run on specific Hours of the Day** - Check this box to set a daily schedule for the rule. For example, you may only want the rule to run between 9:00am and 12:00pm.
 
-### Save or Activate Rule
+### Saving, Activating, and Editing a Rule
 1. After filling out the rule conditions, actions, name, and other details, click "Continue to next Step"
-2. You will be prompted on whether you want to simply want to "Save" the rule but not activate it, or "Save & Activate" to enable the rule right away.
+2. You will be prompted on whether you want to simply want to "Save" the rule but not activate it, or "Save & Activate" to enable the rule right away. _Note: Rule will be enabled within 5 minutes of activation._
+3. You can activate or de-activate any rules in your selected project by going to the **Rules** list and using the toggle under the Actions column to enable/disable your selected rule.
+4. You can edit an existing rule by going to the **Rules** list and clicking the Edit icon under the Actions column to modify your selected rule.
 
-_Note: Rules will be enabled within 5 minutes of activation._
-
+_Note: Any modifications to rule actions or a rule's enabled/disabled state will take effect within 5 minutes._
 
 ## Using the Sense API
 The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. See [Sense API Docs](http://docs.sixgill.com/sense-api.html) for more information.
