@@ -166,26 +166,27 @@ Attribute - a custom condition or freeform condition which allows you to specify
 ### Add an Action
 An action is the behavior that is executed when the conditions are met. An action can be in the form of sending an SMS, a Push message, an email, a webhook, or a combination of actions.  
 1. Click *New Action* under the Actions section
-2. Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook  
+2. Select your desired action by clicking on the action: SMS, Email, Send Push, Webhook   
 
-
-
-   #### SMS
+#### SMS  
 - **Message** - Enter the SMS message to be sent to recipients   
 - **Phone Numbers** - Enter the recipient phone numbers, numerals only. Hit "Enter" after each number.
+
 #### Email  
 - **Subject** - Enter the subject line of the email   
 - **Message** - Enter the desired message body  
-- **Recipients** - Enter the recipient email addresses. Hit "Enter" after each address.
+- **Recipients** - Enter the recipient email addresses. Hit "Enter" after each address.   
+
 #### Send Push  
 - **Subject** - Enter the subject line of the message  
 - **Message** - Enter the desired message body  
-- **Recipients** - Check the **Triggering Device** box (most commonly used). You could also specify a list of device IDs. Hit "Enter" after each device ID.
+- **Recipients** - Check the **Triggering Device** box (most commonly used). You could also specify a list of device IDs. Hit "Enter" after each device ID.   
+
 #### Webhook  
 - **URL** - Enter the URL to send the webhook action to.  
 - **Method** - Select the HTTP Request method to use for the action.  
 - **Body** - (optional) Enter a request payload for the action.  
-- **HTTP Username, HTTP Password, Header, Value** - (optional) Fill in the remaining fields as needed
+- **HTTP Username, HTTP Password, Header, Value** - (optional) Fill in the remaining fields as needed   
 
 Add additional actions if needed.
 
