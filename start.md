@@ -17,6 +17,8 @@ On-boarding users and devices in the Sense 2.0 platform
     *   [Adding a Landmark](#-add-a-landmark-condition)
     *   [Adding an Attribute](#adding-an-attribute-condition)
     *   [Adding an Action](#adding-an-action)
+    *   [Adding Rule Details](#adding-rule-details)
+    *   [Activating the Rule](#activating-the-rule)
 *   [Using the Sense API](#using-the-sense-api)
 
 ## Creating an Account
@@ -188,23 +190,24 @@ b) Select your desired action by clicking on the action: SMS, Email, Send Push, 
 - **Body** - (optional) Enter a request payload for the action.  
 - **HTTP Username, HTTP Password, Header, Value** - (optional) Fill in the remaining fields as needed   
 
-### Add Rule Name, Details, and Schedule
 Add additional actions if needed.
+
+### Adding Rule Details
 1. Click "Continue to next Step"
-2. **Name** - Enter a name for this rule
+2. **Name** - Enter a name for this rule.
 3. **Description** - (optional) Enter a description for the rule
 4. **Minimum Time Between Triggering (in Seconds)** - (optional) The minimum amount of time that must elapse before the rule can be triggered again
 5. **Tags** - (optional) Enter tags for this rule   
 
 #### Schedule
-Optionally, use this section to set a schedule for the rule. This will limit when the rule is enabled. **By default, the rule will be enabled within 5 minutes of activation and will continue to run until it is deactivated**
+Optionally, use the Schedule section to set a schedule for when the rule is active and runnning. This will limit the days of the week or times of the day when the rule is active. **By default, the rule will be enabled within 5 minutes of activation and will continue to run until it is turned off or deleted.**
 
 - **Timezone** - Select the timezone for this rule's schedule.  
 - **Set timeframe (start / end)** - Check this box to set the start/end date for the rule.  
 - **Only run on specific Day(s) of the week** - Check this box to set a weekly schedule for the rule.  
 - **Only run on specific Hours of the Day** - Check this box to set a daily schedule for the rule. For example, you may only want the rule to run between 9:00am and 12:00pm.
 
-### Saving, Activating, and Editing a Rule
+### Activating the Rule
 1. After filling out the rule conditions, actions, name, and other details, click "Continue to next Step"
 2. You will be prompted on whether you want to simply want to "Save" the rule but not activate it, or "Save & Activate" to enable the rule right away. _Note: Rule will be enabled within 5 minutes of activation._
 3. You can activate or de-activate any rules in your selected project by going to the **Rules** list and using the toggle under the Actions column to enable/disable your selected rule.
