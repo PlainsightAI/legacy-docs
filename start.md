@@ -23,7 +23,7 @@ On-boarding users and devices in the Sense 2.0 platform
 ## Creating an Account
 ----------------------------------
 
-You will need an account to get started with Sixgill Sense. From here, may start your own organization, or you may be invited to join an existing organization via email.
+You will need an account to get started with Sixgill Sense. You may start your own organization, or you may be invited to join an existing organization via email.
 
 1.  Go to [sense-dashboard.sixgill.com](http://sense-dashboard.sixgill.com) and sign up for an account. You will be required to validate your email address.
     
