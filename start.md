@@ -4,6 +4,7 @@ Getting Started with Sense 2.0
 On-boarding users and devices in the Sense 2.0 platform
 
 *   [Create a Sixgill Sense 2.0 account](#creating-an-account)
+    *   [Joining an Existing Organization](#joining-an-existing-organization)
 *   [Creating a Channel](#creating-a-channel)
 *   [Configuring a Channel for Push](#configuring-a-channel-for-push)
     *   [Apple Push](#apple-push)
@@ -23,19 +24,19 @@ On-boarding users and devices in the Sense 2.0 platform
 ## Creating an Account
 ----------------------------------
 
-You will need an account to get started with Sixgill Sense. You may start your own organization, or you may be invited to join an existing organization via email.
+You will need an account to get started with Sixgill Sense. If you are creating own organization, follow these steps. If you are joining an organization created by someone else, skip to [Joining an Existing Organization](#joining-an-existing-organization)
 
 1.  Go to [sense-dashboard.sixgill.com](http://sense-dashboard.sixgill.com) and sign up for an account. You will be required to validate your email address.
     
 2.  Once you are signed in, you can add other users to your organization through the Admin tab.
 
-### Joining an Organization
+### Joining an Existing Organization
 
-You may receive an email invitation titled "Welcome to Sixgill Sense" inviting you to join an existing organization.
+Once you have been invited to join an existing organization, you will receive an email invitation titled "Welcome to Sixgill Sense".
 
-1. In the email, click "Accept Invite" and log into your account.
-
-2. Click on your organization name at the top right corner and select the new organization from the drop-down.
+1. In the email, click "Accept Invite".
+2. Enter your full name and desired password. Read and accept the terms of service.
+3. Click "Accept Inviation" to sign in to the organization's dashboard.
 
 
 ## Creating a Channel
