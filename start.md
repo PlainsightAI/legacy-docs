@@ -13,7 +13,7 @@ On-boarding users and devices in the Sense 2.0 platform
     *   [Android](#android)
     *   [IoT Devices](#iot-devices)
 *   [Creating a Rule](#creating-a-rule)
-    *   [Adding a Landmark](#-add-a-landmark-condition)
+    *   [Adding a Landmark](#-adding-a-landmark-condition)
     *   [Adding an Attribute](#adding-an-attribute-condition)
     *   [Adding an Action](#adding-an-action)
     *   [Adding Rule Details](#adding-rule-details)
