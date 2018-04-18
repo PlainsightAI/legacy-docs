@@ -216,7 +216,9 @@ Optionally, use the Schedule section to set a schedule for when the rule is acti
 _Note: Any modifications to rule actions or a rule's enabled/disabled state will take effect within 5 minutes._
 
 ## Using the Sense API
-The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. See [Sense API Docs](http://docs.sixgill.com/sense-api.html) for more information.
+The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. 
+
+See [Sense API Docs](http://docs.sixgill.com/sense-api.html) for more information.
 
 
   
