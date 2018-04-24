@@ -96,40 +96,40 @@ Attributes | key value | Key value data for the event | .Event.Attributes
 
 Field|Type|Description|Usage
 -|-|-
-Timestamp | int64 | Unix timestamp in milliseconds | .Event.Locations.Timestamp
-Latitude | float64 | Latitude | .Event.Locations.Latitude
-Longitude | float64 | Longitude | .Event.Locations.Longitude
-Velocity | float64 | Velocity in meters / sec | .Event.Locations.Velocity
-Accuracy | float64 | Accuracy of the reported latitude and longitude in meters | .Event.Locations.Accuracy
+Timestamp | int64 | Unix timestamp in milliseconds | (index .Event.Locations 0).Timestamp
+Latitude | float64 | Latitude | (index .Event.Locations 0).Latitude
+Longitude | float64 | Longitude | (index .Event.Locations 0).Longitude
+Velocity | float64 | Velocity in meters / sec | (index .Event.Locations 0).Velocity
+Accuracy | float64 | Accuracy of the reported latitude and longitude in meters | (index .Event.Locations 0).Accuracy
 
 ### .Event.Wifis
 
 Field|Type|Description|Usage
 -|-|-
-Timestamp | int64 | Unix timestamp in milliseconds | .Event.Wifis.Timestamp
-MAC | string | MAC address | .Event.Wifis.MAC
-SSID | string | SSID | .Event.Wifis.SSID
-RSSI | int | RSSI | .Event.Wifis.RSSI
+Timestamp | int64 | Unix timestamp in milliseconds | (index .Event.Wifis 0).Timestamp
+MAC | string | MAC address | (index .Event.Wifis 0).MAC
+SSID | string | SSID | (index .Event.Wifis 0).SSID
+RSSI | int | RSSI | (index .Event.Wifis 0).RSSI
 
 ### .Event.Beacons
 
 Field|Type|Description|Usage
 -|-|-
-Timestamp | int64 | Unix timestamp in milliseconds | .Event.Beacons.Timestamp
-MAC | string | MAC address | .Event.Beacons.MAC
-RSSI | int | RSSI | .Event.Beacons.RSSI
-Major | int | BLE major identifier | .Event.Beacons.Major
-Minor | int | BLE minor identifier | .Event.Beacons.Minor
-Proximity | string | BLE proximity field | .Event.Beacons.Proximity
-Accuracy | float64 | Accuracy of the reported proximity | .Event.Beacons.Accuracy
+Timestamp | int64 | Unix timestamp in milliseconds | (index .Event.Beacons 0).Timestamp
+MAC | string | MAC address | (index .Event.Beacons 0).MAC
+RSSI | int | RSSI | (index .Event.Beacons 0).RSSI
+Major | int | BLE major identifier | (index .Event.Beacons 0).Major
+Minor | int | BLE minor identifier | (index .Event.Beacons 0).Minor
+Proximity | string | BLE proximity field | (index .Event.Beacons 0).Proximity
+Accuracy | float64 | Accuracy of the reported proximity | (index .Event.Beacons 0).Accuracy
 
 ### .Event.Power
 
 Field|Type|Description|Usage
 -|-|-
-Timestamp | int64 | Unix timestamp in milliseconds | .Event.Power.Timestamp
-Charging | bool | If the device is charging | .Event.Power.Charging
-BatteryLevel | int | Battery level as a percent | .Event.Power.BatteryLevel
+Timestamp | int64 | Unix timestamp in milliseconds | (index .Event.Power 0).Timestamp
+Charging | bool | If the device is charging | (index .Event.Power 0).Charging
+BatteryLevel | int | Battery level as a percent | (index .Event.Power 0).BatteryLevel
 
 ### .Event.Activities
 
