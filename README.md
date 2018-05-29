@@ -19,6 +19,13 @@ The Sense API is where third party developers can access the majority of the Sen
 The Sense Ingress API allows mobile and IoT devices to send data to the the Sense platform.
 
 [Sense Ingress API Documentation](ingress-api.md)
+
+## Sense Gateway Ingress Snap
+
+The Sense Gateway Ingress Snap allows a gateway running Ubuntu 16 to act as an entry point for sensor data into the Sense platform.
+
+[Sense Gateway Ingress Snap Documentation](gateway-ingress-api.md)
+
 ## Sense Reach SDK (iOS)
 
 The Sense Reach iOS SDK is a convenient way to connect iOS devices to the the Sense Ingress API.
