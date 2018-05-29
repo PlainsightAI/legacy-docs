@@ -4,7 +4,7 @@
 This document details the process for setting up the Dell Edge Gateway 3001 and installing the Sixgill Sense Ingress API. Once configured, the gateway becomes a functioning part of the Sixgill Sense platform capable of ingesting data emitted by IoT devices and responding to client requests independently from the Sense Cloud. This integrated solution represents a significant milestone towards the strategic goal of positioning Sixgill Sense as the sensor data agnostic and edge processing capable software solution at the intersection of leading IoT vendors such as Dell, Intel and Ubuntu.
 
 ## Hardware Specifications:
-- Ubuntu Core 16 (a.k.a. "Snappy")
+- Ubuntu Core 16
 - Intel® Atom™ E3805 1.33 GHz / 1 MB
 - 2 GB DDR3L – 1066 MHz
 - 8GB eMMC storage
