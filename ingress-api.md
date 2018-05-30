@@ -60,7 +60,7 @@ curl -X POST "https://sense-ingress-api.sixgill.com/v1/mobile/events" -H "Author
 
 ### POST /v1/mobile/events
 
-Mobile devices can create "events" that fire on a cadence specified in their configuration. Events send information on a device's location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire "updates" in FIFO order, downstream data processing can assume that each new update is the most recent. Updates do not include event configuration, device properties or user attributes unless one of them has changed since the last update. **timestamp** is in milliseconds
+Mobile devices can create "events" that fire on a cadence specified in their configuration. Events send information on a device's location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire "updates" in FIFO order, downstream data processing can assume that each new update is the most recent. Updates do not include event configuration, device properties or user attributes unless one of them has changed since the last update. NOTE: Be sure that **timestamp** is in milliseconds
 
 > POST request of event sensor data within a collection period:
 
