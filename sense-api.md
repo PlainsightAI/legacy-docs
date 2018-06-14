@@ -55,6 +55,7 @@ GET | /v2/users/me | 200 | [link](#get-v2usersme)
 GET | /v2/organizations | 200 | [link](#get-v2organizations)
 GET | /v2/organizations/:organizationID | 200 | [link](#get-v2organizationsorganizationid)
 POST | /v2/login | 200 | [link](#post-v2login)
+POST | /v2/login | 200 | [link](#post-v2login-with-org)
 POST | /v2/setOrganization | 200 | [link](#post-v2setorganization)
 POST | /v2/invite | 204 | [link](#post-v2invite)
 POST | /v2/accept-invite | 200 | [link](#post-v2accept-invite)
@@ -129,6 +130,14 @@ no content
 ```json
 {
     "email": "1513202525@sixgill.com",
+    "password": "password1"
+}
+```
+###### login with organization
+```json
+{
+    "email": "1513202525@sixgill.com",
+    "organizationId": "01C18YBKCHTPM5DSVTEQD5ZEAZ",
     "password": "password1"
 }
 ```
@@ -207,21 +216,6 @@ no content
         "id": "01C18YBKCHTPM5DSVTEQD5ZEAZ",
         "name": "gill_god"
     }
-}
-```
-[:arrow_up:TOC](#routes-toc)
-##### POST /v2/login
-```json
-{
-    "email": "1513202525@sixgill.com",
-    "organizationId": "01C18YBKCHTPM5DSVTEQD5ZEAZ",
-    "password": "password1"
-}
-```
-`Code: 200`
-```json
-{
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiMTUxMzIwMjUyNUBzaXhnaWxsLmNvbSIsIm5hbWUiOiJib3NzbWFuIiwicGVybWlzc2lvbnMiOnsiYWRtaW4iOnRydWV9fSwiZXhwIjoxNTE1Nzk0NTAzLCJvcmdJZCI6IjAxQzE4WUJLQ0hUUE01RFNWVEVRRDVaRUFaIiwic3ViIjoiMDFDMThZQktDSktBTVlRNlFRWlNQRjFXR0MiLCJ0b2tlblR5cGUiOiJhY2Nlc3MifQ.KIMPo9MhfMt0YKPW2htxJomJQSZ0Tg-c3TyNHVdCmwQ"
 }
 ```
 [:arrow_up:TOC](#routes-toc)
