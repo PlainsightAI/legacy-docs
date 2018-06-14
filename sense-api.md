@@ -177,16 +177,18 @@ no content
 `Code: 200`
 ```json
 {
-    "data": {
-        "email": "1513202525@sixgill.com",
-        "id": "01C18YBKCJKAMYQ6QQZSPF1WGC",
-        "inviteOutstanding": false,
-        "locale": {
-            "timezone": "America/Los_Angeles"
-        },
-        "name": "bossman",
-        "verifiedEmail": true
-    }
+	"data": {
+		"id": "01CBTBPBV78F5YPVA5JZPWNA52",
+		"email": "test@test.com",
+		"name": "John",
+		"verifiedEmail": true,
+		"inviteOutstanding": false,
+		"locale": {
+			"timezone": "America/Los_Angeles"
+		},
+		"createdAt": "2018-04-23T22:58:50Z",
+		"updatedAt": "2018-04-23T22:59:48Z"
+	}
 }
 ```
 [:arrow_up:TOC](#routes-toc)
@@ -194,17 +196,20 @@ no content
 `Code: 200`
 ```json
 {
-    "data": [
-        {
-            "id": "01C18YBKCHTPM5DSVTEQD5ZEAZ",
-            "name": "gill_god"
-        }
-    ],
-    "meta": {
-        "count": 1,
-        "nextHRef": "index=01C18YBKCHTPM5DSVTEQD5ZEAZ\u0026count=50\u0026sortBy=id\u0026sortAsc=false",
-        "nextIndex": "01C18YBKCHTPM5DSVTEQD5ZEAZ"
-    }
+	"data": [{
+		"id": "01CBTBPBV4M6PK2VEGY56N8NN2",
+		"name": "My Organization",
+		"permissions": {
+			"admin": true
+		},
+		"createdAt": "0001-01-01T00:00:00Z",
+		"updatedAt": "2018-04-23T22:58:50Z"
+	}],
+	"meta": {
+		"count": 1,
+		"nextIndex": "01CBTBPBV4M6PK2VEGY56N8NN6",
+		"nextHRef": "index=01CBTBPBV4M6PK2VEGY56N8NN5\u0026count=50\u0026sortBy=id\u0026sortAsc=false"
+	}
 }
 ```
 [:arrow_up:TOC](#routes-toc)
@@ -214,7 +219,7 @@ no content
 {
     "data": {
         "id": "01C18YBKCHTPM5DSVTEQD5ZEAZ",
-        "name": "gill_god"
+        "name": "My Organization"
     }
 }
 ```
@@ -251,7 +256,7 @@ no content
     "locale": {
         "timezone": "America/Los_Angeles"
     },
-    "name": "kirk dirkler",
+    "name": "Jane Doe",
     "password": "password1",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiMTUxMzIwMjUyNUludml0ZUBzaXhnaWxsLmNvbSIsIm9yZ2FuaXphdGlvbklkIjoiMDFDMThZQktDSFRQTTVEU1ZURVFENVpFQVoiLCJvcmdhbml6YXRpb25OYW1lIjoiZ2lsbF9nb2QifSwiZXhwIjoxNTEzODA3MzA0LCJzdWIiOiIwMUMxOFlCTUJRQUJDREQ5RUJaRTNDNjZEMyIsInRva2VuVHlwZSI6Imludml0ZSJ9.RAJD5wyAHlnH-xqeZ5raWB_dr2SKVeKqDgLGN1Q09qo"
 }
@@ -267,7 +272,7 @@ no content
 {
     "data": [
         {
-            "email": "1513202525@sixgill.com",
+            "email": "1513202525@test.com",
             "id": "01C18YBKCJKAMYQ6QQZSPF1WGC",
             "inviteOutstanding": false,
             "locale": {
@@ -277,7 +282,7 @@ no content
             "verifiedEmail": true
         },
         {
-            "email": "1513202525Invite@sixgill.com",
+            "email": "1513202525Invite@test.com",
             "id": "01C18YBMBQABCDD9EBZE3C66D3",
             "inviteOutstanding": false,
             "locale": {
@@ -300,7 +305,7 @@ no content
 ```json
 {
     "data": {
-        "email": "1513202525@sixgill.com",
+        "email": "1513202525@test.com",
         "id": "01C18YBKCJKAMYQ6QQZSPF1WGC",
         "inviteOutstanding": false,
         "locale": {
@@ -691,6 +696,37 @@ no content
         "id": "01C18YBNJCE3KBCNZJHKV5R55Y",
         "name": "ricky"
     }
+}
+```
+[:arrow_up:TOC](#routes-toc)
+##### GET /v2/projects
+`Code: 200`
+```json
+{
+	"data": [{
+		"id": "01CBTBSQRNBBDYGREK305FQK6S",
+		"name": "Project 1",
+		"enabled": false,
+		"channels": null,
+		"createdAt": "2018-04-23T23:00:41Z"
+	}, {
+		"id": "01CCM17R0EVDETDX7KV788305D",
+		"name": "Project 2",
+		"enabled": false,
+		"channels": null,
+		"createdAt": "2018-05-03T22:16:21Z"
+	}, {
+		"id": "01CCXYZ646P52K5W95MYPX29MR",
+		"name": "Project 3",
+		"enabled": false,
+		"channels": null,
+		"createdAt": "2018-05-07T18:49:07Z"
+	}],
+	"meta": {
+		"count": 3,
+		"nextIndex": "01CCXYZ646P52K5W95MYPX29MR",
+		"nextHRef": "index=01CCXYZ646P52K5W95MYPX29MR\u0026count=50\u0026sortBy=id\u0026sortAsc=false"
+	}
 }
 ```
 [:arrow_up:TOC](#routes-toc)
