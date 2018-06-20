@@ -17,6 +17,9 @@ The SDK handles sensor gathering at configurable intervals, and automatically se
 The SDKs are authenticated using the API keys for their respective channels.
 
 ## What are Rules?
-
+Rules are at the heart of device interactivity within the Sense platform. Rules define conditions around devices 
+and sensor data and specify the actions to trigger when the conditions are met. For example, devices entering a geofence 
+or coming within range of a beacon could trigger a notification to another device, send an email to a recipient, or post 
+data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
 
 ## What are Landmarks?
