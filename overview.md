@@ -2,13 +2,15 @@ Sense Overview
 ==========================================
 
 ## What is a channel?
-A data Channel is a source of data that flows into the Sense platform. For example, a Channel could include all 
+A data channel is a source of data that flows into the Sense platform. For example, a channel could include all 
 iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collections of mobile apps that use the 
 Sense SDKs, or of any other devices that write to the Sense Ingress API.
 
 ## What is a project?
+A profile organizes your various channels and rules. You can separate the channels that are affected by the rules by grouping them into projects.
 
 ## What is a device?
+A device is anything that provides sensor data to the platform. These can include mobile devices, watches, headsets, or other IoT sensors such as thermostats.
 
 ## How do devices connect to a channel?
 Device sensor data is ingested into Sense 2.0 through the [Ingress API](http://docs.sixgill.com/ingress-api.html). 
@@ -23,3 +25,4 @@ or coming within range of a beacon could trigger a notification to another devic
 data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
 
 ## What are Landmarks?
+Landmarks or geofences are points of interest defined by a perimeter. They are
