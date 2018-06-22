@@ -1,6 +1,6 @@
 ## Rules
 
-Rules define how the Sense Pipeline and Rules Engine respond to events that come from mobile and IoT devices. Rules are made up of condtion and actions pairs.  A rule can have one or more condition and actions pairs.  A rule loops through it's condition and actions pairs and returns the actions of the conditions that evaluate to true.  These are then passed on to action executors at a later stage. 
+Rules define how the Sense Pipeline and Rules Engine respond to events that come from mobile and IoT devices. Rules are made up of condition and actions pairs.  A rule can have one or more condition and actions pairs.  A rule loops through it's condition and actions pairs and returns the actions of the conditions that evaluate to true.  These are then passed on to action executors at a later stage. 
 
 Fields:
 ```json
