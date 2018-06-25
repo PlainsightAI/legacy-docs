@@ -13,7 +13,7 @@ A profile organizes your various channels and rules. You can separate the channe
 A device is anything that provides sensor data to the platform. These can include mobile devices, watches, headsets, or other IoT sensors such as thermostats.
 
 ## How do devices connect to a channel?
-Device sensor data is ingested into Sense 2.0 through the [Ingress API](http://docs.sixgill.com/ingress-api.html). 
+Device sensor data is ingested into the platform through the [Ingress API](http://docs.sixgill.com/ingress-api.html). 
 For Android and iOS devices, this can be done by integrating the Sense SDK into a mobile app. 
 The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. 
 The SDKs are authenticated using the API keys for their respective channels.
@@ -25,4 +25,4 @@ or coming within range of a beacon could trigger a notification to another devic
 data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
 
 ## What are Landmarks?
-Landmarks or geofences are points of interest defined by a perimeter. They are
+Landmarks or geofences are points of interest defined by a perimeter. Landmarks are used as conditions for rules in order to trigger some action.
