@@ -7,7 +7,7 @@ iOS devices with an app that uses the Sense Reach iOS SDK. Channels are collecti
 Sense SDKs, or of any other devices that write to the Sense Ingress API.
 
 ## What is a project?
-A profile organizes your various channels and rules. You can separate the channels that are affected by the rules by grouping them into projects.
+A profile organizes your various channels and rules. You can separate the channels that are impacted by the rules by grouping your rules into projects. You can then enable the channels within the projects where the device data will be sourced from.
 
 ## What is a device?
 A device is anything that provides sensor data to the platform. These can include mobile devices, watches, headsets, or other IoT sensors such as thermostats.
