@@ -1,23 +1,42 @@
 ## Rules
 
-Rules define how the Sense Pipeline and Rules Engine respond to events that come from mobile and IoT devices. Rules are made up of condition and actions pairs.  A rule can have one or more condition and actions pairs.  A rule loops through it's condition and actions pairs and returns the actions of the conditions that evaluate to true.  These are then passed on to action executors at a later stage. 
+A rule defines the set of automated actions that are performed when one or more conditions for sensor data are met. Sensor data can come from mobile or IoT devices. Rules must be created within a project that includes the desired data channels to be processed. Rules can be used to send an SMS, push, email, or webhook when an event occurs and can be run at certain times of the day.
 
-Fields:
+
+Example:
 ```json
 {
-	"id": "",
-	"created_at": "",
-	"updated_at": "",
-	"project_id": "",
-	"name": "",
-	"enabled": false,
-	"conditionsAndActions": []
+	"name": "enter gym - push",
+	"description": "",
+	"throttleInSeconds": 0,
+	"actions": [{
+		"type": "push",
+		"subject": "welcome to the gym!",
+		"message": "have a great workout"
+	}],
+	"logicalCondition": {
+		"and": [{
+			"type": "enter landmark",
+			"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYX"
+		}]
+	},
+	"id": "01C94FMW65G81W0GNSPQ41XGGZ",
+	"enabled": true
 }
 ```
+Fields:
+* name - (required) Name of the rule
+* description - (optional) Description of rule
+* throttleInSeconds - Specifies the minimum amount of time between executing the action for this rule (in seconds). For example, if set to 300 the action will be executed no more than once every 5 minutes.
+* actions - Describes what will occur when the condition is satisfied. Available actions:
+** type - push, email, webhook, sms
+** subject - subject content if push, email, or SMS is specified
+** message - message body if push, email, or SMS is specified
+* logicalCondition - Describes the set of conditions that must be met in order to execute the action(s)
+** 
 
-## Conditions and Actions
+## Conditions
 
-Conditions and actions describe what conditions must be met in order for the Rule to return some actions
 
 Fields:
 ```json
@@ -27,7 +46,7 @@ Fields:
 
 ## Predicates
 
-The rule's conditions are also known as predicates or logicals.  They are basically an object that has an evaluate method that returns true or false.
+ 
 
 ### and
 
