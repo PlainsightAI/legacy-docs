@@ -28,12 +28,10 @@ Fields:
 * name - (required) Name of the rule
 * description - (optional) Description of rule
 * throttleInSeconds - Specifies the minimum amount of time between executing the action for this rule (in seconds). For example, if set to 300 the action will be executed no more than once every 5 minutes.
-* actions - Describes what will occur when the condition is satisfied. Available actions:
-** type - push, email, webhook, sms
-** subject - subject content if push, email, or SMS is specified
-** message - message body if push, email, or SMS is specified
-* logicalCondition - Describes the set of conditions that must be met in order to execute the action(s)
-** 
+* actions - Describes what will occur when the condition is satisfied. See Actions for more details.
+* logicalCondition - Describes the conditions that must be met in order to execute the action(s). A logicalCondition is composed of one or more predicates joined with boolean operators. See Conditions for more details.
+
+- 
 
 ## Conditions
 
@@ -157,7 +155,14 @@ Usage:
 	p.Evaluate() == true, if "foo == 1"
 	p.Evaluate() == false, if "foo != 1"
 ```
-     
+   
+## Actions
+Actions are the events that occur when all the conditions of a rule are met. Supported actions are sending a push notification to a device (must be running an app that uses the Reach SDK), sending an email, sending an SMS to a phone number, and executing a webhook to another service.
+
+- type - push, email, webhook, sms  
+- subject - subject content if push, email, or SMS is specified  
+- message - message body if push, email, or SMS is specified
+
 ### enter_landmark
 
 Description:
