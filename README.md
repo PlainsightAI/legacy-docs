@@ -46,7 +46,7 @@ This document details the main data models that the Sense APIs use.
 
 ## Rules
 
-Rules are used by the Sense APIs to determine when and dictate how events are fired.
+Rules define conditions around device and sensor data and specify the actions that are executed when the conditions are met. 
 
 ## Edge Rules
 
