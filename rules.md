@@ -29,46 +29,48 @@ Fields:
 * description - (optional) Description of rule
 * throttleInSeconds - Specifies the minimum amount of time between executing the action for this rule (in seconds). For example, if set to 300 the action will be executed no more than once every 5 minutes.
 * actions - Describes what will occur when the condition is satisfied. See Actions for more details.
-* logicalCondition - Describes the conditions that must be met in order to execute the action(s). A logicalCondition is composed of one or more predicates joined with boolean operators. See Conditions for more details.
+* logicalCondition - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See Conditions for more details.
 
 - 
 
 ## Conditions
+Conditions are composed of one or more predicates. Predicates can be joined with boolean operators to form a logical expression that can be evaluated.
 
+### "and"
 
-Fields:
-```json
-	"condition": {}
-	"actions": []
-```
+	This is a boolean operator that allows you to combine other predicates with "AND" semantics. In this example, a rule is checking for the specific device to be inside a landmark.
 
-## Predicates
-
- 
-
-### and
-
-Description:
-	This is a boolean operator that allows you to combine other predicates with "AND" semantics, e.g.:
-
-Fields:
+Example:
 ```json
 {
-	"and": []
+	"name": "inside area test",
+	"description": "",
+	"throttleInSeconds": 0,
+	"actions": [{
+		"type": "email",
+		"subject": "inside area!",
+		"message": "test: {{.Device.ID.String}}",
+		"recipients": {
+			"emails": ["test@email.com"]
+		}
+	}],
+	"logicalCondition": {
+		"and": [{
+			"type": "inside landmark",
+			"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGR"
+		}, {
+			"type": "event free form",
+			"predicate": "deviceId == '01CGH777EWVP0E6EZZYH7P2JKZ'"
+		}]
+	},
+	"enabled": true
 }
 ```
 
-Logicals []Logical `json:"and,omitempty"`
-
-Usage:
-```
-	And(p1, p2, ..., pN) --> p1 && p2 && ... && pN
-```
-
-### not
+### "not"
 
 Description:
-	This is a boolean operator that allows you to negate a predicate "NOT" semantics, e.g.:
+	This is a boolean operator that allows you to negate a predicate with "NOT" semantics.
 
 Fields:
 ```json
@@ -82,7 +84,7 @@ Usage:
 	Not(p).Evaluate() --> !p
 ```
 
-### or
+### "or"
 
 Description:
 	This is a boolean operator that allows you to combine other predicates with "AND" semantics, e.g.:
