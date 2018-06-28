@@ -48,8 +48,6 @@ This document details the main data models that the Sense APIs use.
 
 Rules are used by the Sense APIs to determine when and dictate how events are fired.
 
-[Rules](rules.md)
-
 ## Edge Rules
 
 Edge rules are a specific subset of rules that the Sense platform can reliably use with edge node processing.
