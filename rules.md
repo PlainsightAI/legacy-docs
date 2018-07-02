@@ -57,10 +57,10 @@ Example:
 	"logicalCondition": {
 		"and": [{
 			"type": "inside landmark",
-			"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGR"
+			"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGS"
 		}, {
 			"type": "event free form",
-			"predicate": "deviceId == '01CGH777EWVP0E6EZZYH7P2JKZ'"
+			"predicate": "deviceId == '01CGH777EWVP0E6EZZYH7P2JK0'"
 		}]
 	},
 	"enabled": true
@@ -79,26 +79,36 @@ Fields:
 }
 ```
 
-Usage:
-```go
-	Not(p).Evaluate() --> !p
-```
-
 ### "or"
 
 Description:
-	This is a boolean operator that allows you to combine other predicates with "AND" semantics, e.g.:
+	This is a boolean operator that allows you to combine other predicates with "OR" semantics, e.g.:
 
 Fields:
 ```json
 {
-	"or": []
+	"name": "inside this area or that area",
+	"description": "",
+	"throttleInSeconds": 0,
+	"actions": [{
+		"type": "email",
+		"subject": "inside one area or the other",
+		"message": "test: {{.Device.ID.String}}",
+		"recipients": {
+			"emails": ["test@email.com"]
+		}
+	}],
+	"logicalCondition": {
+		"or": [{
+			"type": "inside landmark",
+			"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYA"
+		}, {
+			"type": "inside landmark",
+			"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGF"
+		}]
+	},
+	"enabled": true
 }
-```
-
-Usage:
-```go
-	Or(p1, p2, ..., pN).Evaluate() --> p1 || p2 || ... || pN
 ```
 
 ### always_false
@@ -139,7 +149,7 @@ Usage:
 ### event_free_form
 
 Description:
-	This is a predicate that allows you to evaluate an event field (usually an IoT event), e.g.:
+	This is a predicate that allows you to evaluate a specific event field (usually an IoT event), e.g.:
 
 Fields:
 ```json
