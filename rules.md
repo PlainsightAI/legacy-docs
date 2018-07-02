@@ -1,4 +1,4 @@
-## Rules
+# Rules
 
 A rule defines the set of automated actions that are performed when one or more conditions for sensor data are met. Sensor data can come from mobile or IoT devices. Rules must be created within a project that includes the desired data channels to be processed. Rules can be used to send an SMS, push, email, or webhook when an event occurs and can be run at certain times of the day.
 
@@ -36,7 +36,8 @@ Fields:
 ## Conditions
 Conditions are composed of one or more predicates. Predicates can be joined with boolean operators to form a logical expression that can be evaluated.
 
-### "and"
+### Operators
+#### "and"
 
 	This is a boolean operator that allows you to combine other predicates with "AND" semantics. In this example, a rule is checking for the specific device to be inside a landmark.
 
@@ -67,7 +68,7 @@ Example:
 }
 ```
 
-### "not"
+#### "not"
 
 Description:
 	This is a boolean operator that allows you to negate a predicate with "NOT" semantics.
@@ -79,7 +80,7 @@ Fields:
 }
 ```
 
-### "or"
+#### "or"
 
 Description:
 	This is a boolean operator that allows you to combine other predicates with "OR" semantics, e.g.:
@@ -110,8 +111,8 @@ Fields:
 	"enabled": true
 }
 ```
-
-### always_false
+### Predicates
+#### always_false
 
 Description:
 	This is a predicate that is always false.  It is mostly used for testing, e.g.:
@@ -128,7 +129,7 @@ Usage:
 	p && AlwaysFalse.Evaluate() == false, regardless of p's truth value
 ```
 
-### always_true
+#### always_true
 
 Description:
 	This is a predicate that is always true.  It is mostly used for testing, e.g.:
@@ -146,7 +147,7 @@ Usage:
 	p || AlwaysTrue.Evaluate() == true, regardless of p's truth value
 ```
      
-### event_free_form
+#### event_free_form
 
 Description:
 	This is a predicate that allows you to evaluate a specific event field (usually an IoT event), e.g.:
@@ -168,14 +169,7 @@ Usage:
 	p.Evaluate() == false, if "foo != 1"
 ```
    
-## Actions
-Actions are the events that occur when all the conditions of a rule are met. Supported actions are sending a push notification to a device (must be running an app that uses the Reach SDK), sending an email, sending an SMS to a phone number, and executing a webhook to another service.
-
-- type - push, email, webhook, sms  
-- subject - subject content if push, email, or SMS is specified  
-- message - message body if push, email, or SMS is specified
-
-### enter_landmark
+#### enter_landmark
 
 Description:
 	This is a predicate that allows you to evaluate whether or not a device event entered a landmark that it was not already inside of, e.g.:
@@ -211,7 +205,7 @@ Usage:
 	p.Evaluate(eventIsNowInsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> false
 ```
 
-### exit_landmark
+#### exit_landmark
    
 Description:
 	This is a predicate that allows you to evaluate whether or not a device event exited a landmark that it was not already outside of, e.g.:
@@ -247,7 +241,7 @@ Usage:
 	p.Evaluate(eventIsNowInsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> false
 ```
 	
-### inside_landmark
+#### inside_landmark
 
 Description:
 	This is a predicate that allows you to evaluate whether or not a device event is inside of a given landmark, e.g.:
@@ -283,7 +277,7 @@ Usage:
 	p.Evaluate(eventIsNowInsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> true
 ```
 
-### outside_landmark
+#### outside_landmark
 
 Description:
 	This is a predicate that allows you to evaluate whether or not a device event is outside of a given landmark, e.g.:
@@ -319,7 +313,7 @@ Usage:
 	p.Evaluate(eventIsNowInsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> false
 ```
    
-### landmark_has_all_tags
+#### landmark_has_all_tags
 
 Description:
 	This is a predicate that allows you to evaluate whether or not a given landmark has all of the tags specified, e.g.:
@@ -354,7 +348,7 @@ Usage:
 	LandmarkHasAllTags(l.ID, "bar").Evaluate(event, device, lcs, gcs) --> true
 ```
 
-### landmark_has_any_tags
+#### landmark_has_any_tags
 
 Description:
 	This is a predicate that allows you to evaluate whether or not a given landmark has any of the tags specified, e.g.:
@@ -389,7 +383,7 @@ Usage:
 	LandmarkHasAllTags(l.ID, "bar").Evaluate(event, device, lcs, gcs) --> true
 ```
    
-### event_occurred_after
+#### event_occurred_after
 
 Description:
 	This is a predicate that allows you to evaluate whether an event occurred after a given time, e.g.:
@@ -455,7 +449,7 @@ Usage:
  	EventOccurredBefore(clientSentAt.Add(time.Second)).Evaluate(e, d, lcs, gcs) --> true
 ```
 
-### event_occurred_between_times_of_day
+#### event_occurred_between_times_of_day
 
 Description:
 	This is a predicate that allows you to evaluate whether an event occurred between two given times, e.g.:
@@ -492,7 +486,7 @@ Usage:
 	EventOccurredBetweenTimesOfDay("15:00:01", "15:00:02", "America/New_York").Evaluate(e, d, lcs, gcs) --> false
 ```
 
-### event_occurred_on_day_of_week
+#### event_occurred_on_day_of_week
 
 Description:
 	This is a predicate that allows you to evaluate whether an event occurred on a given day of the week, e.g.:
