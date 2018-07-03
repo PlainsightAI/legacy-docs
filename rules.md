@@ -71,13 +71,37 @@ Example:
 #### "not"
 
 Description:
-	This is a boolean operator that allows you to negate a predicate with "NOT" semantics.
+	This is a boolean operator that allows you to negate a predicate with "NOT" semantics. The following example uses "NOT" to include a schedule when the rule should not be triggered.
 
-Fields:
+Example:
 ```json
 {
-	"not": []
-}
+    "name": "landmark with excluded schedule",
+    "description": "",
+    "throttleInSeconds": 0,
+    "actions": [{
+      "type": "email",
+      "subject": "this is NOT always false",
+      "message": "test: {{.Device.ID.String}}",
+      "recipients": {
+        "emails": ["test@email.com"]
+      }
+    }],
+    "logicalCondition": {
+    "not": [{
+      "type": "event occurred between times of day",
+      "timeZone": "America/Detroit",
+      "startInSecondsSinceMidnight": 57600,
+      "endInSecondsSinceMidnight": 63000
+    }, {
+      "and": [{
+        "type": "inside landmark",
+        "landmarkId": "01C92NZT6WPQ0J87YVQDE72GGX"
+      }]
+    }]
+  },
+    "enabled":True
+    }
 ```
 
 #### "or"
