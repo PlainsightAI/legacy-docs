@@ -11,8 +11,8 @@ Example:
 	"throttleInSeconds": 0,
 	"actions": [{
 		"type": "push",
-		"subject": "welcome to the gym!",
-		"message": "have a great workout"
+		"subject": "Welcome to the gym!",
+		"message": "Have a great workout"
 	}],
 	"logicalCondition": {
 		"and": [{
@@ -31,8 +31,6 @@ Fields:
 * actions - Describes what will occur when the condition is satisfied. See Actions for more details.
 * logicalCondition - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See Conditions for more details.
 
-- 
-
 ## Conditions
 Conditions are composed of one or more predicates. Predicates can be joined with boolean operators to form a logical expression that can be evaluated.
 
@@ -43,18 +41,7 @@ Conditions are composed of one or more predicates. Predicates can be joined with
 
 Example:
 ```json
-{
-	"name": "inside area test",
-	"description": "",
-	"throttleInSeconds": 0,
-	"actions": [{
-		"type": "email",
-		"subject": "inside area!",
-		"message": "test: {{.Device.ID.String}}",
-		"recipients": {
-			"emails": ["test@email.com"]
-		}
-	}],
+
 	"logicalCondition": {
 		"and": [{
 			"type": "inside landmark",
@@ -63,9 +50,7 @@ Example:
 			"type": "event free form",
 			"predicate": "deviceId == '01CGH777EWVP0E6EZZYH7P2JK0'"
 		}]
-	},
-	"enabled": true
-}
+	}
 ```
 
 #### "not"
@@ -75,18 +60,6 @@ Description:
 
 Example:
 ```json
-{
-    "name": "landmark with excluded schedule",
-    "description": "",
-    "throttleInSeconds": 0,
-    "actions": [{
-      "type": "email",
-      "subject": "this is NOT always false",
-      "message": "test: {{.Device.ID.String}}",
-      "recipients": {
-        "emails": ["test@email.com"]
-      }
-    }],
     "logicalCondition": {
     "not": [{
       "type": "event occurred between times of day",
@@ -99,9 +72,7 @@ Example:
         "landmarkId": "01C92NZT6WPQ0J87YVQDE72GGX"
       }]
     }]
-  },
-    "enabled":True
-    }
+  }
 ```
 
 #### "or"
@@ -111,18 +82,7 @@ Description:
 
 Fields:
 ```json
-{
-	"name": "inside this area or that area",
-	"description": "",
-	"throttleInSeconds": 0,
-	"actions": [{
-		"type": "email",
-		"subject": "inside one area or the other",
-		"message": "test: {{.Device.ID.String}}",
-		"recipients": {
-			"emails": ["test@email.com"]
-		}
-	}],
+
 	"logicalCondition": {
 		"or": [{
 			"type": "inside landmark",
@@ -131,9 +91,7 @@ Fields:
 			"type": "inside landmark",
 			"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGF"
 		}]
-	},
-	"enabled": true
-}
+	}
 ```
 ### Predicates
 #### always_false
@@ -148,11 +106,6 @@ Fields:
 }
 ```
 
-Usage:
-```go
-	p && AlwaysFalse.Evaluate() == false, regardless of p's truth value
-```
-
 #### always_true
 
 Description:
@@ -165,140 +118,57 @@ Fields:
 	"type": "always true"
 }
 ```
-
-Usage:
-```go
-	p || AlwaysTrue.Evaluate() == true, regardless of p's truth value
-```
      
 #### event_free_form
 
 Description:
-	This is a predicate that allows you to evaluate a specific event field (usually an IoT event), e.g.:
+	This is a predicate that allows you to evaluate a specific event field in free-form fashion, typically used for IoT event payloads. This example triggers the rule when the tempF value in the payload is equal to a specific number.
 
-Fields:
+Example:
 ```json
-{
-	"type": "event free form",
-	"predicate": ""
-}
+    "logicalCondition": {
+ 	"type": "event free form",
+  	"predicate": "data.tempF == 67"
+    }
 ```
 
-Usage:
-```go
-	payloadAsString := `{"foo": 1}`
-	e := event.NewIotEvent(*ulid.New(), *ulid.New(), eventLocations, clientSentAt, serverReceivedAt, []byte(payloadAsString))
-	p, err := EventFreeForm("foo == 1")
-	p.Evaluate() == true, if "foo == 1"
-	p.Evaluate() == false, if "foo != 1"
-```
-   
 #### enter_landmark
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a device event entered a landmark that it was not already inside of, e.g.:
+	This is a predicate that allows you to evaluate whether or not a device event entered a landmark that it was previously outside of. Landmarks are specific by the landmarkId. To specify multiple landmarks, you can join together multiple predicates with an operator.
 
-Fields:
+Example:
 ```json
 {
 	"type": "enter landmark",
-	"landmarkId": ""
+	"landmarkId": "01C92NZT6WCQ0J87YVQDE72GGA"
 }
-```
-
-Usage:
-```go
-	//create landmark
-	tl, _ := geo.NewLongLat(-1, 1)
-	tr, _ := geo.NewLongLat(1, 1)
-	br, _ := geo.NewLongLat(1, -1)
-	bl, _ := geo.NewLongLat(-1, -1)
-	l = landmark.NewLandmark(*projID, "test", []*geo.Polygon{geo.NewPolygon([]*geo.LongLat{tl, tr, br, bl})})
-	
-	//save landmark to cached landmark service
-	lcs := landmark.CachedService(cache, service)
-	lcs.Save(landmark.NewLandmark(*projID, "test", l))
-
-	//create the predicate
-	p := EnterLandmark(l.ID.String())
-	
-	//evaluate the predicate under different scenarios
-	p.Evaluate(eventIsNowOutsideLandmark, deviceWasOutsideLandmark, lcs, gcs) --> false
-	p.Evaluate(eventIsNowOutsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> false
-	p.Evaluate(eventIsNowInsideLandmark, deviceWasOutsideLandmark, lcs, gcs) --> true
-	p.Evaluate(eventIsNowInsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> false
 ```
 
 #### exit_landmark
    
 Description:
-	This is a predicate that allows you to evaluate whether or not a device event exited a landmark that it was not already outside of, e.g.:
+	This is a predicate that allows you to evaluate whether or not a device exited a landmark that it was previously inside of. Landmarks are specific by the landmarkId. To specify multiple landmarks, you can join together multiple predicates with an operator.
 
-Fields:
+Example:
 ```json
 {
 	"type": "exit landmark",
-	"landmarkId": ""
+	"landmarkId": "01C92NZTCWPQ0J87YVQDE72GGA"
 }
-```
-
-Usage:
-```go
-	//create landmark
-	tl, _ := geo.NewLongLat(-1, 1)
-	tr, _ := geo.NewLongLat(1, 1)
-	br, _ := geo.NewLongLat(1, -1)
-	bl, _ := geo.NewLongLat(-1, -1)
-	l = landmark.NewLandmark(*projID, "test", []*geo.Polygon{geo.NewPolygon([]*geo.LongLat{tl, tr, br, bl})})
-	
-	//save landmark to cached landmark service
-	lcs := landmark.CachedService(cache, service)
-	lcs.Save(landmark.NewLandmark(*projID, "test", l))
-
-	//create the predicate
-	p := ExitLandmark(l.ID.String())
-	
-	//evaluate the predicate under different scenarios
-	p.Evaluate(eventIsNowOutsideLandmark, deviceWasOutsideLandmark, lcs, gcs) --> false
-	p.Evaluate(eventIsNowOutsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> true
-	p.Evaluate(eventIsNowInsideLandmark, deviceWasOutsideLandmark, lcs, gcs) --> false
-	p.Evaluate(eventIsNowInsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> false
 ```
 	
 #### inside_landmark
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a device event is inside of a given landmark, e.g.:
+	This is a predicate that allows you to evaluate whether or not a device is inside of a given landmark, e.g.:
 
-Fields:
+Example:
 ```json
 {
 	"type": "inside landmark",
-	"landmarkId": ""
+	"landmarkId": "01C92NZTCWPQ0J87YVQDE72GGA"
 }
-```
-
-Usage:
-```go
-	//create landmark
-	tl, _ := geo.NewLongLat(-1, 1)
-	tr, _ := geo.NewLongLat(1, 1)
-	br, _ := geo.NewLongLat(1, -1)
-	bl, _ := geo.NewLongLat(-1, -1)
-	l = landmark.NewLandmark(*projID, "test", []*geo.Polygon{geo.NewPolygon([]*geo.LongLat{tl, tr, br, bl})})
-	
-	//save landmark to cached landmark service
-	lcs := landmark.CachedService(cache, service)
-	lcs.Save(landmark.NewLandmark(*projID, "test", l))
-
-	//create the predicate
-	p := InsideLandmark(l.ID.String())
-	
-	//evaluate the predicate under different scenarios
-	p.Evaluate(eventIsNowOutsideLandmark, deviceWasOutsideLandmark, lcs, gcs) --> false
-	p.Evaluate(eventIsNowOutsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> false
-	p.Evaluate(eventIsNowInsideLandmark, deviceWasOutsideLandmark, lcs, gcs) --> true
-	p.Evaluate(eventIsNowInsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> true
 ```
 
 #### outside_landmark
