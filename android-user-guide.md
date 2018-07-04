@@ -89,11 +89,42 @@ public class MainApplication extends Application {
 }
 ```
 
+## Choosing Providers
+
+Reach offers some 3rd party provider options for indoors positioning.
+To enable a provider you have to explicitly set *Location Provider* before calling `Reach.enable`
+Currently there are two providers available, Indoors and IndoorAtlas. Choosing a provider to run is completely optional.
+For scenarios where a provider is not able to give user position, Reach fallbacks to GPS positioning.
+
+```java
+public class MainApplication extends Application {
+    public IReachProvider mIndoorsProvider;
+    public IReachProvider mIndoorAtlasProvider;
+    public void onCreate() {
+        super.onCreate();
+        mIndoorsProvider = new IndoorsProvider();
+        mIndoorAtlasProvider = new IndoorAtlasProvider();
+        Reach.initWithAPIKey(this,"YOUR_API_KEY");
+        Reach.setLocationProvider(mIndoorsProvider, this); /* OR */ Reach.setLocationProvider(mIndoorAtlasProvider, this);
+    }
+
+    ...
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        Reach.releaseLocationProvider(mIndoorsProvider, this); /* OR */ Reach.releaseLocationProvider(mIndoorAtlasProvider, this);
+    }
+}
+```
+**Note: You can only use one provider at a time. The provider set later will auto replace the previous one.**
+**To prevent memory leaks, always release location provider in *Application* class *onTerminate* lifecycle.**
+
 
 ## Other Notes
 
 If including `.aar` file manually, you need to put sdk dependencies in you app dependecies.
-**Note this only applies if yo uare including `.aar` manually instead of using sdk hosted on cloud**
+**Note: this only applies if you are including `.aar` manually instead of using sdk hosted on cloud**
 
 [Generating .aar](https://github.com/sixgill/android-sdk-java/tree/API-integration#user-content-installation)
 
