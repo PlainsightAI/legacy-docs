@@ -31,12 +31,18 @@ Fields:
 * actions - Describes what will occur when the condition is satisfied. See Actions for more details.
 * logicalCondition - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See Conditions for more details.
 
+## Actions
+
+TODO
+
 ## Conditions
 Conditions are composed of one or more predicates. Predicates can be joined with boolean operators to form a logical expression that can be evaluated.
 
 ### Operators
+
 #### "and"
 
+Description:
 	This is a boolean operator that allows you to combine other predicates with "AND" semantics. In this example, a rule is checking for the specific device to be inside a landmark.
 
 Example:
@@ -78,9 +84,9 @@ Example:
 #### "or"
 
 Description:
-	This is a boolean operator that allows you to combine other predicates with "OR" semantics, e.g.:
+	This is a boolean operator that allows you to combine other predicates with "OR" semantics. In this example, the condition tests whether the device is in one landmark or the other.
 
-Fields:
+Example:
 ```json
 
 	"logicalCondition": {
@@ -99,9 +105,9 @@ Fields:
 Description:
 	This is a predicate that is always false.  It is mostly used for testing, e.g.:
 
-Fields:
+Example:
 ```json
-{
+"logicalCondition": {
 	"type": "always false"
 }
 ```
@@ -112,9 +118,9 @@ Description:
 	This is a predicate that is always true.  It is mostly used for testing, e.g.:
 
 
-Fields:
+Example:
 ```json
-{
+"logicalCondition": {
 	"type": "always true"
 }
 ```
@@ -161,7 +167,7 @@ Example:
 #### inside_landmark
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a device is inside of a given landmark, e.g.:
+	This is a predicate that allows you to evaluate whether or not a device is inside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
 
 Example:
 ```json
@@ -174,9 +180,9 @@ Example:
 #### outside_landmark
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a device event is outside of a given landmark, e.g.:
+	This is a predicate that allows you to evaluate whether or not a device event is outside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
 
-Fields:
+Example:
 ```json
 "logicalCondition": {
 	"type": "outside landmark",
@@ -187,7 +193,7 @@ Fields:
 #### landmark_has_all_tags
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a given landmark has all of the tags specified, e.g.:
+	This is a predicate that allows you to evaluate whether or not a given landmark has all of the tags specified. This example checks if the device has entered the landmark that it was not in previously AND if the landmark has both of the tags "music" and "has_wifi".
 
 Example:
 ```json
@@ -203,17 +209,14 @@ Example:
 }
 ```
 
-```
-
 #### landmark_has_any_tags
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a given landmark has any of the tags specified, e.g.:
+	This is a predicate that allows you to evaluate whether or not a given landmark has any of the tags specified. This example checks if the device is inside the landmark AND if the landmark has either of the tags "music" or "has_wifi".
 
 Example:
 ```json
-"logicalCondition": 
-{
+"logicalCondition": {
       "and": [{
         "type": "landmark has any tags",
         "landmark_id": "01CHNRNYKM4SH9EPNRJC62H1PJ",
@@ -228,73 +231,33 @@ Example:
 #### event_occurred_after
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred after a given time, e.g.:
+	This is a predicate that allows you to evaluate whether an event occurred after a given time. This example checks if the event is timestamp after 2017-01-01T00:00:00Z 
 
-Fields:
+Example:
 ```json
-{
+"logicalCondition": {
 	"type": "event occurred after",
 	"moment": "2017-01-01T00:00:00Z",
 }
 ```
 
-Usage:
-```go
-//create the event and device we re intrested in
-	d := &device.Device{}
-	location1, _ := geo.NewLongLat(1, 1)
-	location2, _ := geo.NewLongLat(-1, -1)
-	timestamp1, _ := time.Parse(time.RFC3339, "2017-11-17T12:00:00Z-08:00")
-	timestamp2, _ := time.Parse(time.RFC3339, "2017-11-17T12:00:05Z-08:00")
-	eventLocation1 := geo.NewEventLocation(timestamp1.Unix(), *location1, 0, 0.5)
-	eventLocation2 := geo.NewEventLocation(timestamp2.Unix(), *location2, 0, 0.5)
-	eventLocations := []*geo.EventLocation{eventLocation1, eventLocation2}
-	clientSentAt, _ := time.Parse(time.RFC3339, "2017-11-07T11:09:00-08:00")
-	serverReceivedAt, _ := time.Parse(time.RFC3339, "2017-11-07T11:09:01-08:00")
-	e := event.NewIotEvent(*ulid.New(), *ulid.New(), eventLocations, clientSentAt, serverReceivedAt, []byte{})
-	
-	//create and evaluate the predicate under different scenarios
-	EventOccurredAfter(clientSentAt.Add(-time.Second)).Evaluate(e, d, lcs, gcs) --> true
-	EventOccurredAfter(clientSentAt.Add(time.Second)).Evaluate(e, d, lcs, gcs) --> false
-```
-
 ### event_occurred_before
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred before a given time, e.g.:
+	This is a predicate that allows you to evaluate whether an event occurred before a given time. This example checks if the event is timestamped before 2017-01-01T00:00:00Z
 
-Fields:
+Example:
 ```json
-{
+"logicalCondition": {
 	"type": "event occurred before",
 	"moment": "2017-01-01T00:00:00Z",
 }
 ```
 
-Usage:
-```go
-//create the event and device we re intrested in
-	d := &device.Device{}
-	location1, _ := geo.NewLongLat(1, 1)
-	location2, _ := geo.NewLongLat(-1, -1)
-	timestamp1, _ := time.Parse(time.RFC3339, "2017-11-17T12:00:00Z-08:00")
-	timestamp2, _ := time.Parse(time.RFC3339, "2017-11-17T12:00:05Z-08:00")
-	eventLocation1 := geo.NewEventLocation(timestamp1.Unix(), *location1, 0, 0.5)
-	eventLocation2 := geo.NewEventLocation(timestamp2.Unix(), *location2, 0, 0.5)
-	eventLocations := []*geo.EventLocation{eventLocation1, eventLocation2}
-	clientSentAt, _ := time.Parse(time.RFC3339, "2017-11-07T11:09:00-08:00")
-	serverReceivedAt, _ := time.Parse(time.RFC3339, "2017-11-07T11:09:01-08:00")
-	e := event.NewIotEvent(*ulid.New(), *ulid.New(), eventLocations, clientSentAt, serverReceivedAt, []byte{})
-	
-	//create and evaluate the predicate under different scenarios
-	EventOccurredBefore(clientSentAt.Add(-time.Second)).Evaluate(e, d, lcs, gcs) --> false
- 	EventOccurredBefore(clientSentAt.Add(time.Second)).Evaluate(e, d, lcs, gcs) --> true
-```
-
 #### event_occurred_between_times_of_day
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred between two given times, e.g.:
+	This is a predicate that allows you to evaluate whether an event occurred between two given times. This example checks if the event is timestamped between these hours of the day. TODO
 
 Fields:
 ```json
@@ -331,7 +294,7 @@ Usage:
 #### event_occurred_on_day_of_week
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred on a given day of the week, e.g.:
+	This is a predicate that allows you to evaluate whether an event occurred on a given day of the week, e.g.: TODO
 
 Fields:
 ```json
