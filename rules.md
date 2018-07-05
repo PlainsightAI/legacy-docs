@@ -197,7 +197,7 @@ Description:
 
 Example:
 ```json
-{
+"logicalCondition": {
       "and": [{
         "type": "landmark has all tags",
         "landmark_id": "01CHNRNYKM4SH9EPNRJC62H1PJ",
@@ -261,10 +261,10 @@ Description:
 
 Fields:
 ```json
-{
+"logicalCondition": {
 	"type": "event occurred between times of day",
-	"startInSecondsSinceMidnight": 0,
-	"endInSecondsSinceMidnight": 0,
+	"startInSecondsSinceMidnight": 57600,
+	"endInSecondsSinceMidnight": 61200,
 	"timeZone": "America/Los_Angeles"
 }
 ```
