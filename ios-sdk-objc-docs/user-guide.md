@@ -7,7 +7,7 @@ The Sixgill Reach SDK is configurable to suit a wide variety of use cases. The S
 
 1. Bluetooth Beacon Collection Span: Every time the device is required to report its current location, it attempts to find any bluetooth iBeacons within range. Since beacon signals aren't entirely reliable, this configuration allows app developers to specify how long to consider a beacon signal is valid before disregarding it. This configuration is measured in seconds. The default value is 5 seconds.
 
-2. Location Collection Span: The Reach SDK reports the most accurate location possible back to the cloud. The accuracy of the onboard GPS (Core Location) services varies with collection time. A GPS fix gathered after 7 seconds will likely be more accurate than a fix gathered after 3 seconds. The default is 7 seconds.
+2. Location Collection Span: The Reach SDK reports the most accurate location possible back to the cloud. The accuracy of the onboard GPS (Core Location) services varies with collection time. A GPS fix gathered after 3 seconds will likely be more accurate than a fix gathered after 7 seconds. The default is 3 seconds.
 
 3. Location Collection Queue Policy: The Reach offline location cache is configurable with one of three different policies:
 
@@ -29,11 +29,12 @@ The Sixgill Reach SDK is configurable to suit a wide variety of use cases. The S
 1. Find the UIRequiredDeviceCapabilities key in your app's Info.plist file and add the following keys to the array:
    - location-services
    - gps
-2. In your app's Info.plist file add the key `NSLocationAlwaysUsageDescription` with a string value. Set the string value to the message you want to be displayed to your users when your app requests permission to use the location services. An example would be something like `Weather uses your location to provide you with accurate forecasts wherever you go.`
++2. In your app's Info.plist file, add the keys  `NSLocationWhenInUseUsageDescription`, `NSLocationAlwaysAndWhenInUseUsageDescription` with string values. Set the string values to the messages you want to be displayed to your users when your app requests permission to use the location services. An example would be something like `Weather uses your location to provide you with accurate forecasts wherever you go.`
+3. If your app supports iOS 10 and earlier, also add the key `NSLocationAlwaysUsageDescription` with a string value. Set the string value with message similar to above.
 
 After you've followed those two steps, you are ready to request permission from the user to use location services using the SGDK's requestLocationPermission call:
 
-`[SGSDK requestLocationPermission];`
+`[SGSDK requestAlwaysPermission];`
 
 ### Push Notifications
 
@@ -58,5 +59,14 @@ In your app delegate's `didFinishLaunchingWithOptions` method add the following 
 
 ```objc
 [SGSDK init];
+[SGSDK enable];
 [SGSDK setMotionActivityEnabled:YES]; // Depending on if you need activity services
+```
+
+## SDK Stop
+
+In your app, when you want to stop the SDK, add the following code:
+
+```objc
+[SGSDK disable];
 ```
