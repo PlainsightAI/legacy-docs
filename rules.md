@@ -139,7 +139,7 @@ Description:
 
 Example:
 ```json
-{
+"logicalCondition": {
 	"type": "enter landmark",
 	"landmarkId": "01C92NZT6WCQ0J87YVQDE72GGA"
 }
@@ -152,7 +152,7 @@ Description:
 
 Example:
 ```json
-{
+"logicalCondition": {
 	"type": "exit landmark",
 	"landmarkId": "01C92NZTCWPQ0J87YVQDE72GGA"
 }
@@ -165,7 +165,7 @@ Description:
 
 Example:
 ```json
-{
+"logicalCondition": {
 	"type": "inside landmark",
 	"landmarkId": "01C92NZTCWPQ0J87YVQDE72GGA"
 }
@@ -178,33 +178,10 @@ Description:
 
 Fields:
 ```json
-{
+"logicalCondition": {
 	"type": "outside landmark",
-	"landmarkId": ""
+	"landmarkId": "01C92NZTCWPQ0J87YVQDE72GGJ"
 }
-```
-
-Usage:
-```go
-	//create landmark
-	tl, _ := geo.NewLongLat(-1, 1)
-	tr, _ := geo.NewLongLat(1, 1)
-	br, _ := geo.NewLongLat(1, -1)
-	bl, _ := geo.NewLongLat(-1, -1)
-	l = landmark.NewLandmark(*projID, "test", []*geo.Polygon{geo.NewPolygon([]*geo.LongLat{tl, tr, br, bl})})
-	
-	//save landmark to cached landmark service
-	lcs := landmark.CachedService(cache, service)
-	lcs.Save(landmark.NewLandmark(*projID, "test", l))
-
-	//create the predicate
-	p := InsideLandmark(l.ID.String())
-	
-	//evaluate the predicate under different scenarios
-	p.Evaluate(eventIsNowOutsideLandmark, deviceWasOutsideLandmark, lcs, gcs) --> true
-	p.Evaluate(eventIsNowOutsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> true
-	p.Evaluate(eventIsNowInsideLandmark, deviceWasOutsideLandmark, lcs, gcs) --> false
-	p.Evaluate(eventIsNowInsideLandmark, deviceWasInsideLandmark, lcs, gcs) --> false
 ```
    
 #### landmark_has_all_tags
@@ -212,34 +189,20 @@ Usage:
 Description:
 	This is a predicate that allows you to evaluate whether or not a given landmark has all of the tags specified, e.g.:
 
-Fields:
+Example:
 ```json
 {
-	"type": "landmark has all tags",
-	"landmark_id": "",
-	"tags": []
+      "and": [{
+        "type": "landmark has all tags",
+        "landmark_id": "01CHNRNYKM4SH9EPNRJC62H1PJ",
+        "tags": ["music", "has_wifi"]
+      },{
+        "type": "enter landmark",
+        "landmarkId": "01CHNRNYKM4SH9EPNRJC62H1PJ"
+      }] 
 }
 ```
 
-Usage:
-```go
-	//create the tags we are intersted in
-	tags := []string{"foo", "bar"}
-
-	//create landmark
-	l = landmark.NewLandmark(*projID, "test", nil, tags...)
-	
-	//save landmark to cached landmark service
-	lcs := landmark.CachedService(cache, service)
-	lcs.Save(landmark.NewLandmark(*projID, "test", l))
-
-	//create and evaluate the predicate under different scenarios
-	LandmarkHasAllTags(l.ID, "ping", "pong").Evaluate(event, device, lcs, gcs) --> false
-	LandmarkHasAllTags(l.ID, "ping", "bar").Evaluate(event, device, lcs, gcs) --> false
-	LandmarkHasAllTags(l.ID, "foo", "pong").Evaluate(event, device, lcs, gcs) --> false
-	LandmarkHasAllTags(l.ID, "foo", "bar").Evaluate(event, device, lcs, gcs) --> true
-	LandmarkHasAllTags(l.ID, "foo").Evaluate(event, device, lcs, gcs) --> true
-	LandmarkHasAllTags(l.ID, "bar").Evaluate(event, device, lcs, gcs) --> true
 ```
 
 #### landmark_has_any_tags
@@ -247,34 +210,19 @@ Usage:
 Description:
 	This is a predicate that allows you to evaluate whether or not a given landmark has any of the tags specified, e.g.:
 
-Fields:
+Example:
 ```json
+"logicalCondition": 
 {
-	"type": "landmark has any tags",
-	"landmark_Id": "",
-	"tags": []
+      "and": [{
+        "type": "landmark has any tags",
+        "landmark_id": "01CHNRNYKM4SH9EPNRJC62H1PJ",
+        "tags": ["music", "has_wifi"]
+      },{
+        "type": "inside landmark",
+        "landmarkId": "01CHNRNYKM4SH9EPNRJC62H1PJ"
+      }] 
 }
-```
-
-Usage:
-```go
-	//create the tags we are intersted in
-	tags := []string{"foo", "bar"}
-
-	//create landmark
-	l = landmark.NewLandmark(*projID, "test", nil, tags...)
-	
-	//save landmark to cached landmark service
-	lcs := landmark.CachedService(cache, service)
-	lcs.Save(landmark.NewLandmark(*projID, "test", l))
-
-	//create and evaluate the predicate under different scenarios
-	LandmarkHasAllTags(l.ID, "ping", "pong").Evaluate(event, device, lcs, gcs) --> false
-	LandmarkHasAllTags(l.ID, "ping", "bar").Evaluate(event, device, lcs, gcs) --> true
-	LandmarkHasAllTags(l.ID, "foo", "pong").Evaluate(event, device, lcs, gcs) --> true
-	LandmarkHasAllTags(l.ID, "foo", "bar").Evaluate(event, device, lcs, gcs) --> true
-	LandmarkHasAllTags(l.ID, "foo").Evaluate(event, device, lcs, gcs) --> true
-	LandmarkHasAllTags(l.ID, "bar").Evaluate(event, device, lcs, gcs) --> true
 ```
    
 #### event_occurred_after
