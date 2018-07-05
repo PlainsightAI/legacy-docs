@@ -29,7 +29,7 @@ The Sixgill Reach SDK is configurable to suit a wide variety of use cases. The S
 1. Find the UIRequiredDeviceCapabilities key in your app's Info.plist file and add the following keys to the array:
    - location-services
    - gps
-2. In your app's Info.plist file add the keys  `NSLocationWhenInUseUsageDescription`, `NSLocationAlwaysAndWhenInUseUsageDescription` with a string value. Set the string value to the message you want to be displayed to your users when your app requests permission to use the location services. An example would be something like `Weather uses your location to provide you with accurate forecasts wherever you go.`
++2. In your app's Info.plist file, add the keys  `NSLocationWhenInUseUsageDescription`, `NSLocationAlwaysAndWhenInUseUsageDescription` with string values. Set the string values to the messages you want to be displayed to your users when your app requests permission to use the location services. An example would be something like `Weather uses your location to provide you with accurate forecasts wherever you go.`
 3. If your app supports iOS 10 and earlier, also add the key `NSLocationAlwaysUsageDescription` with a string value. Set the string value with message similar to above.
 
 After you've followed those two steps, you are ready to request permission from the user to use location services using the SGDK's requestLocationPermission call:
@@ -65,7 +65,7 @@ In your app delegate's `didFinishLaunchingWithOptions` method add the following 
 
 ## SDK Stop
 
-In your app where you want to stop the sdk, add the following code:
+In your app, when you want to stop the SDK, add the following code:
 
 ```objc
 [SGSDK disable];
