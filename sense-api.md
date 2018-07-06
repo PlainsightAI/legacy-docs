@@ -27,7 +27,7 @@ curl -X POST https://sense-api.sixgill.com/v2/login -H 'content-type: applicatio
 }
 ```
 
-Once a token has been generated, one can authenticate requests by placing it in the authorization header. Some requests may require a token that includes the organization ID, such as creating a rule. Get the organization ID and make this [login request](#post-v2login-with-org)
+Once a token has been generated, one can authenticate requests by placing it in the authorization header.
 
 > Example /v2/users/me request with authorization header which will return a 200 OK
 
@@ -41,6 +41,23 @@ curl "https://sense-api.sixgill.com/v2/users/me" -H "Authorization: Bearer eyJhb
 **GET /v2/users/me**
 ```shell
 curl "https://sense-api.sixgill.com/v2/users/me"
+```
+Some requests may require a token that includes the organization ID, such as creating a rule. 
+
+> Get the organization ID:
+```shell
+curl -X GET http://sense-api-kone.sixgill.run/v2/organizations \
+  -H 'authorization: Bearer JSONWEBTOKEN_1' \
+  -H 'content-type: application/json'
+```  
+  
+> and make the login request with the organizationId:
+```shell
+curl -X POST http://sense-api-kone.sixgill.run/v2/login -H 'content-type: application/json' -d '{
+    "email": "1513202525@sixgill.com",
+    "organizationId": "01CBTBPBV4M6PK2VEGY56N8NN1",
+    "password": "password"
+}'
 ```
 
 ## Routes TOC
