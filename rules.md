@@ -27,13 +27,33 @@ Example:
 Fields:
 * name - (required) Name of the rule
 * description - (optional) Description of rule
-* throttleInSeconds - Specifies the minimum amount of time between executing the action for this rule (in seconds). For example, if set to 300 the action will be executed no more than once every 5 minutes.
-* actions - Describes what will occur when the condition is satisfied. See Actions for more details.
-* logicalCondition - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See Conditions for more details.
+* throttleInSeconds - (opttional) Specifies the minimum amount of time between executing the action for this rule (in seconds). For example, if set to 300 the action will be executed no more than once every 5 minutes. Defaults to 0
+* actions - Describes what will occur when the condition is satisfied. See [Actions](#actions) for more details.
+* logicalCondition - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See [Conditions](#conditions) for more details.
+* id - The ID of the rule
+* enabled - The state of the rule. If true, the rule is actively running; if false, it is disabled.
 
 ## Actions
 
-TODO
+Rules triggers one or more actions when an event occurs. Available actions include sending an SMS, a push notification to a device, sending an email, or invoking a webhook. 
+
+### webhook 
+```json
+"actions":[ 
+      { 
+         "type":"webhook",
+         "method":"POST",
+         "headers":{ 
+            "header":"Content-Type",
+            "value":"text/json"
+         },
+         "url":"https://sixgill.com",
+         "body":"{\"test\": \"test\"}",
+         "username":"username",
+         "password":"password"
+      }
+   ]
+```
 
 ## Conditions
 Conditions are composed of one or more predicates. Predicates can be joined with boolean operators to form a logical expression that can be evaluated.
@@ -43,7 +63,9 @@ Conditions are composed of one or more predicates. Predicates can be joined with
 #### "and"
 
 Description:
-	This is a boolean operator that allows you to combine other predicates with "AND" semantics. In this example, a rule is checking for the specific device to be inside a landmark.
+	This is a boolean operator that allows you to combine other predicates with "AND" semantics. 
+	
+The following example checks for the specific device to be inside a landmark.
 
 Example:
 ```json
@@ -62,7 +84,7 @@ Example:
 #### "not"
 
 Description:
-	This is a boolean operator that allows you to negate a predicate with "NOT" semantics. The following example uses "NOT" to include a schedule when the rule should not be triggered.
+	This is a boolean operator that allows you to negate a predicate with "NOT" semantics. The following example uses "NOT" to include a schedule of when the rule should not be triggered.
 
 Example:
 ```json
@@ -128,7 +150,13 @@ Example:
 #### event_free_form
 
 Description:
-	This is a predicate that allows you to evaluate a specific event field in free-form fashion, typically used for IoT event payloads. This example triggers the rule when the tempF value in the payload is equal to a specific number.
+	This is a predicate that allows you to evaluate a specific event field in free-form fashion, typically used for IoT event payloads. 
+
+Fields:
+* type - "event free form"
+* predicate - String representing the freeform equation to be evaluated. This is typically construcgted off of the event payload that will be received for the device. 
+
+The following example triggers the rule when the data.tempF value in the event payload is equal to 67.
 
 Example:
 ```json
@@ -138,10 +166,26 @@ Example:
     }
 ```
 
+An example payload that would trigger this condition:
+
+```json
+{
+  "data":{
+     "tempF":67,
+     "humidity":23
+}
+```
+
 #### enter_landmark
 
 Description:
 	This is a predicate that allows you to evaluate whether or not a device event entered a landmark that it was previously outside of. Landmarks are specific by the landmarkId. To specify multiple landmarks, you can join together multiple predicates with an operator.
+
+Fields:
+* type - "enter landmark"
+* landmarkId - ID of the landmark to compare the device's location against
+
+The following example checks if the device was previously outside the landmark 01C92NZT6WCQ0J87YVQDE72GGA and is now inside it.
 
 Example:
 ```json
@@ -154,7 +198,13 @@ Example:
 #### exit_landmark
    
 Description:
-	This is a predicate that allows you to evaluate whether or not a device exited a landmark that it was previously inside of. Landmarks are specific by the landmarkId. To specify multiple landmarks, you can join together multiple predicates with an operator.
+	This is a predicate that allows you to evaluate whether or not a device exited a landmark that it was previously inside of. To specify multiple landmarks, you can join together multiple predicates with an operator.
+
+Fields:
+* type - "exit landmark"
+* landmarkId - ID of the landmark to compare the device's location against
+
+The following example checks if the device was previously inside the landmark and is now outside of it.
 
 Example:
 ```json
@@ -167,7 +217,13 @@ Example:
 #### inside_landmark
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a device is inside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
+	This predicate allows you to evaluate whether or not a device is inside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
+
+Fields:
+* type - "inside landmark"
+* landmarkId - ID of the landmark to compare the device's location against
+
+The following example checks if the device is inside the landmark.
 
 Example:
 ```json
@@ -180,7 +236,13 @@ Example:
 #### outside_landmark
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a device event is outside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
+	This predicate allows you to evaluate whether or not a device event is outside of a given landmark. To specify multiple landmarks, you can join together multiple predicates with an operator.
+
+Fields:
+* type - "outside landmark"
+* landmarkId - ID of the landmark to compare the device's location against
+
+The following example checks if the device is outside the landmark.
 
 Example:
 ```json
@@ -193,7 +255,14 @@ Example:
 #### landmark_has_all_tags
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a given landmark has all of the tags specified. This example checks if the device has entered the landmark that it was not in previously AND if the landmark has both of the tags "music" and "has_wifi".
+	This predicate allows you to evaluate whether or not a given landmark has all of the tags specified. 
+
+Fields:
+* type - "landmark has all tags"
+* landmark_id - the ID of the landmark whose tags should be checked
+* tags - an array of strings representing the tags to be checked for this landmark
+
+The following example checks if the device has entered the landmark that it was not in previously AND if the landmark has both of the tags "music" and "has_wifi" assigned to it.
 
 Example:
 ```json
@@ -212,8 +281,15 @@ Example:
 #### landmark_has_any_tags
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a given landmark has any of the tags specified. This example checks if the device is inside the landmark AND if the landmark has either of the tags "music" or "has_wifi".
+	This predicate allows you to evaluate whether or not a given landmark has any of the tags specified.
+	
+Fields:
+* type - "landmark has any tags"
+* landmark_id - the ID of the landmark whose tags should be checked
+* tags - an array of strings representing the tags to be checked for this landmark
 
+The following example checks if the device is inside the landmark AND if the landmark specified has either of the "music" or "has_wifi" tags assigned to it.
+ 
 Example:
 ```json
 "logicalCondition": {
@@ -231,7 +307,13 @@ Example:
 #### event_occurred_after
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred after a given time. This example checks if the event is timestamp after 2017-01-01T00:00:00Z 
+	This is a predicate that allows you to evaluate whether an event occurred after a given time.
+
+Fields:
+* type = "event occurred after"
+* moment - timestamp in ISO8601 format that will be used for comparison against the event's timestamp
+
+The following example checks if the event is timestamped after 2017-01-01T00:00:00Z 
 
 Example:
 ```json
@@ -244,7 +326,13 @@ Example:
 ### event_occurred_before
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred before a given time. This example checks if the event is timestamped before 2017-01-01T00:00:00Z
+	This is a predicate that allows you to evaluate whether an event occurred before a given time.
+	
+Fields:
+* type - "event occurred before"
+* moment - timestamp in ISO8601 format that will be used for comparison against the event's timestamp
+
+The following example checks if the event is timestamped before 2017-01-01T00:00:00Z
 
 Example:
 ```json
@@ -257,72 +345,44 @@ Example:
 #### event_occurred_between_times_of_day
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred between two given times. This example checks if the event is timestamped between these hours of the day. TODO
+	This is a predicate that allows you to evaluate whether an event occurred between two given times. 
 
 Fields:
+* type - "event occurred between times of day",
+* startInSecondsSinceMidnight - Start time in seconds since midnight
+* endInSecondsSinceMidnight - End time in seconds since midnight
+* An identifier from the IANA Timezone Database which identifies the timezone that should be used for the schedule 
+
+The following example checks if the event is timestamped between 4:00pm and 6:00pm in the Detroit timezone.
+
+Example:
 ```json
 "logicalCondition": {
 	"type": "event occurred between times of day",
 	"startInSecondsSinceMidnight": 57600,
-	"endInSecondsSinceMidnight": 61200,
-	"timeZone": "America/Los_Angeles"
+	"endInSecondsSinceMidnight": 64800,
+	"timeZone": "America/Detroit"
 }
-```
-
-Usage:
-```go
-	//create the event and device we re intrested in
-	d := &device.Device{}
-	location1, _ := geo.NewLongLat(1, 1)
-	location2, _ := geo.NewLongLat(-1, -1)
-	timestamp1, _ := time.Parse(time.RFC3339, "2017-11-17T12:00:00Z-08:00")
-	timestamp2, _ := time.Parse(time.RFC3339, "2017-11-17T12:00:05Z-08:00")
-	eventLocation1 := geo.NewEventLocation(timestamp1.Unix(), *location1, 0, 0.5)
-	eventLocation2 := geo.NewEventLocation(timestamp2.Unix(), *location2, 0, 0.5)
-	eventLocations := []*geo.EventLocation{eventLocation1, eventLocation2}
-	clientSentAt, _ := time.Parse(time.RFC3339, "2017-11-07T12:00:00-08:00") //PST --> 15:00:00 EST
-	serverReceivedAt, _ := time.Parse(time.RFC3339, "2017-11-07T12:00:00-08:00")
-	e := event.NewIotEvent(*ulid.New(), *ulid.New(), eventLocations, clientSentAt, serverReceivedAt, []byte{})
-	
-	//create and evaluate the predicate under different scenarios
-	EventOccurredBetweenTimesOfDay("11:59:59", "12:00:01").Evaluate(e, d, lcs, gcs) --> true
-	EventOccurredBetweenTimesOfDay("12:00:01", "12:00:02").Evaluate(e, d, lcs, gcs) --> false
-	EventOccurredBetweenTimesOfDay(14:59:59", "15:00:01", "America/New_York").Evaluate(e, d, lcs, gcs) --> true
-	EventOccurredBetweenTimesOfDay("15:00:01", "15:00:02", "America/New_York").Evaluate(e, d, lcs, gcs) --> false
 ```
 
 #### event_occurred_on_day_of_week
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred on a given day of the week, e.g.: TODO
+	This predicate allows you to evaluate whether an event occurred on a given day of the week.
 
 Fields:
+* type - "event occurred on day of week"
+* dayOfWeek - The integer representing the day of the week (0 = Sunday, 1 = Monday, 2 = Tuesday, etc)
+* timeZone - An identifier from the IANA Timezone Database which identifies the timezone that should be used for the schedule
+
+The following example checks if the event occurred on a specific day of the week.
+
+Example:
 ```json
-{
+"logicalCondition": {
 	"type": "event occurred on day of week",
 	"dayOfWeek": 0,
 	"timeZone": "America/Los_Angeles"
 }
 ```
 
-Usage:
-```go
-	//create the event and device we re intrested in
-	d := &device.Device{}
-	location1, _ := geo.NewLongLat(1, 1)
-	location2, _ := geo.NewLongLat(-1, -1)
-	timestamp1, _ := time.Parse(time.RFC3339, "2017-11-17T12:00:00Z-08:00")
-	timestamp2, _ := time.Parse(time.RFC3339, "2017-11-17T12:00:05Z-08:00")
-	eventLocation1 := geo.NewEventLocation(timestamp1.Unix(), *location1, 0, 0.5)
-	eventLocation2 := geo.NewEventLocation(timestamp2.Unix(), *location2, 0, 0.5)
-	eventLocations := []*geo.EventLocation{eventLocation1, eventLocation2}
-	clientSentAt, _ := time.Parse(time.RFC3339, "2017-11-07T00:00:00-00:00") //Tuesday in UTC --> Monday in EST
-	serverReceivedAt, _ := time.Parse(time.RFC3339, "2017-11-07T00:00:00-00:00")
-	e := event.NewIotEvent(*ulid.New(), *ulid.New(), eventLocations, clientSentAt, serverReceivedAt, []byte{})
-	
-	//create and evaluate the predicate under different scenarios
-	EventOccurredOnDayOfWeek(time.Tuesday).Evaluate(e, d, lcs, gcs) --> true
-	EventOccurredOnDayOfWeek(time.Wedensday).Evaluate(e, d, lcs, gcs) --> false
-	EventOccurredOnDayOfWeek(time.Monday).Evaluate(e, d, lcs, gcs) --> true
-	EventOccurredOnDayOfWeek(time.Tuesday).Evaluate(e, d, lcs, gcs) --> false
-```
