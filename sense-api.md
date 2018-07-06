@@ -8,14 +8,14 @@ The Sense API is where third party developers can access the majority of the Sen
 
 ## Authentication
 
-The API authenticates requests with a user-specific JSON Web Token. Users can generate a JSON Web Token by sending a valid email and password combination to the "login" endpoint. N.B: Users must validate emails to create accounts.
+The API authenticates requests with a user-specific JSON Web Token. Users can generate a JSON Web Token by sending a valid email and password combination to the "login" endpoint. N.B: Users MUST validate their email addresses to create accounts.
 
 > The user logs in with their email and password combination.
 
 **POST /v2/login**
 ```shell
-curl -X POST http://localhost:5001/v2/login -H 'content-type: application/json' -d '{
-    "email":"lspears@sixgill.com",
+curl -X POST https://sense-api.sixgill.com/v2/login -H 'content-type: application/json' -d '{
+    "email":"1513202525@sixgill.com",
     "password":"password1"
 }'
 ```
@@ -23,25 +23,24 @@ curl -X POST http://localhost:5001/v2/login -H 'content-type: application/json' 
 > A 200 OK response returns the generated authentication token.
 
 ```json
-{
-    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoibHNwZWFyc0BzaXhnaWxsLmNvbSIsIm5hbWUiOiJMb2dhbiBTcGVhcnMifSwiZXhwIjoxNTEwMjcwNDM4LCJzdWIiOiIwMUJWUThXQldRMlhONTI4TjZOQzZTRE5SWCIsInRva2VuVHlwZSI6ImFjY2VzcyJ9.5adY3p2pNHXtF4-TKc_wtkJaokl2o9hJVLZvEHJ9klo"
+{    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoibHNwZWFyc0BzaXhnaWxsLmNvbSIsIm5hbWUiOiJMb2dhbiBTcGVhcnMifSwiZXhwIjoxNTEwMjcwNDM4LCJzdWIiOiIwMUJWUThXQldRMlhONTI4TjZOQzZTRE5SWCIsInRva2VuVHlwZSI6ImFjY2VzcyJ9.5adY3p2pNHXtF4-TKc_wtkJaokl2o9hJVLZvEHJ9klo"
 }
 ```
 
-Once a token has been generated, one can authenticate requests by placing it in the authorization header.
+Once a token has been generated, one can authenticate requests by placing it in the authorization header. Some requests may require a token that includes the organization ID, such as creating a rule. Get the organization ID and make this [login request](#post-v2login-with-org)
 
 > Example /v2/users/me request with authorization header which will return a 200 OK
 
 **GET /v2/users/me**
 ```shell
-curl "http://localhost:5001/v2/users/me" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoibHNwZWFyc0BzaXhnaWxsLmNvbSIsIm5hbWUiOiJMb2dhbiBTcGVhcnMifSwiZXhwIjoxNTEwMjcwNDM4LCJzdWIiOiIwMUJWUThXQldRMlhONTI4TjZOQzZTRE5SWCIsInRva2VuVHlwZSI6ImFjY2VzcyJ9.5adY3p2pNHXtF4-TKc_wtkJaokl2o9hJVLZvEHJ9klo"
+curl "https://sense-api.sixgill.com/v2/users/me" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoibHNwZWFyc0BzaXhnaWxsLmNvbSIsIm5hbWUiOiJMb2dhbiBTcGVhcnMifSwiZXhwIjoxNTEwMjcwNDM4LCJzdWIiOiIwMUJWUThXQldRMlhONTI4TjZOQzZTRE5SWCIsInRva2VuVHlwZSI6ImFjY2VzcyJ9.5adY3p2pNHXtF4-TKc_wtkJaokl2o9hJVLZvEHJ9klo"
 ```
 
 > Example /v2/users/me request without authorization header which will return a 401 Unauthorized
 
 **GET /v2/users/me**
 ```shell
-curl "http://localhost:5001/v2/users/me"
+curl "https://sense-api.sixgill.com/v2/users/me"
 ```
 
 ## Routes TOC
@@ -133,7 +132,7 @@ no content
     "password": "password1"
 }
 ```
-###### login with organization
+###### POST /v2/login (with organization)
 ```json
 {
     "email": "1513202525@sixgill.com",
@@ -278,7 +277,7 @@ no content
             "locale": {
                 "timezone": "America/Los_Angeles"
             },
-            "name": "bossman",
+            "name": "Sam Adams",
             "verifiedEmail": true
         },
         {
@@ -288,7 +287,7 @@ no content
             "locale": {
                 "timezone": "America/Los_Angeles"
             },
-            "name": "kirk dirkler",
+            "name": "Michael Smith",
             "verifiedEmail": true
         }
     ],
@@ -311,7 +310,7 @@ no content
         "locale": {
             "timezone": "America/Los_Angeles"
         },
-        "name": "bossman",
+        "name": "Sam Adams",
         "verifiedEmail": true
     }
 }
@@ -320,7 +319,7 @@ no content
 ##### POST /v2/channels
 ```json
 {
-    "name": "rick",
+    "name": "android channel",
     "type": "Android"
 }
 ```
@@ -339,7 +338,7 @@ no content
         ],
         "enabled": false,
         "id": "01C18YBMV80QPD89HR0BFY0T0A",
-        "name": "rick",
+        "name": "android channel",
         "type": "Android"
     }
 }
@@ -811,7 +810,7 @@ no content
         {
             "enabled": false,
             "id": "01C18YBMV80QPD89HR0BFY0T0A",
-            "name": "rick",
+            "name": "android channel",
             "type": "Android"
         }
     ]
@@ -832,7 +831,7 @@ no content
         },
         "type": "circle"
     },
-    "name": "rick",
+    "name": "school",
     "type": "geometry"
 }
 ```
@@ -894,7 +893,7 @@ no content
         },
         "type": "polygon"
     },
-    "name": "rick",
+    "name": "concert hall",
     "type": "geometry"
 }
 ```
@@ -928,7 +927,7 @@ no content
             },
             "type": "polygon"
         },
-        "name": "rick",
+        "name": "concert hall",
         "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
         "tags": null,
         "type": "geometry"
@@ -967,7 +966,7 @@ no content
             },
             "type": "polygon"
         },
-        "name": "rick",
+        "name": "concert hall",
         "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
         "tags": null,
         "type": "geometry"
@@ -994,7 +993,7 @@ no content
                 },
                 "type": "circle"
             },
-            "name": "rick",
+            "name": "gas station",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1016,7 +1015,7 @@ no content
                 },
                 "type": "rectangle"
             },
-            "name": "rick",
+            "name": "school",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1048,7 +1047,7 @@ no content
                 },
                 "type": "polygon"
             },
-            "name": "rick",
+            "name": "concert hall",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1086,7 +1085,7 @@ no content
                 },
                 "type": "circle"
             },
-            "name": "rick",
+            "name": "school",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1108,7 +1107,7 @@ no content
                 },
                 "type": "rectangle"
             },
-            "name": "rick",
+            "name": "gas station",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1140,7 +1139,7 @@ no content
                 },
                 "type": "polygon"
             },
-            "name": "rick",
+            "name": "concert hall",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1178,7 +1177,7 @@ no content
                 },
                 "type": "circle"
             },
-            "name": "rick",
+            "name": "gas station",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1200,7 +1199,7 @@ no content
                 },
                 "type": "rectangle"
             },
-            "name": "rick",
+            "name": "concert hall",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1232,7 +1231,7 @@ no content
                 },
                 "type": "polygon"
             },
-            "name": "rick",
+            "name": "school",
             "projectId": "01C18YBNJCE3KBCNZJHKV5R55Y",
             "tags": null,
             "type": "geometry"
@@ -1255,62 +1254,146 @@ no content
 ##### POST /v2/projects/:projectID/rules
 ```json
 {
-    "actions": [
-        {
-            "type": "email"
-        }
-    ],
-    "logicalCondition": {
-        "type": "always true"
-    },
-    "name": "rick"
+	"name": "enter gym - push",
+	"description": "",
+	"throttleInSeconds": 0,
+	"actions": [{
+		"type": "push",
+		"subject": "Welcome to the gym!",
+		"message": "Have a great workout"
+	}],
+	"logicalCondition": {
+		"and": [{
+			"type": "enter landmark",
+			"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYX"
+		}]
+	},
+	"enabled": true
 }
 ```
 `Code: 201`
-```json
-{
-    "data": {
-        "actions": [
-            {
-                "type": "email"
-            }
-        ],
-        "createdAt": "2017-12-13T22:01:46.065942563Z",
-        "enabled": false,
-        "id": "01C18YBPAH7FWSAZX4YHF1FN1D",
-        "logicalCondition": {
-            "type": "always true"
-        },
-        "name": "rick"
-    }
-}
 ```
 [:arrow_up:TOC](#routes-toc)
 ##### GET /v2/projects/:projectID/rules
 `Code: 200`
 ```json
 {
-    "data": [
-        {
-            "actions": [
-                {
-                    "type": "email"
-                }
-            ],
-            "createdAt": "2017-12-13T22:01:46Z",
-            "enabled": false,
-            "id": "01C18YBPAH7FWSAZX4YHF1FN1D",
-            "logicalCondition": {
-                "type": "always true"
-            },
-            "name": "rick"
-        }
-    ],
-    "meta": {
-        "count": 1,
-        "nextHRef": "index=01C18YBPAH7FWSAZX4YHF1FN1D\u0026count=50\u0026sortBy=id\u0026sortAsc=false",
-        "nextIndex": "01C18YBPAH7FWSAZX4YHF1FN1D"
-    }
+	"data": [{
+		"id": "01C9M0MWKQ21RADYJYHGW6A741",
+		"name": "testing email and push",
+		"description": "",
+		"enabled": false,
+		"logicalCondition": {
+			"and": [{
+				"type": "inside landmark",
+				"landmarkId": "01C8GGCMD2MAZA5B5YGG8J39CS"
+			}]
+		},
+		"actions": [{
+			"id": "00000000000000000000000000",
+			"type": "email",
+			"successfullyExecutedAt": "0001-01-01T00:00:00Z",
+			"deviceId": "00000000000000000000000000",
+			"subject": "inside!",
+			"message": "WEEE",
+			"recipients": {
+				"emails": ["test@test.com"]
+			}
+		}, {
+			"id": "00000000000000000000000000",
+			"type": "push",
+			"successfullyExecutedAt": "0001-01-01T00:00:00Z",
+			"deviceId": "00000000000000000000000000",
+			"subject": "inside!",
+			"message": ":)"
+		}],
+		"createdAt": "2018-03-27T15:18:58Z"
+	}, {
+		"id": "01CA3FSD67SYMDN1A5SE2MS4RS",
+		"name": "inside area push",
+		"description": "",
+		"enabled": true,
+		"logicalCondition": {
+			"and": [{
+				"type": "inside landmark",
+				"landmarkId": "01CA3ET7WF78RRRZCSFBATEY7E"
+			}]
+		},
+		"actions": [{
+			"id": "00000000000000000000000000",
+			"type": "push",
+			"successfullyExecutedAt": "0001-01-01T00:00:00Z",
+			"deviceId": "00000000000000000000000000",
+			"subject": "inside area",
+			"message": "hello"
+		}],
+		"createdAt": "2018-04-02T15:32:11Z"
+	}, {
+		"id": "01CA8AN5Q5G6QKYYWB0FY7P4A5",
+		"name": "OR condition",
+		"description": "",
+		"enabled": true,
+		"logicalCondition": {
+			"and": [{
+				"type": "event occurred between times of day",
+				"startInSecondsSinceMidnight": 32400,
+				"endInSecondsSinceMidnight": 37800,
+				"timeZone": "America/Detroit"
+			}, {
+				"and": [{
+					"type": "inside landmark",
+					"landmarkId": "01C83KM04C9MYYYV4AVJNJQZ9G"
+				}, {
+					"type": "event free form",
+					"predicate": "properties.type == 'ios'"
+				}]
+			}]
+		},
+		"actions": [{
+			"id": "00000000000000000000000000",
+			"type": "email",
+			"successfullyExecutedAt": "0001-01-01T00:00:00Z",
+			"deviceId": "00000000000000000000000000",
+			"subject": "one of the conditions was met",
+			"message": "weee",
+			"recipients": {
+				"emails": ["test@test.com"]
+			}
+		}],
+		"createdAt": "2018-04-04T12:38:41Z"
+	}, {
+		"id": "01CATWVEWG0XN2984GPW29WVT9",
+		"name": "test webhook 2 actions",
+		"description": "",
+		"enabled": false,
+		"logicalCondition": {
+			"and": [{
+				"type": "inside landmark",
+				"landmarkId": "01C8GGCMD2MAZA5B5YGG8J39CS"
+			}]
+		},
+		"actions": [{
+			"id": "00000000000000000000000000",
+			"type": "webhook",
+			"successfullyExecutedAt": "0001-01-01T00:00:00Z",
+			"deviceId": "00000000000000000000000000",
+			"url": "http://www.google.com",
+			"method": "POST"
+		}, {
+			"id": "00000000000000000000000000",
+			"type": "webhook",
+			"successfullyExecutedAt": "0001-01-01T00:00:00Z",
+			"deviceId": "00000000000000000000000000",
+			"url": "http://www.google.com",
+			"method": "POST"
+		}],
+		"createdAt": "2018-04-11T17:43:01Z"
+	}],
+	"meta": {
+		"count": 4,
+		"nextIndex": "01CATWVEWG0XN2984GPW29WVT9",
+		"nextHRef": "index=01CATWVEWG0XN2984GPW29WVT9\u0026count=50\u0026sortBy=id\u0026sortAsc=false"
+	}
 }
 ```
 [:arrow_up:TOC](#routes-toc)
@@ -1318,20 +1401,27 @@ no content
 `Code: 200`
 ```json
 {
-    "data": {
-        "actions": [
-            {
-                "type": "email"
-            }
-        ],
-        "createdAt": "2017-12-13T22:01:46Z",
-        "enabled": false,
-        "id": "01C18YBPAH7FWSAZX4YHF1FN1D",
-        "logicalCondition": {
-            "type": "always true"
-        },
-        "name": "rick"
-    }
+	"data": {
+		"id": "01CA3FSD67SYMDN1A5SE2MS4RS",
+		"name": "inside area push",
+		"description": "",
+		"enabled": true,
+		"logicalCondition": {
+			"and": [{
+				"type": "inside landmark",
+				"landmarkId": "01CA3ET7WF78RRRZCSFBATEY7E"
+			}]
+		},
+		"actions": [{
+			"id": "00000000000000000000000000",
+			"type": "push",
+			"successfullyExecutedAt": "0001-01-01T00:00:00Z",
+			"deviceId": "00000000000000000000000000",
+			"subject": "inside area",
+			"message": "hello"
+		}],
+		"createdAt": "2018-04-02T15:32:11Z"
+	}
 }
 ```
 [:arrow_up:TOC](#routes-toc)
