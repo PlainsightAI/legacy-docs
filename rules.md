@@ -81,10 +81,12 @@ Fields:
 * type - "webhook"
 * method - (required) POST, PUT, PATCH, DELETE
 * headers - (optional) An object specifying the request headers. See example below.
-* url - (required) the URL of the request
-* body - (optional) the request payload
+* url - (required) the URL of the request. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
+* body - (optional) the request payload. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
 * username - (optional) username for authorization
 * password - (optional) password for authorization
+
+> The following example sends a POST request to https://sixgill.com with a simple JSON payload. 
 
 Example:
 ```json
