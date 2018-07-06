@@ -96,7 +96,7 @@ Conditions are composed of one or more predicates. Predicates can be joined with
 Description:
 	This is a boolean operator that allows you to combine other predicates with "AND" semantics. 
 	
-The following example checks for the specific device to be inside a landmark.
+> The following example checks for the specific device to be inside a landmark.
 
 Example:
 ```json
@@ -115,7 +115,9 @@ Example:
 #### "not"
 
 Description:
-	This is a boolean operator that allows you to negate a predicate with "NOT" semantics. The following example uses "NOT" to include a schedule of when the rule should not be triggered.
+	This is a boolean operator that allows you to negate a predicate with "NOT" semantics. 
+
+> The following example uses "NOT" to include a schedule of when the rule should not be triggered.
 
 Example:
 ```json
@@ -137,7 +139,9 @@ Example:
 #### "or"
 
 Description:
-	This is a boolean operator that allows you to combine other predicates with "OR" semantics. In this example, the condition tests whether the device is in one landmark or the other.
+	This is a boolean operator that allows you to combine other predicates with "OR" semantics. 
+
+> In this example, the condition tests whether the device is in one landmark or the other.
 
 Example:
 ```json
@@ -187,8 +191,7 @@ Fields:
 * type - "event free form"
 * predicate - String representing the freeform equation to be evaluated. This is typically construcgted off of the event payload that will be received for the device. 
 
-The following example triggers the rule when the data.tempF value in the event payload is equal to 67.
-
+>The following example triggers the rule when the data.tempF value in the event payload is equal to 67.
 Example:
 ```json
     "logicalCondition": {
@@ -235,7 +238,7 @@ Fields:
 * type - "exit landmark"
 * landmarkId - ID of the landmark to compare the device's location against
 
-The following example checks if the device was previously inside the landmark and is now outside of it.
+> The following example checks if the device was previously inside the landmark and is now outside of it.
 
 Example:
 ```json
@@ -254,7 +257,7 @@ Fields:
 * type - "inside landmark"
 * landmarkId - ID of the landmark to compare the device's location against
 
-The following example checks if the device is inside the landmark.
+> The following example checks if the device is inside the landmark.
 
 Example:
 ```json
@@ -293,7 +296,7 @@ Fields:
 * landmark_id - the ID of the landmark whose tags should be checked
 * tags - an array of strings representing the tags to be checked for this landmark
 
-The following example checks if the device has entered the landmark that it was not in previously AND if the landmark has both of the tags "music" and "has_wifi" assigned to it.
+> The following example checks if the device has entered the landmark that it was not in previously AND if the landmark has both of the tags "music" and "has_wifi" assigned to it.
 
 Example:
 ```json
@@ -319,7 +322,7 @@ Fields:
 * landmark_id - the ID of the landmark whose tags should be checked
 * tags - an array of strings representing the tags to be checked for this landmark
 
-The following example checks if the device is inside the landmark AND if the landmark specified has either of the "music" or "has_wifi" tags assigned to it.
+> The following example checks if the device is inside the landmark AND if the landmark specified has either of the "music" or "has_wifi" tags assigned to it.
  
 Example:
 ```json
@@ -344,7 +347,7 @@ Fields:
 * type = "event occurred after"
 * moment - timestamp in ISO8601 format that will be used for comparison against the event's timestamp
 
-The following example checks if the event is timestamped after 2017-01-01T00:00:00Z 
+> The following example checks if the event is timestamped after 2017-01-01T00:00:00Z 
 
 Example:
 ```json
@@ -363,7 +366,7 @@ Fields:
 * type - "event occurred before"
 * moment - timestamp in ISO8601 format that will be used for comparison against the event's timestamp
 
-The following example checks if the event is timestamped before 2017-01-01T00:00:00Z
+> The following example checks if the event is timestamped before 2017-01-01T00:00:00Z
 
 Example:
 ```json
@@ -384,7 +387,7 @@ Fields:
 * endInSecondsSinceMidnight - End time in seconds since midnight
 * An identifier from the IANA Timezone Database which identifies the timezone that should be used for the schedule 
 
-The following example checks if the event is timestamped between 4:00pm and 6:00pm in the Detroit timezone.
+> The following example checks if the event is timestamped between 4:00pm and 6:00pm in the Detroit timezone.
 
 Example:
 ```json
@@ -406,7 +409,7 @@ Fields:
 * dayOfWeek - The integer representing the day of the week (0 = Sunday, 1 = Monday, 2 = Tuesday, etc)
 * timeZone - An identifier from the IANA Timezone Database which identifies the timezone that should be used for the schedule
 
-The following example checks if the event occurred on a specific day of the week.
+> The following example checks if the event occurred on a specific day of the week.
 
 Example:
 ```json
