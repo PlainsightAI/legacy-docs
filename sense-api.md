@@ -36,13 +36,29 @@ Once a token has been generated, one can authenticate requests by placing it in 
 curl "https://sense-api.sixgill.com/v2/users/me" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoibHNwZWFyc0BzaXhnaWxsLmNvbSIsIm5hbWUiOiJMb2dhbiBTcGVhcnMifSwiZXhwIjoxNTEwMjcwNDM4LCJzdWIiOiIwMUJWUThXQldRMlhONTI4TjZOQzZTRE5SWCIsInRva2VuVHlwZSI6ImFjY2VzcyJ9.5adY3p2pNHXtF4-TKc_wtkJaokl2o9hJVLZvEHJ9klo"
 ```
 
+Response:
+```json
+{
+	"data": {
+		"id": "01C6907VRHRHFZCM5C5V2KP27J",
+		"email": "1513202525@sixgill.com",
+		"name": "Adam Smith",
+		"verifiedEmail": true,
+		"inviteOutstanding": false,
+		"locale": {
+			"timezone": "America/Detroit"
+		}
+	}
+}
+```
+
 > Example /v2/users/me request without authorization header which will return a 401 Unauthorized
 
 **GET /v2/users/me**
 ```shell
-curl "https://sense-api.sixgill.com/v2/users/me"
+curl GET https://sense-api.sixgill.com/v2/users/me
 ```
-Some requests may require a token that includes the organization ID, such as creating a rule. 
+Note that certain calls require a token that includes the organization ID, such as creating a rule. 
 
 > Get the organization ID:
 ```shell
