@@ -20,24 +20,55 @@ Example:
 			"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYX"
 		}]
 	},
-	"id": "01C94FMW65G81W0GNSPQ41XGGZ",
 	"enabled": true
 }
 ```
 Fields:
 * name - (required) Name of the rule
 * description - (optional) Description of rule
-* throttleInSeconds - (opttional) Specifies the minimum amount of time between executing the action for this rule (in seconds). For example, if set to 300 the action will be executed no more than once every 5 minutes. Defaults to 0
+* throttleInSeconds - (optional) Specifies the minimum amount of time between executing the action for this rule (in seconds). For example, if set to 300 the action will be executed no more than once every 5 minutes. Defaults to 0
 * actions - Describes what will occur when the condition is satisfied. See [Actions](#actions) for more details.
-* logicalCondition - Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See [Conditions](#conditions) for more details.
-* id - The ID of the rule
+* logicalCondition - (optional) Describes the conditions that must be met in order to execute the action(s). A condition can be composed of one or more predicates joined with boolean operators. See [Conditions](#conditions) for more details.
 * enabled - The state of the rule. If true, the rule is actively running; if false, it is disabled.
 
 ## Actions
 
 Rules triggers one or more actions when an event occurs. Available actions include sending an SMS, a push notification to a device, sending an email, or invoking a webhook. 
 
+### email
+Sends an email to one or more recipients when the rule is triggered.
+
+Fields:
+* type - "email"
+* subject - (string) the subject content of the email
+* message - (string) the body of the email. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
+* recipients - an object specifying a list of email addresses to send to when the rule is triggered
+
+```json
+[{
+  "type": "email",
+  "subject": "entering gym",
+  "message": "have a great workout",
+  "recipients": {
+  "emails": ["carmvalera@gmail.com"]
+  }
+}]
+```
+
 ### webhook 
+Invokes a webhook to a web service. This is typically used to send HTTP requests to external systems when a rule is triggered.
+
+Fields:
+
+* type - "webhook"
+* method - (required) POST, PUT, PATCH, DELETE
+* headers - (optional) An object specifying the request headers. See example below.
+* url - (required) the URL of the request
+* body - (optional) the request payload
+* username - (optional) username for authorization
+* password - (optional) password for authorization
+
+Example:
 ```json
 "actions":[ 
       { 
