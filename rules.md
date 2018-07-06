@@ -50,7 +50,7 @@ Fields:
   "subject": "entering gym",
   "message": "have a great workout",
   "recipients": {
-  "emails": ["carmvalera@gmail.com"]
+  "emails": ["test@test.com"]
   }
 }]
 ```
@@ -141,7 +141,7 @@ Example:
 Description:
 	This is a boolean operator that allows you to combine other predicates with "OR" semantics. 
 
-> In this example, the condition tests whether the device is in one landmark or the other.
+> The following condition checks whether the device is inside one landmark or the other.
 
 Example:
 ```json
@@ -191,7 +191,7 @@ Fields:
 * type - "event free form"
 * predicate - String representing the freeform equation to be evaluated. This is typically construcgted off of the event payload that will be received for the device. 
 
->The following example triggers the rule when the data.tempF value in the event payload is equal to 67.
+> The following example triggers the rule when the data.tempF value in the event payload is equal to 67.
 Example:
 ```json
     "logicalCondition": {
@@ -200,7 +200,7 @@ Example:
     }
 ```
 
-An example payload that would trigger this condition:
+> An example payload that would trigger the above condition:
 
 ```json
 {
@@ -219,7 +219,7 @@ Fields:
 * type - "enter landmark"
 * landmarkId - ID of the landmark to compare the device's location against
 
-The following example checks if the device was previously outside the landmark 01C92NZT6WCQ0J87YVQDE72GGA and is now inside it.
+> The following example checks if the device was previously outside the landmark 01C92NZT6WCQ0J87YVQDE72GGA and is now inside it.
 
 Example:
 ```json
@@ -276,7 +276,7 @@ Fields:
 * type - "outside landmark"
 * landmarkId - ID of the landmark to compare the device's location against
 
-The following example checks if the device is outside the landmark.
+> The following example checks if the device is outside the landmark.
 
 Example:
 ```json
