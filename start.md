@@ -19,6 +19,7 @@ On-boarding users and devices in the Sense 2.0 platform
     *   [Adding an Action](#adding-an-action)
     *   [Adding Rule Details](#adding-rule-details)
     *   [Activating the Rule](#activating-the-rule)
+*  [Creating a Landmark](#creating-a-landmark)
 *   [Using the Sense API](#using-the-sense-api)
 
 ## Creating an Account
@@ -148,11 +149,11 @@ Next, select the landmark for this condition
 
 ![](images/rule_add_new_landmark.png)  
 
-a) Move the map or use Google Addresses to center the map as needed  
+a) Move the map or use Google Addresses to center the map as needed, or select from Existing Landmarks  
 b) Use the Drawing Tools to create a geofence around your desired area  
-c) Click Use Geofence  
+c) Click **Use Geofence**  
 d) Enter a name for the landmark  
-e) Click Create Landmark to save  
+e) Click **Create Landmark** to save  
 
 For testing purposes, we recommend adding a landmark around your current geographical area.  
 
@@ -214,6 +215,19 @@ Optionally, use the Schedule section to set a schedule for when the rule is acti
 4. You can edit an existing rule by going to the **Rules** list and clicking the Edit icon under the Actions column to modify your selected rule.
 
 _Note: Any modifications to rule actions or a rule's enabled/disabled state will take effect within 5 minutes._
+
+## Creating a Landmark
+Landmarks can be added within the **Add New Rule** or through the Landmarks section.
+
+1. In the dashboard, go to Projects > Landmarks
+2. Click **Add New Landmark**
+3. Move the map or use Google Addresses to center the map as needed, or select from Existing Landmarks  
+4. Use the Drawing Tools to create a geofence around your desired area  
+5. Click **Use Geofence**  
+6. Enter a name for the landmark  
+7. Click **Create Landmark** to save
+
+The landmark will now be available in the **Select From Project Landmarks** dropdown when creating a rule.
 
 ## Using the Sense API
 The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. 
