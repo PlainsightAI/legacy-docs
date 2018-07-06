@@ -1285,6 +1285,9 @@ no content
 ```
 [:arrow_up:TOC](#routes-toc)
 ##### POST /v2/projects/:projectID/rules
+
+See [Rules](http://docs.sixgill.com/rules.html) docs for more information.
+
 ```json
 {
 	"name": "enter gym - push",
@@ -1298,15 +1301,44 @@ no content
 	"logicalCondition": {
 		"and": [{
 			"type": "enter landmark",
-			"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYX"
+			"landmarkId": "01C85HTS8AG7WAYKW24WP74ZY7"
 		}]
 	},
 	"enabled": true
 }
 ```
+Response:
 `Code: 201`
+```json
+{
+	"data": {
+		"id": "01CHR0HHC23F5WYJYHB4JXS8P9",
+		"name": "enter gym - push",
+		"description": "",
+		"enabled": true,
+		"throttleInSeconds": 0,
+		"logicalCondition": {
+			"and": [{
+				"type": "enter landmark",
+				"landmarkId": "01C85HTS8AG7WAYKW24WP74ZY7"
+			}]
+		},
+		"actions": [{
+			"id": "00000000000000000000000000",
+			"type": "push",
+			"successfullyExecutedAt": "0001-01-01T00:00:00Z",
+			"deviceId": "00000000000000000000000000",
+			"subject": "Welcome to the gym!",
+			"message": "Have a great workout"
+		}],
+		"createdAt": "0001-01-01T00:00:00Z",
+		"updatedAt": "0001-01-01T00:00:00Z"
+	}
+}
 ```
+
 [:arrow_up:TOC](#routes-toc)
+
 ##### GET /v2/projects/:projectID/rules
 `Code: 200`
 ```json
