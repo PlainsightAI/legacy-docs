@@ -35,6 +35,23 @@ Fields:
 
 Rules triggers one or more actions when an event occurs. Available actions include sending an SMS, a push notification to a device, sending an email, or invoking a webhook. 
 
+### push
+Sends a push notification to the triggering mobile device. Requires a mobile app using the Reach SDK.
+
+Fields:
+* type - "push"
+* subject - (string) the subject content of the push message
+* message - (string) body of the push message. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
+
+Example:
+```json
+"actions": [{
+        "type": "push",
+        "subject": "Welcome to the gym!",
+        "message": "Have a great workout"
+}]
+```
+
 ### email
 Sends an email to one or more recipients when the rule is triggered.
 
@@ -44,14 +61,15 @@ Fields:
 * message - (string) the body of the email. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
 * recipients - an object specifying a list of email addresses to send to when the rule is triggered
 
+Example:
 ```json
-[{
-  "type": "email",
-  "subject": "entering gym",
-  "message": "have a great workout",
-  "recipients": {
-  "emails": ["test@test.com"]
-  }
+"actions":[{
+  	"type": "email",
+  	"subject": "entering gym",
+  	"message": "have a great workout",
+  	"recipients": {
+  		"emails": ["test@test.com"]
+	}
 }]
 ```
 
@@ -70,8 +88,7 @@ Fields:
 
 Example:
 ```json
-"actions":[ 
-      { 
+"actions":[{ 
          "type":"webhook",
          "method":"POST",
          "headers":{ 
@@ -82,8 +99,7 @@ Example:
          "body":"{\"test\": \"test\"}",
          "username":"username",
          "password":"password"
-      }
-   ]
+}]
 ```
 
 ## Conditions
@@ -94,7 +110,7 @@ Conditions are composed of one or more predicates. Predicates can be joined with
 #### "and"
 
 Description:
-	This is a boolean operator that allows you to combine other predicates with "AND" semantics. 
+	This is a boolean operator that allows you to combine other predicates with "AND" semantics. All predicates combined with "AND" must evaluate to true for the condition to be met.
 	
 > The following example checks for the specific device to be inside a landmark.
 
@@ -115,7 +131,7 @@ Example:
 #### "not"
 
 Description:
-	This is a boolean operator that allows you to negate a predicate with "NOT" semantics. 
+	This is a boolean operator that allows you to negate a predicate with "NOT" semantics. The predicate must not evaluate to true for the condition to be met.
 
 > The following example uses "NOT" to include a schedule of when the rule should not be triggered.
 
@@ -139,7 +155,7 @@ Example:
 #### "or"
 
 Description:
-	This is a boolean operator that allows you to combine other predicates with "OR" semantics. 
+	This is a boolean operator that allows you to combine other predicates with "OR" semantics. Either predicate must evaluate to true for the condition to be met.
 
 > The following condition checks whether the device is inside one landmark or the other.
 
@@ -157,10 +173,11 @@ Example:
 	}
 ```
 ### Predicates
+
 #### always_false
 
 Description:
-	This is a predicate that is always false.  It is mostly used for testing, e.g.:
+	This predicate is always false.  It is typically used for testing.
 
 Example:
 ```json
@@ -172,7 +189,7 @@ Example:
 #### always_true
 
 Description:
-	This is a predicate that is always true.  It is mostly used for testing, e.g.:
+	This predicate is always true.  It is typically used for testing.
 
 
 Example:
@@ -185,7 +202,7 @@ Example:
 #### event_free_form
 
 Description:
-	This is a predicate that allows you to evaluate a specific event field in free-form fashion, typically used for IoT event payloads. 
+	This predicate allows you to evaluate a specific event field in free-form fashion, typically used for IoT event payloads. 
 
 Fields:
 * type - "event free form"
@@ -213,7 +230,7 @@ Example:
 #### enter_landmark
 
 Description:
-	This is a predicate that allows you to evaluate whether or not a device event entered a landmark that it was previously outside of. Landmarks are specific by the landmarkId. To specify multiple landmarks, you can join together multiple predicates with an operator.
+	This is predicate allows you to evaluate whether or not a device event entered a landmark that it was previously outside of. Landmarks are specific by the landmarkId. To specify multiple landmarks, you can join together multiple predicates with an operator.
 
 Fields:
 * type - "enter landmark"
@@ -232,7 +249,7 @@ Example:
 #### exit_landmark
    
 Description:
-	This is a predicate that allows you to evaluate whether or not a device exited a landmark that it was previously inside of. To specify multiple landmarks, you can join together multiple predicates with an operator.
+	This predicate allows you to evaluate whether or not a device exited a landmark that it was previously inside of. To specify multiple landmarks, you can join together multiple predicates with an operator.
 
 Fields:
 * type - "exit landmark"
@@ -341,7 +358,7 @@ Example:
 #### event_occurred_after
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred after a given time.
+	This predicate allows you to evaluate whether an event occurred after a given time.
 
 Fields:
 * type = "event occurred after"
@@ -360,7 +377,7 @@ Example:
 ### event_occurred_before
 
 Description:
-	This is a predicate that allows you to evaluate whether an event occurred before a given time.
+	This predicate allows you to evaluate whether an event occurred before a given time.
 	
 Fields:
 * type - "event occurred before"
