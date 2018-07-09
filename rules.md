@@ -122,7 +122,7 @@ Example:
 	}
 }]
 ```   
-=====================
+
 ## Conditions
 Conditions are composed of one or more predicates. Predicates can be joined with boolean operators to form a logical expression that can be evaluated.
 
