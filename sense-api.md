@@ -52,7 +52,7 @@ Response:
 }
 ```
 
-> Example /v2/users/me request without authorization header which will return a 401 Unauthorized
+> Example /v2/users/me request without authorization header which will return a 400 Bad Request. Invalid tokens will return 401 Unauthorized
 
 **GET /v2/users/me**
 ```shell
