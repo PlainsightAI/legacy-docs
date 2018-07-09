@@ -36,12 +36,12 @@ Fields:
 Rules triggers one or more actions when an event occurs. Available actions include sending an SMS, a push notification to a device, sending an email, or invoking a webhook. 
 
 ### push
-Sends a push notification to the triggering mobile device. Requires a mobile app using the Reach SDK.
+Sends a push notification to the triggering mobile device. *Requires a mobile app using the Reach SDK.*
 
 Fields:
 * type - "push"
 * subject - (string) the subject content of the push message
-* message - (string) body of the push message. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
+* message - (string) the body of the push message. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
 
 Example:
 ```json
@@ -59,7 +59,7 @@ Fields:
 * type - "email"
 * subject - (string) the subject content of the email
 * message - (string) the body of the email. [Templates](http://docs.sixgill.com/templates.html) can be used which will be replaced dynamically when the rule is triggered
-* recipients - an object specifying a list of email addresses to send to when the rule is triggered
+* recipients - an object specifying an array of email addresses to send to when the rule is triggered
 
 Example:
 ```json
@@ -104,6 +104,25 @@ Example:
 }]
 ```
 
+### SMS
+Sends an SMS to the specified recipient telephone numbers.
+
+Fields:
+* type - "sms"
+* message - (string) the content of the SMS message
+ * recipients - an object specifying an array of telephone phone numbers to send to when the rule is triggered
+
+Example:
+```json
+"actions": [{
+	"type": "sms",
+	"message": "test",
+	"recipients": {
+		"telephoneNumbers": ["5853144015"]
+	}
+}]
+```   
+###################
 ## Conditions
 Conditions are composed of one or more predicates. Predicates can be joined with boolean operators to form a logical expression that can be evaluated.
 
