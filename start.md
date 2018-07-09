@@ -1,9 +1,9 @@
-Getting Started with Sense 2.0
+Getting Started with Sense
 ==========================================
 
-On-boarding users and devices in the Sense 2.0 platform
+On-boarding users and devices in the Sense platform
 
-*   [Create a Sixgill Sense 2.0 account](#creating-an-account)
+*   [Create a Sixgill Sense account](#creating-an-account)
     *   [Joining an Existing Organization](#joining-an-existing-organization)
 *   [Creating a Channel](#creating-a-channel)
 *   [Configuring a Channel for Push](#configuring-a-channel-for-push)
