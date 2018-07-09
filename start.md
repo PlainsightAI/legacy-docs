@@ -236,7 +236,10 @@ The landmark will now be available in the **Select From Project Landmarks** drop
 ## Using the Sense API
 The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. 
 
-See [Sense API Docs](http://docs.sixgill.com/sense-api.html) for more information.
+* [Sense API](http://docs.sixgill.com/sense-api.html) - The Sense API allows third party developers to access the majority of the Sense platform's functionality. 
+   * [Rules](http://docs.sixgill.com/rules.html)
+   * [Templates](http://docs.sixgill.com/templates.html)
+* [Ingress API](http://docs.sixgill.com/ingress-api.html) - The Ingress API allows devices to register with and send data to the Sixgill Sense platform
 
 
   
