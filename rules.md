@@ -137,15 +137,15 @@ Description:
 
 Example:
 ```json
-	"logicalCondition": {
-		"and": [{
-			"type": "inside landmark",
-			"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGS"
-		}, {
-			"type": "event free form",
-			"predicate": "deviceId == '01CGH777EWVP0E6EZZYH7P2JK0'"
-		}]
-	}
+"logicalCondition": {
+	"and": [{
+		"type": "inside landmark",
+		"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGS"
+	}, {
+		"type": "event free form",
+		"predicate": "deviceId == '01CGH777EWVP0E6EZZYH7P2JK0'"
+	}]
+}
 ```
 
 #### "not"
@@ -181,16 +181,15 @@ Description:
 
 Example:
 ```json
-
-	"logicalCondition": {
-		"or": [{
-			"type": "inside landmark",
-			"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYA"
-		}, {
-			"type": "inside landmark",
-			"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGF"
-		}]
-	}
+"logicalCondition": {
+	"or": [{
+		"type": "inside landmark",
+		"landmarkId": "01C85HTS8AG7WAYKW24WP74ZYA"
+	}, {
+		"type": "inside landmark",
+		"landmarkId": "01C92NZT6WPQ0J87YVQDE72GGF"
+	}]
+}
 ```
 ### Predicates
 
@@ -231,17 +230,16 @@ Fields:
 > The following example triggers the rule when the data.tempF value in the event payload is equal to 67.
 Example:
 ```json
-    "logicalCondition": {
+"logicalCondition": {
  	"type": "event free form",
-  	"predicate": "data.tempF == 67"
-    }
+ 	"predicate": "data.tempF == 67"
+ }
 ```
 
 > An example payload that would trigger the above condition:
 
 ```json
-{
-  "data":{
+"data":{
      "tempF":67,
      "humidity":23
 }
