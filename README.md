@@ -48,6 +48,8 @@ This document details the main data models that the Sense APIs use.
 
 Rules define conditions around device and sensor data and specify the actions that are executed when the conditions are met. 
 
+[Rules](rules.md)
+
 ## Edge Rules
 
 Edge rules are a specific subset of rules that the Sense platform can reliably use with edge node processing.
