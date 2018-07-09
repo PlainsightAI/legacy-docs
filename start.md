@@ -238,7 +238,7 @@ The Sense dashboard functions such as logging in, creating projects, channels, r
 
 * [Sense API](http://docs.sixgill.com/sense-api.html) - The Sense API allows third party developers to access the majority of the Sense platform's functionality. 
    * [Rules](http://docs.sixgill.com/rules.html)
-   * [Templates](http://docs.sixgill.com/templates.html)
+   * [Template](http://docs.sixgill.com/templates.html)
 * [Ingress API](http://docs.sixgill.com/ingress-api.html) - The Ingress API allows devices to register with and send data to the Sixgill Sense platform
 
 
