@@ -157,12 +157,12 @@ Description:
 
 Example:
 ```json
-    "logicalCondition": {
+"logicalCondition": {
     "not": [{
-      "type": "event occurred between times of day",
-      "timeZone": "America/Detroit",
-      "startInSecondsSinceMidnight": 57600,
-      "endInSecondsSinceMidnight": 63000
+	"type": "event occurred between times of day",
+      	"timeZone": "America/Detroit",
+      	"startInSecondsSinceMidnight": 57600,
+      	"endInSecondsSinceMidnight": 63000
     }, {
       "and": [{
         "type": "inside landmark",
