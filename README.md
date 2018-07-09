@@ -1,6 +1,6 @@
 # Sense Documentation
 
-Welcome to the Sixgill Sense API. Below are links to detailed documentation on the various major components of the Sixgill Sense platform.
+Welcome to Sixgill Sense. Below are links to detailed documentation on the various major components of the Sixgill Sense platform.
 
 ## Getting Started
 
