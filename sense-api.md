@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Sense API is where third party developers can access the majority of the Sense platform's functionality. It is a RESTful JSON API that accepts HTTP requests.
+The Sense API allows third party developers to access the majority of the Sense platform's functionality. It is a RESTful JSON API that accepts HTTP requests.
 
 
 
