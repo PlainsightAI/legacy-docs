@@ -137,7 +137,6 @@ Description:
 
 Example:
 ```json
-
 	"logicalCondition": {
 		"and": [{
 			"type": "inside landmark",
