@@ -222,10 +222,13 @@ Landmarks can be added within the **Add New Rule** or through the Landmarks sect
 
 1. In the dashboard, go to Projects > Landmarks
 2. Click **Add New Landmark**
+![](images/landmark_add_new.png)  
 3. Move the map or use Google Addresses to center the map as needed, or select from Existing Landmarks  
 4. Use the Drawing Tools to create a geofence around your desired area  
+![](images/landmark_use_geofence.png) 
 5. Click **Use Geofence**  
 6. Enter a name for the landmark  
+![](images/landmark_create_landmark.png) 
 7. Click **Create Landmark** to save
 
 The landmark will now be available in the **Select From Project Landmarks** dropdown when creating a rule.
