@@ -52,13 +52,19 @@ Response:
 }
 ```
 
-> Example /v2/users/me request without authorization header which will return a 400 Bad Request. Invalid tokens in the authorization header will return 401 Unauthorized
-
+> Example /v2/users/me request without authorization header which will return a 400 Bad Request.
 **GET /v2/users/me**
 ```shell
 curl GET https://sense-api.sixgill.com/v2/users/me
 ```
-Note that certain calls require a token that includes the organization ID, such as creating a rule. 
+
+>  Example /v2/users/me request with invalid token will return 401 Unauthorized
+
+**GET /v2/users/me**
+```shell
+curl "https://sense-api.sixgill.com/v2/users/me" -H "Authorization: Bearer INVALID_JWT_TOKEN"
+```
+Note that certain calls require a token that includes the organization ID, such as creating a rule. To get this token:
 
 > Get the organization ID:
 ```shell
