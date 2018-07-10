@@ -34,4 +34,4 @@ In this section, we will take advantage of Ubuntu Core's built in package manage
 2. Login to Docker to access Sixgill internal images. `sudo docker login`
 3. Install a stable version of the Sixgill Sense Ingress API image from Docker Hub. As of the time of this writing, the preferred dev version is v0.1.9. `sudo docker pull sixgill/sense-api:v0.1.9`
 4. Run the docker container to bring up the API server and start listening on port 5000 `sudo docker run -p 5000:5000 sixgill/sense-ingress-api:v0.1.9`
-5. The API is live at `http://xx.xx.xx.xx:5000`. The Sixgill Sync mobile app cab be used as a test sensor to verify correct setup.
+5. The API is live at `http://xx.xx.xx.xx:5000`. The Sixgill Sync mobile app can be used as a test sensor to verify correct setup.
