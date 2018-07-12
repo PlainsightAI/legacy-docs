@@ -4,8 +4,8 @@
 
 The Sense API allows third party developers to access the majority of the Sense platform's functionality. It is a RESTful JSON API that accepts HTTP requests.
 
-[Authentication](#authentication)
-[API Examples](#api-examples)
+* [Authentication](#authentication)
+* [API Examples](#api-examples)
 
 ## Routes TOC
 Method | Endpoint | Code | Link
