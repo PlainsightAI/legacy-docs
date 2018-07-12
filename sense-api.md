@@ -6,6 +6,8 @@ The Sense API allows third party developers to access the majority of the Sense 
 
 * [Authentication](#authentication)
 * [API Examples](#api-examples)
+* [Rules](http://docs.sixgill.com/rules.html)
+* [Landmarks](http://docs.sixgill.com/landmarks.html)
 
 ## Routes TOC
 Method | Endpoint | Code | Link
