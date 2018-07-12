@@ -859,6 +859,8 @@ no content
 ```
 [:arrow_up:TOC](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
+See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
+
 ```json
 {
     "address": "test",
@@ -882,6 +884,8 @@ no content
 ```
 [:arrow_up:TOC](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
+See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
+
 ```json
 {
     "address": "test",
@@ -908,6 +912,8 @@ no content
 ```
 [:arrow_up:TOC](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
+See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
+
 ```json
 {
     "address": "test",
