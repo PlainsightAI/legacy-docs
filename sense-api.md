@@ -11,8 +11,9 @@ The Sense API allows third party developers to access the majority of the Sense 
 * [Landmarks](http://docs.sixgill.com/landmarks.html)
 
 ## Routes TOC
-Method     | Endpoint | Code | Link
+
 -|-|-|-
+Method | Endpoint | Code | Link
 POST | /v2/signup | 204 | [link](#post-v2signup)
 POST | /v2/verify-email | 200 | [link](#post-v2verify-email)
 POST | /v2/login | 200 | [link](#post-v2login)
