@@ -1,8 +1,6 @@
 # Landmarks
 
-Landmarks are geographical points of interest (POIs). Proximity to Landmarks is used in Rules to 
-trigger an action such as content delivery to an agent or webhook to another service. The Landmark API provides several options 
-for defining landmarks.
+Landmarks are geographical points of interest (POIs). Landmarks are used as conditions for a rule that evaluate a device's proximity to the area. The Landmark API provides several options for defining landmarks.
 
 Example:
 ```json
