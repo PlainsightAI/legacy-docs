@@ -4,6 +4,7 @@
 
 The Sense API allows third party developers to access the majority of the Sense platform's functionality. It is a RESTful JSON API that accepts HTTP requests.
 
+* [Routes](#routes-toc)
 * [Authentication](#authentication)
 * [API Examples](#api-examples)
 * [Rules](http://docs.sixgill.com/rules.html)
