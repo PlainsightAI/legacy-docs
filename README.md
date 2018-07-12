@@ -1,4 +1,4 @@
-# Sixgill Sense Platform
+# Sixgill Sense Platform Documentation
 
 Welcome to Sixgill Sense. Below are links to detailed documentation on the various major components of the platform.
 
@@ -61,3 +61,9 @@ Edge rules are a specific subset of rules that the Sense platform can reliably u
 Actions can contain template variables for dynamic email, sms, and push messages.   
 
 [Template](templates.md)
+
+## Landmarks
+
+Landmarks are geographical points of interest (POIs) defined by a perimeter. Landmarks can be used as conditions to rules that evaluate a device's proximity to an area.
+
+[Landmarks](http://docs.sixgill.com/landmarks.html)
