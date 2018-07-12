@@ -122,7 +122,9 @@ The platform is able to ingest generic IoT sensor data. Developers will need to 
 1.  Create an **IoT Devices** Channel if you do not have one already.
 2.  **Data Mapping** may be required depending on the format of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
 3.  Use the Channel API keys to register your IoT device. Use the JSON Web Token in the response to authenticate your future requests.
-4.  You can begin sending sensor data to the IoT events endpoint. See the IoT Events section of the [Ingress API](http://docs.sixgill.com/ingress-api.html) docs for more information.
+4.  You can begin sending sensor data to the IoT events endpoint using a [gateway](http://docs.sixgill.com/gateway-ingress-api.html) or other agent.  
+
+See the IoT Events section of the [Ingress API](http://docs.sixgill.com/ingress-api.html) docs for more information.
   
 
 ## Creating a Rule
@@ -237,12 +239,9 @@ The landmark will now be available in the **Select From Project Landmarks** drop
 The Sense dashboard functions such as logging in, creating projects, channels, rules, and landmarks can all be performed using the Sense API. 
 
 * [Sense API](http://docs.sixgill.com/sense-api.html) - The Sense API allows third party developers to access the majority of the Sense platform's functionality. 
+   * [Landmarks](http://docs.sixgill.com/landmarks.html)
    * [Rules](http://docs.sixgill.com/rules.html)
    * [Template](http://docs.sixgill.com/templates.html)
 * [Ingress API](http://docs.sixgill.com/ingress-api.html) - The Ingress API allows devices to register with and send data to the Sixgill Sense platform
 
-
-  
-
-  
 
