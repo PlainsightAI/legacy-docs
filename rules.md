@@ -118,7 +118,7 @@ Example:
 	"type": "sms",
 	"message": "test",
 	"recipients": {
-		"telephoneNumbers": ["5853144015"]
+		"telephoneNumbers": ["5551234567"]
 	}
 }]
 ```   
