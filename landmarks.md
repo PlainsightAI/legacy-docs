@@ -40,7 +40,7 @@ A landmark defined by a circle around a central latitude and longitude. Radius i
 Example:
 ```json
 "geometry": {
-        "center": {
+	"center": {
             "lat": 34.069076,
             "lon": -118.444846
         },
@@ -60,14 +60,14 @@ A landmark defined by a rectangle specified by its northwestern (NW) and southea
 
 ```json
 "geometry": {
-            "nw": {
-                    "lat": 33.98709612420996,
-					"lon": -118.46703218199536
-            },
-            "se": {
-					"lat": 33.96460416426154,
-					"lon": -118.44797776915355
-            }
+    "nw": {
+    	"lat": 33.98709612420996,
+	"lon": -118.46703218199536
+    },
+    "se": {
+	"lat": 33.96460416426154,
+	"lon": -118.44797776915355
+    }
 }
 ```
 Fields:
