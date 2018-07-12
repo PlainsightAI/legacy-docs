@@ -859,7 +859,7 @@ no content
 ```
 [:arrow_up:TOC](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
-See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
+Creates a circle landmark. See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
 
 ```json
 {
@@ -884,7 +884,8 @@ no content
 ```
 [:arrow_up:TOC](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
-See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
+
+Creates a rectangle landmark. See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
 
 ```json
 {
@@ -912,7 +913,8 @@ no content
 ```
 [:arrow_up:TOC](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
-See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
+
+Creates a polygon landmark. See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
 
 ```json
 {
