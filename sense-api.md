@@ -4,6 +4,61 @@
 
 The Sense API allows third party developers to access the majority of the Sense platform's functionality. It is a RESTful JSON API that accepts HTTP requests.
 
+[Authentication](#authentication)
+[API Examples](#api-examples)
+
+## Routes TOC
+Method | Endpoint | Code | Link
+-|-|-|-
+POST | /v2/signup | 204 | [link](#post-v2signup)
+POST | /v2/verify-email | 200 | [link](#post-v2verify-email)
+POST | /v2/login | 200 | [link](#post-v2login)
+PUT | /v2/users/me | 200 | [link](#put-v2usersme)
+GET | /v2/users/me | 200 | [link](#get-v2usersme)
+GET | /v2/organizations | 200 | [link](#get-v2organizations)
+GET | /v2/organizations/:organizationID | 200 | [link](#get-v2organizationsorganizationid)
+POST | /v2/login | 200 | [link](#post-v2login)
+POST | /v2/login | 200 | [link](#post-v2login-with-org)
+POST | /v2/setOrganization | 200 | [link](#post-v2setorganization)
+POST | /v2/invite | 204 | [link](#post-v2invite)
+POST | /v2/accept-invite | 200 | [link](#post-v2accept-invite)
+GET | /v2/users | 200 | [link](#get-v2users)
+GET | /v2/users/:userID | 200 | [link](#get-v2usersuserid)
+POST | /v2/channels | 201 | [link](#post-v2channels)
+GET | /v2/channels/:channelID | 200 | [link](#get-v2channelschannelid)
+GET | /v2/channels | 200 | [link](#get-v2channels)
+POST | /v2/channels/:channelID/apiKeys | 201 | [link](#post-v2channelschannelidapikeys)
+PUT | /v2/channels/:channelID/apiKeys/:apiKeyID | 200 | [link](#put-v2channelschannelidapikeysapikeyid)
+GET | /v2/channels/:channelID/apiKeys | 200 | [link](#get-v2channelschannelidapikeys)
+DELETE | /v2/channels/:channelID/apiKeys/:apiKeyID | 204 | [link](#delete-v2channelschannelidapikeysapikeyid)
+POST | /v2/channels/:channelID/devices | 201 | [link](#post-v2channelschanneliddevices)
+POST | /v2/channels/:channelID/devices | 201 | [link](#post-v2channelschanneliddevices)
+POST | /v2/channels/:channelID/devices | 201 | [link](#post-v2channelschanneliddevices)
+GET | /v2/channels/:channelID/devices | 200 | [link](#get-v2channelschanneliddevices)
+GET | /v2/devices | 200 | [link](#get-v2devices)
+GET | /v2/devices/:deviceID | 200 | [link](#get-v2devicesdeviceid)
+POST | /v2/projects | 201 | [link](#post-v2projects)
+GET | /v2/projects/:projectID | 200 | [link](#get-v2projectsprojectid)
+PUT | /v2/projects/:projectID | 200 | [link](#put-v2projectsprojectid)
+GET | /v2/projects | 200 | [link](#get-v2projects)
+DELETE | /v2/projects/:projectID/channels/:channelID | 204 | [link](#delete-v2projectsprojectidchannelschannelid)
+POST | /v2/projects/:projectID/channels/:channelID | 201 | [link](#post-v2projectsprojectidchannelschannelid)
+GET | /v2/projects/:projectID/channels | 200 | [link](#get-v2projectsprojectidchannels)
+POST | /v2/projects/:projectID/landmarks | 201 | [link](#post-v2projectsprojectidlandmarks)
+POST | /v2/projects/:projectID/landmarks | 201 | [link](#post-v2projectsprojectidlandmarks)
+POST | /v2/projects/:projectID/landmarks | 201 | [link](#post-v2projectsprojectidlandmarks)
+GET | /v2/projects/:projectID/landmarks/:landmarkID | 200 | [link](#get-v2projectsprojectidlandmarkslandmarkid)
+GET | /v2/projects/:projectID/landmarks | 200 | [link](#get-v2projectsprojectidlandmarks)
+POST | /v2/landmarks/search | 200 | [link](#post-v2landmarkssearch)
+POST | /v2/landmarks/search | 200 | [link](#post-v2landmarkssearch)
+DELETE | /v2/projects/:projectID/landmarks/:landmarkID | 204 | [link](#delete-v2projectsprojectidlandmarkslandmarkid)
+POST | /v2/projects/:projectID/rules | 201 | [link](#post-v2projectsprojectidrules)
+GET | /v2/projects/:projectID/rules | 200 | [link](#get-v2projectsprojectidrules)
+GET | /v2/projects/:projectID/rules/:ruleID | 200 | [link](#get-v2projectsprojectidrulesruleid)
+GET | /v2/rules/help | 200 | [link](#get-v2ruleshelp)
+DELETE | /v2/projects/:projectID/rules/:ruleID | 204 | [link](#delete-v2projectsprojectidrulesruleid)
+DELETE | /v2/projects/:projectID/channels/:channelID | 204 | [link](#delete-v2projectsprojectidchannelschannelid)
+DELETE | /v2/projects/:projectID | 204 | [link](#delete-v2projectsprojectid)
 
 
 ## Authentication
@@ -84,60 +139,8 @@ curl -X POST http://sense-api-kone.sixgill.run/v2/login -H 'content-type: applic
 }'
 ```
 
-## Routes TOC
-Method | Endpoint | Code | Link
--|-|-|-
-POST | /v2/signup | 204 | [link](#post-v2signup)
-POST | /v2/verify-email | 200 | [link](#post-v2verify-email)
-POST | /v2/login | 200 | [link](#post-v2login)
-PUT | /v2/users/me | 200 | [link](#put-v2usersme)
-GET | /v2/users/me | 200 | [link](#get-v2usersme)
-GET | /v2/organizations | 200 | [link](#get-v2organizations)
-GET | /v2/organizations/:organizationID | 200 | [link](#get-v2organizationsorganizationid)
-POST | /v2/login | 200 | [link](#post-v2login)
-POST | /v2/login | 200 | [link](#post-v2login-with-org)
-POST | /v2/setOrganization | 200 | [link](#post-v2setorganization)
-POST | /v2/invite | 204 | [link](#post-v2invite)
-POST | /v2/accept-invite | 200 | [link](#post-v2accept-invite)
-GET | /v2/users | 200 | [link](#get-v2users)
-GET | /v2/users/:userID | 200 | [link](#get-v2usersuserid)
-POST | /v2/channels | 201 | [link](#post-v2channels)
-GET | /v2/channels/:channelID | 200 | [link](#get-v2channelschannelid)
-GET | /v2/channels | 200 | [link](#get-v2channels)
-POST | /v2/channels/:channelID/apiKeys | 201 | [link](#post-v2channelschannelidapikeys)
-PUT | /v2/channels/:channelID/apiKeys/:apiKeyID | 200 | [link](#put-v2channelschannelidapikeysapikeyid)
-GET | /v2/channels/:channelID/apiKeys | 200 | [link](#get-v2channelschannelidapikeys)
-DELETE | /v2/channels/:channelID/apiKeys/:apiKeyID | 204 | [link](#delete-v2channelschannelidapikeysapikeyid)
-POST | /v2/channels/:channelID/devices | 201 | [link](#post-v2channelschanneliddevices)
-POST | /v2/channels/:channelID/devices | 201 | [link](#post-v2channelschanneliddevices)
-POST | /v2/channels/:channelID/devices | 201 | [link](#post-v2channelschanneliddevices)
-GET | /v2/channels/:channelID/devices | 200 | [link](#get-v2channelschanneliddevices)
-GET | /v2/devices | 200 | [link](#get-v2devices)
-GET | /v2/devices/:deviceID | 200 | [link](#get-v2devicesdeviceid)
-POST | /v2/projects | 201 | [link](#post-v2projects)
-GET | /v2/projects/:projectID | 200 | [link](#get-v2projectsprojectid)
-PUT | /v2/projects/:projectID | 200 | [link](#put-v2projectsprojectid)
-GET | /v2/projects | 200 | [link](#get-v2projects)
-DELETE | /v2/projects/:projectID/channels/:channelID | 204 | [link](#delete-v2projectsprojectidchannelschannelid)
-POST | /v2/projects/:projectID/channels/:channelID | 201 | [link](#post-v2projectsprojectidchannelschannelid)
-GET | /v2/projects/:projectID/channels | 200 | [link](#get-v2projectsprojectidchannels)
-POST | /v2/projects/:projectID/landmarks | 201 | [link](#post-v2projectsprojectidlandmarks)
-POST | /v2/projects/:projectID/landmarks | 201 | [link](#post-v2projectsprojectidlandmarks)
-POST | /v2/projects/:projectID/landmarks | 201 | [link](#post-v2projectsprojectidlandmarks)
-GET | /v2/projects/:projectID/landmarks/:landmarkID | 200 | [link](#get-v2projectsprojectidlandmarkslandmarkid)
-GET | /v2/projects/:projectID/landmarks | 200 | [link](#get-v2projectsprojectidlandmarks)
-POST | /v2/landmarks/search | 200 | [link](#post-v2landmarkssearch)
-POST | /v2/landmarks/search | 200 | [link](#post-v2landmarkssearch)
-DELETE | /v2/projects/:projectID/landmarks/:landmarkID | 204 | [link](#delete-v2projectsprojectidlandmarkslandmarkid)
-POST | /v2/projects/:projectID/rules | 201 | [link](#post-v2projectsprojectidrules)
-GET | /v2/projects/:projectID/rules | 200 | [link](#get-v2projectsprojectidrules)
-GET | /v2/projects/:projectID/rules/:ruleID | 200 | [link](#get-v2projectsprojectidrulesruleid)
-GET | /v2/rules/help | 200 | [link](#get-v2ruleshelp)
-DELETE | /v2/projects/:projectID/rules/:ruleID | 204 | [link](#delete-v2projectsprojectidrulesruleid)
-DELETE | /v2/projects/:projectID/channels/:channelID | 204 | [link](#delete-v2projectsprojectidchannelschannelid)
-DELETE | /v2/projects/:projectID | 204 | [link](#delete-v2projectsprojectid)
+## API Examples
 
-## Examples
 ##### POST /v2/signup
 ```json
 {
