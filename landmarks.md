@@ -73,6 +73,7 @@ Fields:
 	
 > The following example creates a rectangle around Marina Del Rey using the northwestern and southeasten coordinates of the area.
 	
+Example:
 ```json
 "model": {
 	"geometry": {
@@ -100,6 +101,7 @@ Fields:
 
 > The following example creates a polygon around the specified area of the Santa Monica Pier.
 
+Example:
 ```json
 "model": {
 	"type": "polygon",
