@@ -28,8 +28,8 @@ Fields:
 * address - (optional) 
 * model - (required) Specifies the geometrical model this landmarks is based on.
   * geometry - (required) - Specifies the coordinates for this particular shape. [See Geometry Models](#geometry-models) for more information on required fields for each type
-  * type - (required) Shape of this landmark. Must be one of the following: circle, rectangle, polygon
-  
+  * type - (required) Shape of this landmark. Must be one of the following: circle, rectangle, polygon   
+ 
  
 ## Geometry Models
 
