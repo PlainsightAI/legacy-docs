@@ -7,7 +7,7 @@ for defining landmarks.
 Example:
 ```json
 {
-    "address": "test",
+    "address": "",
     "model": {
         "geometry": {
             "center": {
@@ -34,6 +34,21 @@ Fields:
 ## Geometry
 
 ### circle
+
+A landmark defined by a circle around a central latitude and longitude. Radius is in **meters**.
+
+> The following example creates a circle with a radius of 750m around the point 34.069076, -118.444846.
+
+Example:
+```json
+"geometry": {
+    "center": {
+        "lat": 34.069076,
+        "lon": -118.444846
+    },
+    "radius": 750
+}
+```
 
 ### rectange
 
