@@ -1,4 +1,4 @@
-# Sixgill Sense Platform Documentation
+# Sixgill Sense Documentation
 
 Welcome to Sixgill Sense. Below are links to detailed documentation on the various major components of the platform.
 
