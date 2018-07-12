@@ -161,7 +161,7 @@ curl -X POST http://sense-api-kone.sixgill.run/v2/login -H 'content-type: applic
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/verify-email
 ```json
 {
@@ -172,7 +172,7 @@ no content
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/login
 ```json
 {
