@@ -194,7 +194,7 @@ no content
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiMTUxMzIwMjUyNUBzaXhnaWxsLmNvbSIsIm5hbWUiOiJib3NzbWFuIn0sImV4cCI6MTUxNTc5NDUwMywic3ViIjoiMDFDMThZQktDSktBTVlRNlFRWlNQRjFXR0MiLCJ0b2tlblR5cGUiOiJhY2Nlc3MifQ.l-LF543kLWBUdVDNZeh7QNE8Q_9iQnh2Dn89RmS-OpY"
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### PUT /v2/users/me
 ```json
 {
@@ -219,7 +219,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/users/me
 `Code: 200`
 ```json
@@ -238,7 +238,7 @@ no content
 	}
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/organizations
 `Code: 200`
 ```json
@@ -259,7 +259,7 @@ no content
 	}
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/organizations/:organizationID
 `Code: 200`
 ```json
@@ -270,7 +270,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/setOrganization
 ```json
 {
@@ -283,7 +283,7 @@ no content
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiMTUxMzIwMjUyNUBzaXhnaWxsLmNvbSIsIm5hbWUiOiJib3NzbWFuIiwicGVybWlzc2lvbnMiOnsiYWRtaW4iOnRydWV9fSwiZXhwIjoxNTE1Nzk0NTA0LCJvcmdJZCI6IjAxQzE4WUJLQ0hUUE01RFNWVEVRRDVaRUFaIiwic3ViIjoiMDFDMThZQktDSktBTVlRNlFRWlNQRjFXR0MiLCJ0b2tlblR5cGUiOiJhY2Nlc3MifQ.V1UfpC7GZldKYzl_bjRDdFqMmvMn_dsfXZukOAZrg3c"
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/invite
 ```json
 {
@@ -296,7 +296,7 @@ no content
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/accept-invite
 ```json
 {
@@ -312,7 +312,7 @@ no content
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/users
 `Code: 200`
 ```json
@@ -346,7 +346,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/users/:userID
 `Code: 200`
 ```json
@@ -363,7 +363,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/channels
 ```json
 {
@@ -391,7 +391,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/channels/:channelID
 `Code: 200`
 ```json
@@ -404,7 +404,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/channels
 `Code: 200`
 ```json
@@ -424,7 +424,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/channels/:channelID/apiKeys
 `Code: 201`
 ```json
@@ -438,7 +438,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### PUT /v2/channels/:channelID/apiKeys/:apiKeyID
 ```json
 {
@@ -449,7 +449,7 @@ no content
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/channels/:channelID/apiKeys
 `Code: 200`
 ```json
@@ -465,13 +465,13 @@ no content
     ]
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### DELETE /v2/channels/:channelID/apiKeys/:apiKeyID
 `Code: 204`
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/channels/:channelID/devices
 ```json
 {
@@ -492,7 +492,7 @@ no content
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/channels/:channelID/devices
 ```json
 {
@@ -512,7 +512,7 @@ no content
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/channels/:channelID/devices
 ```json
 {
@@ -554,7 +554,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/channels/:channelID/devices
 `Code: 200`
 ```json
@@ -622,7 +622,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/devices
 `Code: 200`
 ```json
@@ -690,7 +690,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/devices/:deviceID
 `Code: 200`
 ```json
@@ -745,7 +745,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/projects
 `Code: 200`
 ```json
@@ -776,7 +776,7 @@ no content
 	}
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/projects/:projectID
 `Code: 200`
 ```json
@@ -797,7 +797,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### PUT /v2/projects/:projectID
 ```json
 {
@@ -816,7 +816,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/projects
 `Code: 200`
 ```json
@@ -837,7 +837,7 @@ no content
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### DELETE /v2/projects/:projectID/channels/:channelID
 `Code: 204`
 ```json
@@ -849,7 +849,7 @@ no content
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/projects/:projectID/channels
 `Code: 200`
 ```json
@@ -864,7 +864,7 @@ no content
     ]
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
 Creates a circle landmark. See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
 
@@ -889,7 +889,7 @@ Creates a circle landmark. See [Landmarks](http://docs.sixgill.com/landmarks.htm
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
 
 Creates a rectangle landmark. See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
@@ -918,7 +918,7 @@ Creates a rectangle landmark. See [Landmarks](http://docs.sixgill.com/landmarks.
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/projects/:projectID/landmarks
 
 Creates a polygon landmark. See [Landmarks](http://docs.sixgill.com/landmarks.html) docs for more information.
@@ -990,7 +990,7 @@ Creates a polygon landmark. See [Landmarks](http://docs.sixgill.com/landmarks.ht
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/projects/:projectID/landmarks/:landmarkID
 `Code: 200`
 ```json
@@ -1029,7 +1029,7 @@ Creates a polygon landmark. See [Landmarks](http://docs.sixgill.com/landmarks.ht
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/projects/:projectID/landmarks
 `Code: 200`
 ```json
@@ -1116,7 +1116,7 @@ Creates a polygon landmark. See [Landmarks](http://docs.sixgill.com/landmarks.ht
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/landmarks/search
 ```json
 {
@@ -1208,7 +1208,7 @@ Creates a polygon landmark. See [Landmarks](http://docs.sixgill.com/landmarks.ht
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/landmarks/search
 ```json
 {
@@ -1300,13 +1300,13 @@ Creates a polygon landmark. See [Landmarks](http://docs.sixgill.com/landmarks.ht
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### DELETE /v2/projects/:projectID/landmarks/:landmarkID
 `Code: 204`
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### POST /v2/projects/:projectID/rules
 
 See [Rules](http://docs.sixgill.com/rules.html) docs for more information.
@@ -1360,7 +1360,7 @@ Response:
 }
 ```
 
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 
 ##### GET /v2/projects/:projectID/rules
 `Code: 200`
@@ -1484,7 +1484,7 @@ Response:
 	}
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/projects/:projectID/rules/:ruleID
 `Code: 200`
 ```json
@@ -1512,7 +1512,7 @@ Response:
 	}
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### GET /v2/rules/help
 `Code: 200`
 ```json
@@ -1533,22 +1533,22 @@ Response:
     }
 }
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### DELETE /v2/projects/:projectID/rules/:ruleID
 `Code: 204`
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### DELETE /v2/projects/:projectID/channels/:channelID
 `Code: 204`
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
 ##### DELETE /v2/projects/:projectID
 `Code: 204`
 ```json
 no content
 ```
-[:arrow_up:TOC](#routes-toc)
+[top](#routes-toc)
