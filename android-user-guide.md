@@ -37,88 +37,43 @@ Some of these permissions are requirements, but some can be optionally omitted t
 For Android platforms that require Runtime Permissions, it is up to the developer using the Reach SDK to get all required permissions from user depending on which sensors are being used.
 If permissions are not requested or not granted by the user, the specific sensors will collect any data.
 Permissions required by SDK are:
+```xml
+<!--Location sensors-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false"/><!--optionally tell the device that app uses GPS, but it is not required-->
 
-| Permission | Feature |
-| --- | --- |
-| Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION | Location sensors |
-| Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN | Beacons sensors |
-| Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_WIFI_STATE, Manifest.permission.CHANGE_WIFI_STATE | Wifi sensors |
-| com.google.android.gms.permission.ACTIVITY_RECOGNITION | Activity sensors |
+<!--Beacons sensors-->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false"/><!--optionally tell the device that app uses Bluetooth LE sensors, but it is not required-->
 
+<!--Wifi sensors-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="true"/><!--tell the device that app uses wifi hardware, which is required-->
 
+<!--Activity recognition sensors-->
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
+
+<!--other required sensors-->
+    <uses-feature android:name="android.hardware.sensor.accelerometer"
+                  android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.compass"
+                  android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.gyroscope"
+                  android:required="true" />
+```
 
 1. Request and get required permissions from user before starting Reach sdk.
 
-```java
-/**
-    choose specific permissions as requied.
-    see 
-*/
-private static final List<String> REQUIRED_PERMISSIONS = Arrays.asList(
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION,
-        Manifest.permission.ACCESS_WIFI_STATE,
-        Manifest.permission.CHANGE_WIFI_STATE,
-        Manifest.permission.BLUETOOTH,
-        Manifest.permission.BLUETOOTH_ADMIN,
-        "com.google.android.gms.permission.ACTIVITY_RECOGNITION"
-);
-
-private static int MY_PERMISSIONS_REQUEST = 1234;
-
-// thisActivity is the current activity
-Activity thisActivity = this
-
-public boolean hasPermissions(List<String> permissions) {
-    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && permissions != null) {
-        for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-public boolean shouldShowRequestPermissionRationale(List<String> permissions) {
-    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && permissions != null) {
-        for (String permission : permissions) {
-            if (ContextCompat.shouldShowRequestPermissionRationale(context, permission)){
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-//inside function that is starting Reach SDK
-if (this.hasPermissions(REQUIRED_PERMISSIONS)) {
-    Reach.enable(this)
-}
-else{
-    // Should we show an explanation?
-    if (this.shouldShowRequestPermissionRationale(REQUIRED_PERMISSIONS)) {
-        // Show an explanation to the user *asynchronously* -- don't block
-        // this thread waiting for the user's response! After the user
-        // sees the explanation, try again to request the permission.
-    } else {
-        // No explanation needed, we can request the permission.
-        ContextCompat.requestPermissions(thisActivity,
-                REQUIRED_PERMISSIONS.toArray(),
-                MY_PERMISSIONS_REQUEST);
-    }
-}
-
-@Override
-public void onRequestPermissionsResult(int requestCode,
-        String permissions[], int[] grantResults) {
-        //use requestCode to verify this request
-        if(requestCode === MY_PERMISSIONS_REQUEST){
-            Reach.enable(this)
-        }
-}
-```
-For more info see [Requesting runtime permissions](https://developer.android.com/training/permissions/requesting.html)
+> For more info see [Requesting runtime permissions](https://developer.android.com/training/permissions/requesting.html)
 
 ## Usage
 Using the Reach SDK is simple.  Once initialized and enabled, the SDK will run in the background.
