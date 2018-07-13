@@ -71,7 +71,7 @@ Permissions required by SDK are:
                   android:required="true" />
 ```
 
-1. Request and get required permissions from user before starting Reach sdk.
+On devices that require runtime permissions request and acquire required permissions from user before starting Reach sdk.
 
 > For more info see [Requesting runtime permissions](https://developer.android.com/training/permissions/requesting.html)
 
