@@ -27,6 +27,7 @@ Once added as your app's dependency, add the following dependencies to your app 
     implementation 'com.google.android.gms:play-services-gcm:11.8.0'
     implementation 'com.google.android.gms:play-services-location:11.8.0'
 ```
+**Note: the above only applies if you are including `.aar` manually instead of using sdk hosted on cloud**
 
 
 ## Configuration
@@ -112,6 +113,48 @@ public class MainApplication extends Application {
 }
 ```
 > Note: `initWithAPIKey` must be called in Application instance class before using Reach SDK at all
+
+### Integrating Push Notifications
+
+Services for token refreshes and receiving messages are required to [integrate push notifications](https://firebase.google.com/docs/cloud-messaging/).  Once a push notification is received it is based to the Reach SDK for processing.  If you application hasn't integrated push yet, simply create the following classes and add the services to your AndroidManifest.xml.  Otherwise just add the calls to the Reach SDK.  
+
+AndroidManifest.xml
+```xml 
+<service
+	android:name=".MyFirebaseInstanceIDService">
+	<intent-filter>
+		<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+	</intent-filter>
+</service>
+<service
+	android:name=".MyFirebaseMessagingService">
+	<intent-filter>
+		<action android:name="com.google.firebase.MESSAGING_EVENT"/>
+	</intent-filter>
+</service>
+```
+
+MyFirebaseInstanceIDService.java
+```java
+public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
+    @Override
+    public void onTokenRefresh() {
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Reach.setPushToken(getApplicationContext(), refreshedToken);
+    }
+}
+```
+
+MyFirebaseMessagingService.java
+```java
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
+    @Override
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        super.onMessageReceived(remoteMessage);
+        Reach.processCommand(remoteMessage);
+    }
+}
+```
 
 ### Choosing Providers
 
@@ -240,30 +283,3 @@ manager.registerReceiver(pushReciever, new IntentFilter(Reach.PUSH_BROADCAST));
 ```
 > Note: to prevent memory leaks, always make sure to unregister recievers when not in use or context is destroyed.
 See [unregistering recievers](https://developer.android.com/reference/android/content/Context.html#unregisterReceiver(android.content.BroadcastReceiver))
-
-
-### Other Notes
-
-If including `.aar` file manually, you need to put sdk dependencies in you app dependecies.
-**Note: this only applies if you are including `.aar` manually instead of using sdk hosted on cloud**
-
-[Generating .aar](https://github.com/sixgill/android-sdk-java/tree/API-integration#user-content-installation)
-
-build.gradle(app level)
-```gradle
-dependencies {
-    ...
-    implementation 'javax.annotation:javax.annotation-api:1.2'
-    implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
-    implementation 'com.google.code.gson:gson:2.8.0'
-    implementation 'com.google.firebase:firebase-messaging:11.8.0'
-
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-protobuf:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
-    implementation 'com.google.android.gms:play-services-gcm:11.8.0'
-    implementation 'com.google.android.gms:play-services-location:11.8.0'
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-    ...
-}
-```
