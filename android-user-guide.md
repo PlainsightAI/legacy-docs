@@ -15,7 +15,18 @@ compile 'com.sixgill.reach:reach:1.0.0'
 
 **Manual**
 
-~~Download the [latest Reach Android Archive](https://assets.sixgill.com/sdk/android/1.0.0.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).~~
+Download the [latest Reach Android Archive](https://assets.sixgill.com/sdk/android/1.0.0.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+
+Once added as your app's dependency, add the following dependencies to your app level build file-
+```
+    implementation 'com.google.protobuf:protobuf-java:3.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-protobuf:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.google.android.gms:play-services-gcm:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
+```
 
 
 ## Configuration
