@@ -26,6 +26,9 @@ Once added as your app's dependency, add the following dependencies to your app 
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.google.android.gms:play-services-gcm:11.8.0'
     implementation 'com.google.android.gms:play-services-location:11.8.0'
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    androidTestImplementation "android.arch.persistence.room:testing:1.0.0"
 ```
 **Note: the above only applies if you are including `.aar` manually instead of using sdk hosted on cloud**
 
