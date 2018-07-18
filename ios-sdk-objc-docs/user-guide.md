@@ -4,7 +4,7 @@ The Sixgill Reach iOS SDK v2 is a package for collecting iOS device sensor data 
 ## Installation
 To integrate Sixgill into your Xcode project use CocoaPods
 
-### Cocoapod
+### CocoaPods
 CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
 ```
 $ gem install cocoapods
@@ -97,11 +97,11 @@ In your app, when you want to stop the SDK, add the following code:
 [SGSDK disable];
 ```
 
-### Integrating Push Notification
+### Integrating Push Notifications
 
-First check you have `Push Notification` in `Permission Configuration`  then go ahead with following steps:
+First check you have `Push Notification` in `Permission Configuration`, then go ahead with following steps:
 
-To register for push notifications, add following in app delegate's `didFinishLaunchingWithOptions` method:
+To register for push notifications, add the following in app delegate's `didFinishLaunchingWithOptions` method:
 ```objc
 [[UIApplication sharedApplication] registerForRemoteNotifications];
 ```
@@ -124,12 +124,12 @@ ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
 ### SDK functonalities
 Reach provides following methods to expose it's dfferent functionalities-
 
-To start Reach sensors, call enable.
+To start Reach sensors:
 ```objc
 [SGSDK enable];
 ```
 
-To stop Reach sensors, call disable.
+To stop Reach sensors:
 ```objc
 [SGSDK disable];
 ```
@@ -154,7 +154,7 @@ To force sensors update:
 [SGSDK forceSensorUpdate];
 ```
 
-To get sensorUpdateEvent location
+To get sensor update event location:
 ```
 NSArray *locations = [SGSDK sensorUpdateHistory:count];
 
@@ -166,55 +166,55 @@ for (NSDictionary *d in locations) {
 }
 ```
 
-To get the sensor updates, and show them in app. Do the following:
+To get the sensor updates:
 
-1. In class where you want this data, extend that class with  `SensorUpdateDelegate`.
-2. On viewDidAppear, do this
+- In class where you want this data, extend that class with  `SensorUpdateDelegate`.
+- On viewDidAppear, do this
 ```objc
 [SGSDK registerForSensorUpdates:self];
 ```
-3. On viewWillDisappear, do this
+- On viewWillDisappear, do this
 ```objc
 [SGSDK registerForSensorUpdates:nil];
 ```
-4. Implement this method `sensorUpdateSentWithData`  to access sensor updated data. This method gives dictionary, for each data refer this:
-- Activity
-```
-if (sensorData[@"SG_ACTIVITY_RESOURCE"]) {
-    NSString *s = sensorData[@"SG_ACTIVITY_RESOURCE"][@"activity"];
-}
-```
-- Location Coordinate
-```
-if (sensorData[@"SG_LOCATION_RESOURCE"]) {
-    CLLocation *l = (CLLocation *)sensorData[@"SG_LOCATION_RESOURCE"][@"location"];
-}
-```
-- Cadence
-```
-if (sensorData[@"SG_CONFIGURATION_RESOURCE"]) {
-    NSDictionary *d = sensorData[@"SG_CONFIGURATION_RESOURCE"];
-
-    if (d[@"cadence"]) {
-        NSNumber *cadenceSecondsNum = d[@"cadence"];
+- Implement this method `sensorUpdateSentWithData`  to access sensor updated data. This method gives `sensorData` as NSDictionary and it can be used to get different data. For use `sensorData` refer the following:
+    - Activity
+    ```
+    if (sensorData[@"SG_ACTIVITY_RESOURCE"]) {
+        NSString *s = sensorData[@"SG_ACTIVITY_RESOURCE"][@"activity"];
     }
-}
-```
-- Battery Percentage
-```
-if (sensorData[@"SG_DEVICE_RESOURCE"]) {
-    NSDictionary *d = sensorData[@"SG_DEVICE_RESOURCE"];
-
-    if (d[@"BATTERY_PERCENT"]) {
-        NSNumber *batteryPercent = d[@"BATTERY_PERCENT"];
-
+    ```
+    - Location Coordinate
+    ```
+    if (sensorData[@"SG_LOCATION_RESOURCE"]) {
+        CLLocation *l = (CLLocation *)sensorData[@"SG_LOCATION_RESOURCE"][@"location"];
     }
-}
-```
--  Beacons in range count
-```
-if (sensorData[@"SG_BLUETOOTH_RESOURCE"]) {
-    NSArray *b = sensorData[@"SG_BLUETOOTH_RESOURCE"];
-    return [NSString stringWithFormat:@"%lu",b.count];
-}
-```
+    ```
+    - Cadence
+    ```
+    if (sensorData[@"SG_CONFIGURATION_RESOURCE"]) {
+        NSDictionary *d = sensorData[@"SG_CONFIGURATION_RESOURCE"];
+
+        if (d[@"cadence"]) {
+            NSNumber *cadenceSecondsNum = d[@"cadence"];
+        }
+    }
+    ```
+    - Battery Percentage
+    ```
+    if (sensorData[@"SG_DEVICE_RESOURCE"]) {
+        NSDictionary *d = sensorData[@"SG_DEVICE_RESOURCE"];
+
+        if (d[@"BATTERY_PERCENT"]) {
+            NSNumber *batteryPercent = d[@"BATTERY_PERCENT"];
+
+        }
+    }
+    ```
+    -  Beacons in range count
+    ```
+    if (sensorData[@"SG_BLUETOOTH_RESOURCE"]) {
+        NSArray *b = sensorData[@"SG_BLUETOOTH_RESOURCE"];
+        return [NSString stringWithFormat:@"%lu",b.count];
+    }
+    ```
