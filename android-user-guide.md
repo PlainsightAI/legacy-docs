@@ -275,14 +275,14 @@ Reach.processCommand(remoteMessage, context)
 To listen to push notifications from SixGill, register broadcast listeners with `IntentFilter` of `Reach.PUSH_BROADCAST`
 
 ```java
-const pushReciever = new BroadcastReciver(){
+const pushReceiver = new BroadcastReceiver(){
     @Override
     public void onReceive(Context context, Intent intent) {
         String actionType = intent.getStringExtras(Reach.PUSH_TYPE)
     }
 }
 LocalBroadcastManager manager = LocalBroadcastManager.getInstance(context);
-manager.registerReceiver(pushReciever, new IntentFilter(Reach.PUSH_BROADCAST));
+manager.registerReceiver(pushReceiver, new IntentFilter(Reach.PUSH_BROADCAST));
 ```
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
 See [unregistering receivers](https://developer.android.com/reference/android/content/Context.html#unregisterReceiver(android.content.BroadcastReceiver))
