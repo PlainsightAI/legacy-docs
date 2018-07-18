@@ -86,7 +86,7 @@ Permissions required by SDK are:
                   android:required="true" />
 ```
 
-On devices that require runtime permissions request and acquire required permissions from user before starting Reach sdk.
+On devices that require runtime permissions request and acquire required permissions from the user before starting Reach SDK.
 
 > For more info see [Requesting runtime permissions](https://developer.android.com/training/permissions/requesting.html)
 
@@ -119,21 +119,21 @@ public class MainApplication extends Application {
 
 ### Integrating Push Notifications
 
-Services for token refreshes and receiving messages are required to [integrate push notifications](https://firebase.google.com/docs/cloud-messaging/).  Once a push notification is received it is based to the Reach SDK for processing.  If you application hasn't integrated push yet, simply create the following classes and add the services to your AndroidManifest.xml.  Otherwise just add the calls to the Reach SDK.  
+Services for token refreshes and receiving messages are required to [integrate push notifications](https://firebase.google.com/docs/cloud-messaging/).  Once a push notification is received it is based to the Reach SDK for processing.  If your application hasn't integrated push yet, simply create the following classes and add the services to your AndroidManifest.xml.  Otherwise just add the calls to the Reach SDK.  
 
 AndroidManifest.xml
 ```xml 
 <service
-	android:name=".MyFirebaseInstanceIDService">
-	<intent-filter>
-		<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-	</intent-filter>
+    android:name=".MyFirebaseInstanceIDService">
+    <intent-filter>
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+    </intent-filter>
 </service>
 <service
-	android:name=".MyFirebaseMessagingService">
-	<intent-filter>
-		<action android:name="com.google.firebase.MESSAGING_EVENT"/>
-	</intent-filter>
+    android:name=".MyFirebaseMessagingService">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+    </intent-filter>
 </service>
 ```
 
@@ -163,7 +163,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 Reach offers some 3rd party provider options for indoors positioning.
 To enable a provider you have to explicitly set *Location Provider* before calling `Reach.enable`
-Currently there are two providers available, Indoors and IndoorAtlas. Choosing a provider to run is completely optional.
+Currently, there are two providers available, Indoors and IndoorAtlas. Choosing a provider to run is completely optional.
 For scenarios where a provider is not able to give user position, Reach fallbacks to GPS positioning.
 
 ```java
@@ -272,7 +272,7 @@ To perform actions based on Push Notifications:
 Reach.processCommand(remoteMessage, context)
 ```
 
-To listen push notifications from SixGill, register broadcast listners to intent with filter of `Reach.PUSH_BROADCAST`
+To listen to push notifications from SixGill, register broadcast listeners with `IntentFilter` of `Reach.PUSH_BROADCAST`
 
 ```java
 const pushReciever = new BroadcastReciver(){
@@ -284,5 +284,5 @@ const pushReciever = new BroadcastReciver(){
 LocalBroadcastManager manager = LocalBroadcastManager.getInstance(context);
 manager.registerReceiver(pushReciever, new IntentFilter(Reach.PUSH_BROADCAST));
 ```
-> Note: to prevent memory leaks, always make sure to unregister recievers when not in use or context is destroyed.
-See [unregistering recievers](https://developer.android.com/reference/android/content/Context.html#unregisterReceiver(android.content.BroadcastReceiver))
+> Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
+See [unregistering receivers](https://developer.android.com/reference/android/content/Context.html#unregisterReceiver(android.content.BroadcastReceiver))
