@@ -177,7 +177,7 @@ To get the sensor updates:
 ```objc
 [SGSDK registerForSensorUpdates:nil];
 ```
-- Implement this method `sensorUpdateSentWithData`  to access sensor updated data. This method gives `sensorData` as NSDictionary and it can be used to get different data. For use `sensorData` refer the following:
+- Implement this method `sensorUpdateSentWithData`  to access sensor updated data. This method gives `sensorData` as NSDictionary and it can be used to get different data. To use sensorData, refer to the following snippets:
     - Activity
     ```
     if (sensorData[@"SG_ACTIVITY_RESOURCE"]) {
