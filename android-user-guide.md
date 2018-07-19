@@ -204,6 +204,16 @@ To start Reach sensors, call `enable` passing a `Context`.
 */
 Reach.enable(context);
 ```
+Optionally you can pass a second boolean parameter to `Reach.enable`, setting the debug mode to `true` or `false`. Logs are printed in console based on the debug mode option value. This defaults to `false`.
+```java
+/**
+* @param context {@link Context}
+* @param boolean
+* @return void
+*/
+Reach.enable(context, true);
+```
+
 
 To stop Reach sensors, call `disable` passing a `Context`.
 
@@ -223,24 +233,6 @@ To get Sixgill Device ID:
 * @return String - SixGill DeviceId
 */
 Reach.deviceId(context)
-```
-
-To get Reach logs:
-```java
-/**
-* @param context {@link Context}
-* @return String - stored logs from SDK
-*/
-Reach.logs(context)
-```
-
-To clear Reach logs:
-```java
-/**
-* @param context {@link Context}
-* @return void
-*/
-Reach.clearLogs(context)
 ```
 
 To set device push token:
