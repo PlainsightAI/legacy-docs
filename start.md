@@ -242,6 +242,6 @@ The Sense dashboard functions such as logging in, creating projects, channels, r
    * [Landmarks](http://docs.sixgill.com/landmarks.html)
    * [Rules](http://docs.sixgill.com/rules.html)
    * [Template](http://docs.sixgill.com/templates.html)
-* [Ingress API](http://docs.sixgill.com/ingress-api.html) - The Ingress API allows devices to register with and send data to the Sixgill Sense platform
+* [Ingress API](http://docs.sixgill.com/ingress-api.html) - The Ingress API allows devices to register with and send sensor data to the Sixgill Sense platform
 
 
