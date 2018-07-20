@@ -3,15 +3,7 @@ The Sixgill Reach Android SDK is a package for collecting android device sensor 
 
 ## Installation
 
-~~Sixgill's Reach SDK can be installed using Gradle or~~ manually downloading and including an Android Archive.   
-
-~~**Gradle**~~
-
-~~Add the following to your app's build.gradle file:~~
-
-```
-compile 'com.sixgill.reach:reach:1.0.0'
-```
+Sixgill's Reach SDK can be installed by manually downloading and including an Android Archive.
 
 **Manual**
 
