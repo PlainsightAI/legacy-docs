@@ -59,7 +59,6 @@ DELETE | /v2/projects/:projectID/landmarks/:landmarkID | 204 | [link](#delete-v2
 POST | /v2/projects/:projectID/rules | 201 | [link](#post-v2projectsprojectidrules)
 GET | /v2/projects/:projectID/rules | 200 | [link](#get-v2projectsprojectidrules)
 GET | /v2/projects/:projectID/rules/:ruleID | 200 | [link](#get-v2projectsprojectidrulesruleid)
-GET | /v2/rules/help | 200 | [link](#get-v2ruleshelp)
 DELETE | /v2/projects/:projectID/rules/:ruleID | 204 | [link](#delete-v2projectsprojectidrulesruleid)
 DELETE | /v2/projects/:projectID/channels/:channelID | 204 | [link](#delete-v2projectsprojectidchannelschannelid)
 DELETE | /v2/projects/:projectID | 204 | [link](#delete-v2projectsprojectid)
@@ -1516,36 +1515,6 @@ See [Rules](http://docs.sixgill.com/rules.html) docs for more information.
 		}],
 		"createdAt": "2018-04-02T15:32:11Z"
 	}
-}
-```
-[top](#routes-toc)
-##### GET /v2/rules/help
-`Code: 200`
-```json
-{
-  "data": {
-    "actions": [
-      "no-op",
-      "send notification",
-      "email",
-      "change config"
-    ],
-    "conditions": [
-      "enter area",
-      "exit area",
-      "always true",
-      "always false"
-    ],
-    "properties": {
-      "Device Type": "deviceType",
-      "Manufacturer": "manufacturer",
-      "Model": "model",
-      "Operating System": "operatingSystem",
-      "Operating System Version": "osVersion",
-      "Software Version": "softwareVersion",
-      "Temperature": "temperature"
-    }
-  }
 }
 ```
 [top](#routes-toc)
