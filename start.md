@@ -1,7 +1,7 @@
 Getting Started with Sense
 ==========================================
 
-On-boarding users and devices in the Sense platform
+*A guide for on-boarding users and devices onto the Sense platform*
 
 *   [Create a Sixgill Sense account](#creating-an-account)
     *   [Joining an Existing Organization](#joining-an-existing-organization)
@@ -74,33 +74,32 @@ The certificate type should be listed on the left.
 - Click **Save**  
 The selected messaging type should be listed on the left.
 
-
-_Note: If you are using the Sync 2.0 demo app and would like to test the Send Push action, please contact support@sixgill.com to configure your Channel with the push certificate_  
+_Note: If you are using the Sync 2.0 demo app and would like to test the Send Push action, please contact support@sixgill.com to configure your Channel with the proper push certificate_  
 
 ## Connecting Devices
 Device sensor data is ingested into Sense 2.0 through the [Ingress API](http://docs.sixgill.com/ingress-api.html). For Android and iOS devices, this can be done by integrating the Sense SDK into a mobile app. The SDK handles sensor gathering at configurable intervals, and automatically sends the data to the Ingress API. The SDKs are authenticated using the API keys for their respective channels.
 
 ### iOS
 
-Sense Reach iOS SDK v1.0.0 _(released TBD)_
+Sense Reach iOS SDK v1.0.0 *(July 19th, 2018)*
 
 [Sixgill Reach iOS SDK User Guide](http://docs.sixgill.com/ios-sdk-objc-docs/user-guide.html)
 
 ### Android
 
-Sense Reach Android SDK v1.0.0 _(released TBD)_
+Sense Reach Android SDK v1.0.0 *(July 19th, 2018)*
 
 [Sixgill Reach Android SDK User Guide](http://docs.sixgill.com/android-user-guide.html)
   
 ### Sixgill Sync 2.0
 Users can also demo the mobile SDK capabilities by using the Sixgill Sync 2.0 demo application, available on the App Store and (coming soon) the Google Play Store.
 
-Sixgill Sync 2.0 for iOS (link)
+[Sixgill Sync 2.0 for iOS](https://itunes.apple.com/us/app/sixgill-sync-2-0/id1272269863?mt=8)
 
-Sixgill Sync 2.0 for Android (link)
+Sixgill Sync 2.0 for Android (coming soon)
 
 1.  Download the app on your device using the link above
-2.  Login with your Sense 2.0 account credentials. iOS devices should use an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
+2.  Login with your Sense 2.0 account credentials. iOS devices should select an **iOS Mobile Devices** Channel and Android devices should use an **Android Mobile Device** Channel
 
 ![](images/508297263.png)
 
@@ -119,13 +118,19 @@ You will know that Sync is connected by checking your Log Information pane. The 
 
 The platform is able to ingest generic IoT sensor data. Developers will need to use the [Ingress API](http://docs.sixgill.com/ingress-api.html) to send data to the IoT events endpoint.
 
-1.  Create an **IoT Devices** Channel if you do not have one already.
-2.  **Data Mapping** may be required depending on the format of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
+1.  [Schemas](#schemas) may be required depending on the format of your sensor data. Contact [support@sixgill.com](mailto:support@sixgill.com) with any questions regarding setting up your channel for IoT data.
+2. Create an **IoT Devices** Channel if you do not have one already and select the Schema you created.
 3.  Use the Channel API keys to register your IoT device. Use the JSON Web Token in the response to authenticate your future requests.
 4.  You can begin sending sensor data to the IoT events endpoint using a [gateway](http://docs.sixgill.com/gateway-ingress-api.html) or other agent.  
 
 See the IoT Events section of the [Ingress API](http://docs.sixgill.com/ingress-api.html) docs for more information.
   
+#### Schemas
+
+Device data needs to be mapped to fields so you can trigger rules and view analytics. This is done using Schemas. Mobile devices (iOS, Android) have predefined schemas that you can use with our SDK and you don’t need to configure them.  
+
+For IoT devices you need to first create a custom schema. You can send any kind of data with IoT devices. It is recommended that you generate IoT schema based on your event payload. Once your schema is defined you can use it in a Channel and see data being ingested. You can update a schema if necessary at a later time.
+
 
 ## Creating a Rule
 Rules are at the heart of device interactivity within the Sense platform. Rules define conditions around devices and sensor data and specify the actions to trigger when the conditions are met. For example, devices entering a geofence or coming within range of a beacon could trigger a notification to another device, send an email to a recipient, or post data to another web service. Rules can be complex and perform multiple actions or include data from multiple channels.
