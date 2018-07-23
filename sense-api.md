@@ -128,14 +128,14 @@ Note that certain calls require a token that includes the organization ID, such 
 
 > Get the organization ID:
 ```shell
-curl -X GET http://sense-api-kone.sixgill.run/v2/organizations \
+curl -X GET http://sense-api.sixgill.com/v2/organizations \
   -H 'authorization: Bearer JSONWEBTOKEN_1' \
   -H 'content-type: application/json'
 ```  
   
 > and make the login request with the organizationId:
 ```shell
-curl -X POST http://sense-api-kone.sixgill.run/v2/login -H 'content-type: application/json' -d '{
+curl -X POST http://sense-api.sixgill.com/v2/login -H 'content-type: application/json' -d '{
     "email": "1513202525@sixgill.com",
     "organizationId": "01CBTBPBV4M6PK2VEGY56N8NN1",
     "password": "password"
