@@ -1309,7 +1309,7 @@ no content
 [top](#routes-toc)
 ##### POST /v2/projects/:projectID/rules
 
-See [Rules](http://docs.sixgill.com/rules.html) docs for more information.
+Creates a simple enter landmark rule with a push action. See [Rules](http://docs.sixgill.com/rules.html) docs for more information.
 
 ```json
 {
@@ -1363,6 +1363,9 @@ Response:
 [top](#routes-toc)
 
 ##### GET /v2/projects/:projectID/rules
+
+See [Rules](http://docs.sixgill.com/rules.html) docs for more information.
+
 `Code: 200`
 ```json
 {
@@ -1486,6 +1489,9 @@ Response:
 ```
 [top](#routes-toc)
 ##### GET /v2/projects/:projectID/rules/:ruleID
+
+See [Rules](http://docs.sixgill.com/rules.html) docs for more information.
+
 `Code: 200`
 ```json
 {
@@ -1517,20 +1523,29 @@ Response:
 `Code: 200`
 ```json
 {
-    "data": {
-        "actions": [
-            "no-op",
-            "send notification",
-            "email",
-            "change config"
-        ],
-        "conditions": [
-            "enter area",
-            "exit area",
-            "always true",
-            "always false"
-        ]
+  "data": {
+    "actions": [
+      "no-op",
+      "send notification",
+      "email",
+      "change config"
+    ],
+    "conditions": [
+      "enter area",
+      "exit area",
+      "always true",
+      "always false"
+    ],
+    "properties": {
+      "Device Type": "deviceType",
+      "Manufacturer": "manufacturer",
+      "Model": "model",
+      "Operating System": "operatingSystem",
+      "Operating System Version": "osVersion",
+      "Software Version": "softwareVersion",
+      "Temperature": "temperature"
     }
+  }
 }
 ```
 [top](#routes-toc)
