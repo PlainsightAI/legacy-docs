@@ -6,6 +6,7 @@ Getting Started with Sense
 *   [Create a Sixgill Sense account](#creating-an-account)
     *   [Joining an Existing Organization](#joining-an-existing-organization)
 *   [Creating a Channel](#creating-a-channel)
+    *    [API Keys](#api-keys)
 *   [Configuring a Channel for Push](#configuring-a-channel-for-push)
     *   [Apple Push](#apple-push)
     *   [Android Push](#android-push)
