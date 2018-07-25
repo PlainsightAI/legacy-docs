@@ -57,7 +57,7 @@ A data Channel is a source of data that flows into the Sense platform. For examp
 This will create a Channel for the type of data you wish to ingest.
 
 ## API Keys
-To send sensor data to the platform using the Ingress API or the mobile SDKs, you will need to authenticate using an API key for the respective channel - eg, iOS devices use an iOS channel, IoT devices use an IoT channel, etc. You can get these keys from the **Channels** page on the dashboard. *If you are not the Admin of your organization, you will need to get this key from the admin.*
+To send sensor data to the platform using the Ingress API or the mobile SDKs, you will need to authenticate using an API key for the respective channel - eg, iOS devices use an iOS channel, IoT devices use an IoT channel, etc. You can get these keys from the **Channels** page on the dashboard.
 
 1. In the dashboard, go to Channels
 2. Click the appropriate channel on the left, or create a new channel.
