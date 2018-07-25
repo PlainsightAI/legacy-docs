@@ -111,7 +111,7 @@ public class MainApplication extends Application {
 
 ### Integrating Push Notifications
 
-Services for token refreshes and receiving messages are required to [integrate push notifications](https://firebase.google.com/docs/cloud-messaging/).  Once a push notification is received it is based to the Reach SDK for processing.  If your application hasn't integrated push yet, simply create the following classes and add the services to your AndroidManifest.xml.  Otherwise just add the calls to the Reach SDK.  
+Services for token refreshes and receiving messages are required to [integrate push notifications](https://firebase.google.com/docs/cloud-messaging/).  Once a push notification is received it is based to the Reach SDK for processing.  If your application hasn't integrated push yet, simply create the following classes and add the services to your AndroidManifest.xml.  Otherwise just add the calls to the Reach SDK. Be sure to set the API key for Firebase Cloud Messaging through the dashboard. See [Configuring Your Channel for Push](http://docs.sixgill.com/start.html#configuring-a-channel-for-push) in the Getting Started Guide.
 
 AndroidManifest.xml
 ```xml 
