@@ -225,7 +225,7 @@ Description:
 
 Fields:
 * type - "event free form"
-* predicate - String representing the freeform equation to be evaluated. This is typically construcgted off of the event payload that will be received for the device. 
+* predicate - String representing the freeform equation to be evaluated. This is typically constructed off of the event payload that will be received for the device. 
 
 > The following example triggers the rule when the data.tempF value in the event payload is equal to 67.
 Example:
