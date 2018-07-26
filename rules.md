@@ -33,7 +33,7 @@ Fields:
 
 ## Actions
 
-Rules triggers one or more actions when an event occurs. Available actions include sending an SMS, a push notification to a device, sending an email, or invoking a webhook. 
+Rules trigger one or more actions when an event occurs. Available actions include sending an SMS, a push notification to a device, sending an email, or invoking a webhook. 
 
 ### push
 Sends a push notification to the triggering mobile device. *Requires a mobile app using the Reach SDK.*
