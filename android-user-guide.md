@@ -7,7 +7,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.0.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.1.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
@@ -267,6 +267,22 @@ const pushReceiver = new BroadcastReceiver(){
 }
 LocalBroadcastManager manager = LocalBroadcastManager.getInstance(context);
 manager.registerReceiver(pushReceiver, new IntentFilter(Reach.PUSH_BROADCAST));
+```
+
+To get the latest `Ingress.Event` generated from the Reach SDK, register broadcast listeners with `IntentFilter` of `Reach.EVENT_BROADCAST`. You'll get the Base64 encoded `Ingress.Event` object in intent payload
+
+```java
+BroadcastReceiver mEventReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                String encodedEvent = bundle.getString(Reach.EVENT_DATA);
+                byte[] b = Base64.decode(encodedEvent, Base64.DEFAULT);
+                Ingress.Event event = Ingress.Event.parseFrom(b);
+            }
+        }
+    };
 ```
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
 See [unregistering receivers](https://developer.android.com/reference/android/content/Context.html#unregisterReceiver(android.content.BroadcastReceiver))
