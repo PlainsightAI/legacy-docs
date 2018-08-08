@@ -44,9 +44,58 @@ Next, add the second attribute named "tempF" the same way:
 9. In the **Data Type** drop-down, select "Integer"
 10. Click **Create Attribute**
 
-Add the final attribute named "humidity" in a similar manner. Your schema should look like the following:
+Add the final attribute named "humidity" in a similar manner. When finished, click **Create Schema**  Your schema should look like the following:
 
-**SCREENSHOT*
+**SCREENSHOT**
 
 
 To create a schema using the API, 
+
+##### POST /v2/schemas
+
+```json
+{
+   "name": "my schema",
+   "format": "json",
+	  "fields": [{
+      "id": "data",
+		    "type": "object",
+      "fields": [{
+			     "id": "humidity",
+			     "type": "integer"
+		  }, {
+			"id": "tempF",
+			"type": "integer"
+		}]
+	}]
+}
+```
+`Code: 201`
+```json
+{
+  "data": {
+    "id": "01CMDMCSF92P5ZSHKE119R9BTE",
+    "name": "test 3",
+    "format": "json",
+    "organizationId": "01C54H1MTA8K8ZZ0B7WNB3P0N6",
+    "fields": [
+      {
+        "id": "data",
+        "type": "object",
+        "fields": [
+          {
+            "id": "humidity",
+            "type": "integer"
+          },
+          {
+            "id": "tempF",
+            "type": "integer"
+          }
+        ]
+      }
+    ],
+    "createdAt": "2018-08-08T20:42:03Z",
+    "updatedAt": "2018-08-08T20:42:03Z"
+  }
+}
+```
