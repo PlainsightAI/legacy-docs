@@ -30,7 +30,7 @@ To define a schema for a payload such as
       "humidity":23
     }
 ```
-add each attribute individually.
+add each attribute individually under the **Define Fields** section.
 
 1. Click **Add new attribute**
 2. In the **Attribute Location** drop-down, ensure that "root" is selected
@@ -44,7 +44,7 @@ Next, add the second attribute named "tempF" the same way:
 9. In the **Data Type** drop-down, select "Integer"
 10. Click **Create Attribute**
 
-Add the final attribute named "humidity" in a similar manner. Your schema should look like the following
+Add the final attribute named "humidity" in a similar manner. Your schema should look like the following:
 
 **SCREENSHOT*
 
