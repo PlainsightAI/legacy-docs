@@ -11,7 +11,7 @@ You can update a schema if necessary at a later time.
 
 ## Creating a Schema
 
-To create a schema through the dashboardL
+To create a schema through the dashboard
 1. Go to **Channels**
 2. In the left sidebar under Schemas, click **+ Add Schema**
 
@@ -23,6 +23,30 @@ To create a schema through the dashboardL
 
 
 Here is a simple example:
+To define a schema for a payload such as
+```json
+ "data":{
+      "tempF":52,
+      "humidity":23
+    }
+```
+add each attribute individually.
+
+1. Click **Add new attribute**
+2. In the **Attribute Location** drop-down, ensure that "root" is selected
+3. In the **Attribute Identifier** field, enter "data"
+4. In the **Data Type** drop-down, select "Object"
+5. Click **Create Attribute** 
+Next, add the second attribute named "tempF" the same way:  
+6. Click **Add new attribute**
+7. In the **Attribute Location** drop-down, select "data"
+8. In the **Attribute Identifier** field, enter "tempF"
+9. In the **Data Type** drop-down, select "Integer"
+10. Click **Create Attribute**
+
+Add the final attribute named "humidity" in a similar manner. Your schema should look like the following
+
+**SCREENSHOT*
 
 
 To create a schema using the API, 
