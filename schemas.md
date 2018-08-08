@@ -13,13 +13,16 @@ You can update a schema if necessary at a later time.
 
 To create a schema through the dashboardL
 1. Go to **Channels**
-2. In the left sidebar, click the "+" under Schemas to add a new schema
+2. In the left sidebar under Schemas, click **+ Add Schema**
 
 **SCREENSHOT**
 
-3. Follow the on-screen instructions to add objects and attributes to your schema.
+3. **Name & Details** - Enter a name for the schema in "Name" field
+4. Select **JSON** or **Query String** radio button depending on the schema you wish to create
+5. **Define Fields** - Use this section to specify the format of your schema
 
-Here is a simple example
+
+Here is a simple example:
 
 
 To create a schema using the API, 
