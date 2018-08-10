@@ -56,7 +56,7 @@ To create a schema using the API:
 Fields:
 * name - the name of this schema
 * format - "json" for a JSON formatted data
-* fields - the object representation of the structure of your data. Supports multiple nested fields.
+* fields - the object representation of the structure of your data. Supports multiple levels of nested fields.
 	* id - the name of your attribute
 	* type - the type of attribute: 'object', 'string', 'float', 'integer', 'timestamp', 'datetime'
 ```json
