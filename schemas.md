@@ -7,7 +7,7 @@ nd you don’t need to configure them.
 For IoT devices you need to first create a custom schema. You can send any kind of data with IoT devices.
 It is recommended that you generate IoT schema based on your event payload. 
 Once your schema is defined you can use it in a Channel and see data being ingested. 
-You can update a schema if necessary at a later time.
+You can update a schema if necessary at a later time. You will need to include all the 
 
 ## Creating a Schema
 
@@ -15,15 +15,15 @@ To create a schema through the dashboard
 1. Go to **Channels**
 2. In the left sidebar under Schemas, click **+ Add Schema**
 
-**SCREENSHOT**
+![](images/schema_adding_schema.png)
 
 3. **Name & Details** - Enter a name for the schema in "Name" field
-4. Select **JSON** or **Query String** radio button depending on the schema you wish to create
+4. Select **JSON** or **Query String** depending on the schema you wish to create
 5. **Define Fields** - Use this section to specify the format of your schema
 
 
 Here is a simple example:
-To define a schema for a payload such as
+To define a schema for a JSON payload such as
 ```json
  "data":{
       "tempF":52,
@@ -46,10 +46,19 @@ Next, add the second attribute named "tempF" the same way:
 
 Add the final attribute named "humidity" in a similar manner. When finished, click **Create Schema**  Your schema should look like the following:
 
-**SCREENSHOT**
+![](images/schema_json_schema_example.png)
 
+Schemas also support **Query String** format for the payload.
 
-To create a schema using the API, 
+Example, a payload such as:
+```
+humidity=5898&tempF=2722
+```
+can be represented by creating the following schema
+
+![](images/schema_query_string_example.png)
+
+To create a schema using the API:
 
 ##### POST /v2/schemas
 
