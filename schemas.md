@@ -18,8 +18,7 @@ To create a schema through the dashboard
 ![](images/schema_adding_schema.png)
 
 3. **Name & Details** - Enter a name for the schema in "Name" field
-4. Select **JSON** or **Query String** depending on the schema you wish to create
-5. **Define Fields** - Use this section to specify the format of your schema
+4. **Define Fields** - Use this section to specify the format of your schema
 
 
 Here is a simple example:
@@ -32,31 +31,23 @@ To define a schema for a JSON payload such as
 ```
 add each attribute individually under the **Define Fields** section.
 
-1. Click **Add new attribute**
-2. In the **Attribute Location** drop-down, ensure that "root" is selected
-3. In the **Attribute Identifier** field, enter "data"
-4. In the **Data Type** drop-down, select "Object"
-5. Click **Create Attribute** 
+- Click **Add new attribute**  
+- In the **Attribute Location** drop-down, ensure that "root" is selected
+- In the **Attribute Identifier** field, enter "data"
+- In the **Data Type** drop-down, select "Object"
+- Click **Create Attribute** 
 Next, add the second attribute named "tempF" the same way:  
-6. Click **Add new attribute**
-7. In the **Attribute Location** drop-down, select "data"
-8. In the **Attribute Identifier** field, enter "tempF"
-9. In the **Data Type** drop-down, select "Integer"
-10. Click **Create Attribute**
+- Click **Add new attribute**
+- In the **Attribute Location** drop-down, select "data"
+- In the **Attribute Identifier** field, enter "tempF"
+- In the **Data Type** drop-down, select "Integer"
+- Click **Create Attribute**
 
-Add the final attribute named "humidity" in a similar manner. When finished, click **Create Schema**  Your schema should look like the following:
+Add the final attribute named "humidity" in a similar manner. 
+
+5. When finished, click **Create Schema**  Your schema should look like the following:
 
 ![](images/schema_json_schema_example.png)
-
-Schemas also support **Query String** format for the payload.
-
-Example, a payload such as:
-```
-humidity=5898&tempF=2722
-```
-can be represented by creating the following schema
-
-![](images/schema_query_string_example.png)
 
 To create a schema using the API:
 
@@ -64,10 +55,10 @@ To create a schema using the API:
 
 Fields:
 * name - the name of this schema
-* format - "json" for a JSON formatted data,  or "querystring" for a query string data
-* fields - a representation of the structure of your data
+* format - "json" for a JSON formatted data
+* fields - the object representation of the structure of your data. Supports multiple nested fields.
 	* id - the name of your attribute
-	* type - the type of attribute: 'object', 'string', 'float', 'int', 'timestamp', 'datetime'
+	* type - the type of attribute: 'object', 'string', 'float', 'integer', 'timestamp', 'datetime'
 ```json
 {
 	"name": "my schema",
