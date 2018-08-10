@@ -102,6 +102,8 @@ Fields:
 	}
 }
 ```
+
+
 ## Assigning a Schema
 
 Once you are satisfied with your schema, you can assign it to an IoT channel which you can then use to connect your devices.
