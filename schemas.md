@@ -7,7 +7,7 @@ nd you don’t need to configure them.
 For IoT devices you need to first create a custom schema. You can send any kind of data with IoT devices.
 It is recommended that you generate IoT schema based on your event payload. 
 Once your schema is defined you can use it in a Channel and see data being ingested. 
-You can update a schema if necessary at a later time. You will need to include all the 
+You can update a schema if necessary at a later time. Once you create a schema for your data, you can assign it to your IoT channel.
 
 ## Creating a Schema
 
@@ -102,3 +102,14 @@ Fields:
 	}
 }
 ```
+## Assigning a Schema
+
+Once you are satisfied with your schema, you can assign it to an IoT channel which you can then use to connect your devices.
+
+1. Go to Channels
+2. In the left sidebar, click **+ Add Channel**
+3. Select IoT Devices
+4. Enter a name for your channel, then select your **Schema** in the drop-down
+5. Click Create
+
+Your schema is now assigned to this channel. *Note: at this time that you cannot change a schema that a channel is assigned to. You will need to create a new channel.*
