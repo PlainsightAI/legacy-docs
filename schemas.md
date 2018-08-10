@@ -62,17 +62,23 @@ To create a schema using the API:
 
 ##### POST /v2/schemas
 
+Fields:
+* name - the name of this schema
+* format - "json" for a JSON formatted data,  or "querystring" for a query string data
+* fields - a representation of the structure of your data
+	* id - the name of your attribute
+	* type - the type of attribute: 'object', 'string', 'float', 'int', 'timestamp', 'datetime'
 ```json
 {
-   "name": "my schema",
-   "format": "json",
-	  "fields": [{
-      "id": "data",
-		    "type": "object",
-      "fields": [{
-			     "id": "humidity",
-			     "type": "integer"
-		  }, {
+	"name": "my schema",
+	"format": "json",
+	"fields": [{
+		"id": "data",
+		"type": "object",
+		"fields": [{
+			"id": "humidity",
+			"type": "integer"
+		}, {
 			"id": "tempF",
 			"type": "integer"
 		}]
@@ -82,29 +88,26 @@ To create a schema using the API:
 `Code: 201`
 ```json
 {
-  "data": {
-    "id": "01CMDMCSF92P5ZSHKE119R9BTE",
-    "name": "test 3",
-    "format": "json",
-    "organizationId": "01C54H1MTA8K8ZZ0B7WNB3P0N6",
-    "fields": [
-      {
-        "id": "data",
-        "type": "object",
-        "fields": [
-          {
-            "id": "humidity",
-            "type": "integer"
-          },
-          {
-            "id": "tempF",
-            "type": "integer"
-          }
-        ]
-      }
-    ],
-    "createdAt": "2018-08-08T20:42:03Z",
-    "updatedAt": "2018-08-08T20:42:03Z"
-  }
+	"data": {
+		"id": "01CMDMCSF92P5ZSHKE119R9BTE",
+		"name": "test 3",
+		"format": "json",
+		"organizationId": "01C54H1MTA8K8ZZ0B7WNB3P0N6",
+		"fields": [{
+			"id": "data",
+			"type": "object",
+			"fields": [{
+					"id": "humidity",
+					"type": "integer"
+				},
+				{
+					"id": "tempF",
+					"type": "integer"
+				}
+			]
+		}],
+		"createdAt": "2018-08-08T20:42:03Z",
+		"updatedAt": "2018-08-08T20:42:03Z"
+	}
 }
 ```
