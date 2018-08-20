@@ -87,7 +87,7 @@ Using the Reach SDK is simple.  Once initialized and enabled, the SDK will run i
 
 ### SDK Initialization
 
-For Sixgill hosted applications, add this to your Application class `onCreate` lifecycle method:
+For Sixgill hosted applications, initialise SDK before actually enabling it in you application:
 
 ```java
 /**
@@ -96,6 +96,44 @@ For Sixgill hosted applications, add this to your Application class `onCreate` l
 * @return void
 */
 Reach.initWithAPIKey(context, "YOUR_API_KEY");
+```
+
+If you wish to configure SDK endpoints pass `ReachConfig` object as third param to `initWithAPIKey`: 
+```java
+ReachConfig config = new ReachConfig();
+config.setIngressURL("<YOUR SDK ENDPOINT>");
+/**
+* @param context {@link Context}
+* @param apiKey {@link String}
+* @param reachConfig {@link ReachConfig}
+* @return void
+*/
+Reach.initWithAPIKey(context, apiKey, reachConfig)
+```
+One more version of the method is available that let's you asynchronously intercept if the initialisation was successfull or not.
+```java
+ReachConfig config = new ReachConfig();
+config.setIngressURL("<YOUR SDK ENDPOINT>");
+ReachCallback callback = new ReachCallback() {
+    @Override
+    public void onReachSuccess() {
+        //can be used enable SDK here as initialisation was successful
+        Reach.enable(context)
+    }
+
+    @Override
+    public void onReachFailure(String s) {
+        // initialisation failed, code to fallback logic goes here
+    }
+};
+/**
+* @param context {@link Context}
+* @param apiKey {@link String}
+* @param config {@link ReachConfig}
+* @param callback {@link ReachCallback}
+* @return void
+*/
+Reach.initWithAPIKey(context, apiKey, config, callback);
 ```
 
 ```java
@@ -107,7 +145,7 @@ public class MainApplication extends Application {
     }
 }
 ```
-> Note: `initWithAPIKey` must be called in Application instance class before using Reach SDK at all
+> Note: `initWithAPIKey` must be called and executed successfully, at least once before using Reach SDK at all.
 
 ### Integrating Push Notifications
 
@@ -204,6 +242,28 @@ Optionally you can pass a second boolean parameter to `Reach.enable`, setting th
 * @return void
 */
 Reach.enable(context, true);
+```
+Just as `initWithAPIKey`, `enable` takes in `ReachCallback` as well to notify of success and failure event while starting the SDK services.
+
+```java
+ReachCallback callback = new ReachCallback() {
+    @Override
+    public void onReachSuccess() {
+        // SDK running successfully
+    }
+
+    @Override
+    public void onReachFailure(String s) {
+        // there was some error in starting the SDK
+    }
+};
+/**
+* @param context {@link Context}
+* @param boolean
+* @param callback {@link ReachCallback}
+* @return void
+*/
+Reach.enable(context, true, callback);
 ```
 
 
