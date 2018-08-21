@@ -177,44 +177,8 @@ To get the sensor updates:
 ```objc
 [SGSDK registerForSensorUpdates:nil];
 ```
-- Implement this method `sensorUpdateSentWithData`  to access sensor updated data. This method gives `sensorData` as NSDictionary and it can be used to get different data. To use sensorData, refer to the following snippets:
-    - Activity
-    ```
-    if (sensorData[@"SG_ACTIVITY_RESOURCE"]) {
-        NSString *s = sensorData[@"SG_ACTIVITY_RESOURCE"][@"activity"];
-    }
-    ```
-    - Location Coordinate
-    ```
-    if (sensorData[@"SG_LOCATION_RESOURCE"]) {
-        CLLocation *l = (CLLocation *)sensorData[@"SG_LOCATION_RESOURCE"][@"location"];
-    }
-    ```
-    - Cadence
-    ```
-    if (sensorData[@"SG_CONFIGURATION_RESOURCE"]) {
-        NSDictionary *d = sensorData[@"SG_CONFIGURATION_RESOURCE"];
-
-        if (d[@"cadence"]) {
-            NSNumber *cadenceSecondsNum = d[@"cadence"];
-        }
-    }
-    ```
-    - Battery Percentage
-    ```
-    if (sensorData[@"SG_DEVICE_RESOURCE"]) {
-        NSDictionary *d = sensorData[@"SG_DEVICE_RESOURCE"];
-
-        if (d[@"BATTERY_PERCENT"]) {
-            NSNumber *batteryPercent = d[@"BATTERY_PERCENT"];
-
-        }
-    }
-    ```
-    -  Beacons in range count
-    ```
-    if (sensorData[@"SG_BLUETOOTH_RESOURCE"]) {
-        NSArray *b = sensorData[@"SG_BLUETOOTH_RESOURCE"];
-        return [NSString stringWithFormat:@"%lu",b.count];
-    }
-    ```
+- Implement this method `sensorUpdateSentWithData`  to receive latest `Ingress.Event` from the SDK. `Ingress.Event` contains different sensors data, it can be implement as:
+```
+- (void)sensorUpdateSentWithData:(Event *)sensorData { 
+}
+```
