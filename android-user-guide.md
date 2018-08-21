@@ -154,12 +154,6 @@ Services for token refreshes and receiving messages are required to [integrate p
 AndroidManifest.xml
 ```xml 
 <service
-    android:name=".MyFirebaseInstanceIDService">
-    <intent-filter>
-        <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-    </intent-filter>
-</service>
-<service
     android:name=".MyFirebaseMessagingService">
     <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -167,24 +161,17 @@ AndroidManifest.xml
 </service>
 ```
 
-MyFirebaseInstanceIDService.java
-```java
-public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
-    @Override
-    public void onTokenRefresh() {
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Reach.setPushToken(getApplicationContext(), refreshedToken);
-    }
-}
-```
-
 MyFirebaseMessagingService.java
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
+    public void onNewToken(String token) {
+        Reach.setPushToken(getApplicationContext(), token);
+    }
+    @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        Reach.processCommand(remoteMessage);
+        Reach.processCommand(remoteMessage, getApplicationContext());
     }
 }
 ```
