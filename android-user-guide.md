@@ -7,7 +7,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.0.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.1.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
@@ -87,7 +87,7 @@ Using the Reach SDK is simple.  Once initialized and enabled, the SDK will run i
 
 ### SDK Initialization
 
-For Sixgill hosted applications, add this to your Application class `onCreate` lifecycle method:
+For Sixgill hosted applications, initialise SDK before actually enabling it in you application:
 
 ```java
 /**
@@ -96,6 +96,44 @@ For Sixgill hosted applications, add this to your Application class `onCreate` l
 * @return void
 */
 Reach.initWithAPIKey(context, "YOUR_API_KEY");
+```
+
+If you wish to configure SDK endpoints pass `ReachConfig` object as third param to `initWithAPIKey`: 
+```java
+ReachConfig config = new ReachConfig();
+config.setIngressURL("<YOUR SDK ENDPOINT>");
+/**
+* @param context {@link Context}
+* @param apiKey {@link String}
+* @param reachConfig {@link ReachConfig}
+* @return void
+*/
+Reach.initWithAPIKey(context, apiKey, reachConfig)
+```
+One more version of the method is available that let's you asynchronously intercept if the initialisation was successfull or not.
+```java
+ReachConfig config = new ReachConfig();
+config.setIngressURL("<YOUR SDK ENDPOINT>");
+ReachCallback callback = new ReachCallback() {
+    @Override
+    public void onReachSuccess() {
+        //can be used enable SDK here as initialisation was successful
+        Reach.enable(context)
+    }
+
+    @Override
+    public void onReachFailure(String s) {
+        // initialisation failed, code to fallback logic goes here
+    }
+};
+/**
+* @param context {@link Context}
+* @param apiKey {@link String}
+* @param config {@link ReachConfig}
+* @param callback {@link ReachCallback}
+* @return void
+*/
+Reach.initWithAPIKey(context, apiKey, config, callback);
 ```
 
 ```java
@@ -107,7 +145,7 @@ public class MainApplication extends Application {
     }
 }
 ```
-> Note: `initWithAPIKey` must be called in Application instance class before using Reach SDK at all
+> Note: `initWithAPIKey` must be called and executed successfully, at least once before using Reach SDK at all.
 
 ### Integrating Push Notifications
 
@@ -116,12 +154,6 @@ Services for token refreshes and receiving messages are required to [integrate p
 AndroidManifest.xml
 ```xml 
 <service
-    android:name=".MyFirebaseInstanceIDService">
-    <intent-filter>
-        <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-    </intent-filter>
-</service>
-<service
     android:name=".MyFirebaseMessagingService">
     <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -129,24 +161,17 @@ AndroidManifest.xml
 </service>
 ```
 
-MyFirebaseInstanceIDService.java
-```java
-public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
-    @Override
-    public void onTokenRefresh() {
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Reach.setPushToken(getApplicationContext(), refreshedToken);
-    }
-}
-```
-
 MyFirebaseMessagingService.java
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
+    public void onNewToken(String token) {
+        Reach.setPushToken(getApplicationContext(), token);
+    }
+    @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        Reach.processCommand(remoteMessage);
+        Reach.processCommand(remoteMessage, getApplicationContext());
     }
 }
 ```
@@ -204,6 +229,28 @@ Optionally you can pass a second boolean parameter to `Reach.enable`, setting th
 * @return void
 */
 Reach.enable(context, true);
+```
+Just as `initWithAPIKey`, `enable` takes in `ReachCallback` as well to notify of success and failure event while starting the SDK services.
+
+```java
+ReachCallback callback = new ReachCallback() {
+    @Override
+    public void onReachSuccess() {
+        // SDK running successfully
+    }
+
+    @Override
+    public void onReachFailure(String s) {
+        // there was some error in starting the SDK
+    }
+};
+/**
+* @param context {@link Context}
+* @param boolean
+* @param callback {@link ReachCallback}
+* @return void
+*/
+Reach.enable(context, true, callback);
 ```
 
 
@@ -267,6 +314,22 @@ const pushReceiver = new BroadcastReceiver(){
 }
 LocalBroadcastManager manager = LocalBroadcastManager.getInstance(context);
 manager.registerReceiver(pushReceiver, new IntentFilter(Reach.PUSH_BROADCAST));
+```
+
+To get the latest `Ingress.Event` generated from the Reach SDK, register broadcast listeners with `IntentFilter` of `Reach.EVENT_BROADCAST`. You'll get the Base64 encoded `Ingress.Event` object in intent payload
+
+```java
+BroadcastReceiver mEventReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+                String encodedEvent = bundle.getString(Reach.EVENT_DATA);
+                byte[] b = Base64.decode(encodedEvent, Base64.DEFAULT);
+                Ingress.Event event = Ingress.Event.parseFrom(b);
+            }
+        }
+    };
 ```
 > Note: to prevent memory leaks, always make sure to unregister receivers when not in use or context is destroyed.
 See [unregistering receivers](https://developer.android.com/reference/android/content/Context.html#unregisterReceiver(android.content.BroadcastReceiver))
