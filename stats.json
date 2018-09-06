@@ -1,16 +1,16 @@
 {
   "assetsByChunkName": {
     "path---guides-landmarks": [
-      "path---guides-landmarks-0af4582a61d482c249df.js",
-      "path---guides-landmarks-0af4582a61d482c249df.js.map"
+      "path---guides-landmarks-0c7d7b4b881859bf2e63.js",
+      "path---guides-landmarks-0c7d7b4b881859bf2e63.js.map"
     ],
     "path---guides-rules-overview": [
-      "path---guides-rules-overview-17c117859d7b46899ac4.js",
-      "path---guides-rules-overview-17c117859d7b46899ac4.js.map"
+      "path---guides-rules-overview-774eda23418211610777.js",
+      "path---guides-rules-overview-774eda23418211610777.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-39379aa6ecf345b7d48d.js",
-      "component---src-pages-index-js-39379aa6ecf345b7d48d.js.map"
+      "component---src-pages-index-js-93a8204bc5072243655e.js",
+      "component---src-pages-index-js-93a8204bc5072243655e.js.map"
     ],
     "path---": [
       "path----557518bd178906f8d58a.js",
@@ -20,25 +20,33 @@
       "component---src-pages-guides-js-18f4435d267accca35e8.js",
       "component---src-pages-guides-js-18f4435d267accca35e8.js.map"
     ],
+    "path---guides-channels": [
+      "path---guides-channels-0a968a55b75a477d6c0c.js",
+      "path---guides-channels-0a968a55b75a477d6c0c.js.map"
+    ],
     "path---apis-sense-api": [
-      "path---apis-sense-api-b4847f831eb27e7b1f2c.js",
-      "path---apis-sense-api-b4847f831eb27e7b1f2c.js.map"
+      "path---apis-sense-api-cde7d1a8208da3e20b6d.js",
+      "path---apis-sense-api-cde7d1a8208da3e20b6d.js.map"
     ],
     "component---node-modules-gatsby-plugin-offline-app-shell-js": [
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
+    "path---guides-channels-overview": [
+      "path---guides-channels-overview-ab2e9a0fc66c113ff955.js",
+      "path---guides-channels-overview-ab2e9a0fc66c113ff955.js.map"
+    ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-da23bae104e6111f0089.js",
-      "component---src-layouts-index-js-da23bae104e6111f0089.js.map"
+      "component---src-layouts-index-js-7ca385e8af42ba9661ed.js",
+      "component---src-layouts-index-js-7ca385e8af42ba9661ed.js.map"
     ],
     "path---guides": [
       "path---guides-a0e39f21c11f6a62c5ab.js",
       "path---guides-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---apis-overview": [
-      "path---apis-overview-e58b0afbc596a3893d2c.js",
-      "path---apis-overview-e58b0afbc596a3893d2c.js.map"
+      "path---apis-overview-4dcdcd419a20c5b98450.js",
+      "path---apis-overview-4dcdcd419a20c5b98450.js.map"
     ],
     "path---index": [
       "path---index-a0e39f21c11f6a62c5ab.js",
@@ -53,9 +61,9 @@
       "component---src-pages-404-js-47bf3d5c9fc056d6f914.js.map"
     ],
     "commons": [
-      "commons-3253613c644189fc4098.js",
+      "commons-2ad7743a8fdb6a4020fa.js",
       "build-js-styles.css",
-      "commons-3253613c644189fc4098.js.map",
+      "commons-2ad7743a8fdb6a4020fa.js.map",
       "build-js-styles.css.map"
     ],
     "path---guides-rules": [
@@ -66,39 +74,43 @@
       "path---404-html-a0e39f21c11f6a62c5ab.js",
       "path---404-html-a0e39f21c11f6a62c5ab.js.map"
     ],
+    "path---guides-channels-schemas": [
+      "path---guides-channels-schemas-766515cfee01aa338fa7.js",
+      "path---guides-channels-schemas-766515cfee01aa338fa7.js.map"
+    ],
     "component---src-templates-api-js": [
-      "component---src-templates-api-js-fdba7ddbc90ef6c093b1.js",
-      "component---src-templates-api-js-fdba7ddbc90ef6c093b1.js.map"
+      "component---src-templates-api-js-6f775ef44464dd8ee879.js",
+      "component---src-templates-api-js-6f775ef44464dd8ee879.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---guides-rules-templates": [
-      "path---guides-rules-templates-9cfbf385f237a8853165.js",
-      "path---guides-rules-templates-9cfbf385f237a8853165.js.map"
+      "path---guides-rules-templates-66bd32468a3e0fbe0155.js",
+      "path---guides-rules-templates-66bd32468a3e0fbe0155.js.map"
     ],
     "app": [
-      "app-9252e9486cf91ca88645.js",
+      "app-bce8d707dd0376dddaf0.js",
       "build-js-styles.css",
-      "app-9252e9486cf91ca88645.js.map",
+      "app-bce8d707dd0376dddaf0.js.map",
       "build-js-styles.css.map"
     ],
     "path---apis-ingress": [
-      "path---apis-ingress-176d031a52a1f5f07fc0.js",
-      "path---apis-ingress-176d031a52a1f5f07fc0.js.map"
+      "path---apis-ingress-95e804eac1ffe11ea8b1.js",
+      "path---apis-ingress-95e804eac1ffe11ea8b1.js.map"
     ],
     "path---guides-getting-started": [
-      "path---guides-getting-started-de16e02d9a85391425d9.js",
-      "path---guides-getting-started-de16e02d9a85391425d9.js.map"
+      "path---guides-getting-started-ff1800246f0f40ccd26b.js",
+      "path---guides-getting-started-ff1800246f0f40ccd26b.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-templates-guide-js": [
-      "component---src-templates-guide-js-3bafc97f8b8a0fbf31e8.js",
-      "component---src-templates-guide-js-3bafc97f8b8a0fbf31e8.js.map"
+      "component---src-templates-guide-js-d37ab038e6054c4eea34.js",
+      "component---src-templates-guide-js-d37ab038e6054c4eea34.js.map"
     ]
   }
 }
