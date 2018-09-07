@@ -1,16 +1,24 @@
 {
   "assetsByChunkName": {
     "path---guides-landmarks": [
-      "path---guides-landmarks-0c7d7b4b881859bf2e63.js",
-      "path---guides-landmarks-0c7d7b4b881859bf2e63.js.map"
+      "path---guides-landmarks-4f4595dded21a290dff4.js",
+      "path---guides-landmarks-4f4595dded21a290dff4.js.map"
+    ],
+    "path---guides-sdks-ios": [
+      "path---guides-sdks-ios-9eb54716a79876118db5.js",
+      "path---guides-sdks-ios-9eb54716a79876118db5.js.map"
     ],
     "path---guides-rules-overview": [
-      "path---guides-rules-overview-774eda23418211610777.js",
-      "path---guides-rules-overview-774eda23418211610777.js.map"
+      "path---guides-rules-overview-0a20d70d5cdd6e375686.js",
+      "path---guides-rules-overview-0a20d70d5cdd6e375686.js.map"
     ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-93a8204bc5072243655e.js",
       "component---src-pages-index-js-93a8204bc5072243655e.js.map"
+    ],
+    "path---guides-sdks-android": [
+      "path---guides-sdks-android-7f847695d06ea1c12385.js",
+      "path---guides-sdks-android-7f847695d06ea1c12385.js.map"
     ],
     "path---": [
       "path----557518bd178906f8d58a.js",
@@ -25,16 +33,16 @@
       "path---guides-channels-0a968a55b75a477d6c0c.js.map"
     ],
     "path---apis-sense-api": [
-      "path---apis-sense-api-e6c0210de73e7cb92cc9.js",
-      "path---apis-sense-api-e6c0210de73e7cb92cc9.js.map"
+      "path---apis-sense-api-3ebbab274c738ecccc8c.js",
+      "path---apis-sense-api-3ebbab274c738ecccc8c.js.map"
     ],
     "component---node-modules-gatsby-plugin-offline-app-shell-js": [
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---guides-channels-overview": [
-      "path---guides-channels-overview-ab2e9a0fc66c113ff955.js",
-      "path---guides-channels-overview-ab2e9a0fc66c113ff955.js.map"
+      "path---guides-channels-overview-6315bf59ac17e21aa16a.js",
+      "path---guides-channels-overview-6315bf59ac17e21aa16a.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-7ca385e8af42ba9661ed.js",
@@ -45,8 +53,8 @@
       "path---guides-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---apis-overview": [
-      "path---apis-overview-4dcdcd419a20c5b98450.js",
-      "path---apis-overview-4dcdcd419a20c5b98450.js.map"
+      "path---apis-overview-230f60d62cd1b9eeb037.js",
+      "path---apis-overview-230f60d62cd1b9eeb037.js.map"
     ],
     "path---index": [
       "path---index-a0e39f21c11f6a62c5ab.js",
@@ -75,8 +83,8 @@
       "path---404-html-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---guides-channels-schemas": [
-      "path---guides-channels-schemas-766515cfee01aa338fa7.js",
-      "path---guides-channels-schemas-766515cfee01aa338fa7.js.map"
+      "path---guides-channels-schemas-720965e88a543e40ac1b.js",
+      "path---guides-channels-schemas-720965e88a543e40ac1b.js.map"
     ],
     "component---src-templates-api-js": [
       "component---src-templates-api-js-6f775ef44464dd8ee879.js",
@@ -87,26 +95,38 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---guides-rules-templates": [
-      "path---guides-rules-templates-66bd32468a3e0fbe0155.js",
-      "path---guides-rules-templates-66bd32468a3e0fbe0155.js.map"
+      "path---guides-rules-templates-91532b2ab429568f1b21.js",
+      "path---guides-rules-templates-91532b2ab429568f1b21.js.map"
     ],
     "app": [
-      "app-bce8d707dd0376dddaf0.js",
+      "app-235d5acbb71776792e01.js",
       "build-js-styles.css",
-      "app-bce8d707dd0376dddaf0.js.map",
+      "app-235d5acbb71776792e01.js.map",
       "build-js-styles.css.map"
     ],
     "path---apis-ingress": [
-      "path---apis-ingress-95e804eac1ffe11ea8b1.js",
-      "path---apis-ingress-95e804eac1ffe11ea8b1.js.map"
+      "path---apis-ingress-47dec8b57e36ea358cfa.js",
+      "path---apis-ingress-47dec8b57e36ea358cfa.js.map"
     ],
     "path---guides-getting-started": [
-      "path---guides-getting-started-ff1800246f0f40ccd26b.js",
-      "path---guides-getting-started-ff1800246f0f40ccd26b.js.map"
+      "path---guides-getting-started-ed0e9f0008e47fbb220c.js",
+      "path---guides-getting-started-ed0e9f0008e47fbb220c.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---guides-sdks": [
+      "path---guides-sdks-3aab63985343944d70bf.js",
+      "path---guides-sdks-3aab63985343944d70bf.js.map"
+    ],
+    "path---guides-sdks-overview": [
+      "path---guides-sdks-overview-48fcc6e103304461160c.js",
+      "path---guides-sdks-overview-48fcc6e103304461160c.js.map"
+    ],
+    "path---guides-landmarks-overview": [
+      "path---guides-landmarks-overview-46cfba0f7c86c75fc8da.js",
+      "path---guides-landmarks-overview-46cfba0f7c86c75fc8da.js.map"
     ],
     "component---src-templates-guide-js": [
       "component---src-templates-guide-js-d37ab038e6054c4eea34.js",
