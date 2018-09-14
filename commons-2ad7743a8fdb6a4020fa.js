@@ -1031,8 +1031,8 @@
 	
 	/*global __PREFIX_PATHS__, __PATH_PREFIX__ */
 	var pathPrefix = "/";
-	if (false) {
-	  pathPrefix = __PATH_PREFIX__;
+	if (true) {
+	  pathPrefix = ("");
 	}
 	
 	function withPrefix(path) {
