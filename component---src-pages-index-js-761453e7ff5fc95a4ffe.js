@@ -4183,7 +4183,7 @@ webpackJsonp([35783957827783],{
 	    _react2.default.createElement(
 	      Content,
 	      null,
-	      'Sixgill Developer Documentation | [support@sixgill.com](mailto:support@sixgill.com)'
+	      'Sixgill Developer Documentation'
 	    )
 	  );
 	};
@@ -4461,4 +4461,4 @@ webpackJsonp([35783957827783],{
 /***/ })
 
 });
-//# sourceMappingURL=component---src-pages-index-js-d8302b3e86ae2965e3c7.js.map
+//# sourceMappingURL=component---src-pages-index-js-761453e7ff5fc95a4ffe.js.map
