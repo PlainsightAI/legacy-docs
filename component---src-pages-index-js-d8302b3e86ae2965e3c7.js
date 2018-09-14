@@ -4183,7 +4183,7 @@ webpackJsonp([35783957827783],{
 	    _react2.default.createElement(
 	      Content,
 	      null,
-	      'Sixgill Developer Documentation | [support@sixgill.com](mailto:support@sixgill.com)'
+	      'Sixgill Developer Documentation'
 	    )
 	  );
 	};
