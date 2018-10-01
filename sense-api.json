@@ -1,0 +1,2281 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Sense Api",
+    "version": "0.1.1",
+    "description": "\n# Introduction\nThe Sense API is a RESTful JSON API that allows developers to access the majority of the Sense platform’s functionality, such as:\n\n- Creating and managing user accounts within the organization\n- Configuring data channels and projects to organize rules and collections of data streams\n- Defining landmarks around areas of interest for geographical-based triggers\n- Specifying additional data attributes or time constraints for evaluation\n- Building rules around these various conditions and the corresponding actions to be executed\n\n# Authenticate\nThe Sense API authenticates requests with a user-specific JSON web token through Bearer authentication.\n\nTo get this token, the user makes a POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) request with their email and password combination. _These are the same credentials used to log into your account on the dashboard._\n"
+  },
+  "paths": {
+    "/v2/signup": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "organizationName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "locale": {
+                    "type": "object",
+                    "properties": {
+                      "timezone": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["email", "password", "name", "organizationName"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "signup user",
+        "tags": ["authenticate"]
+      }
+    },
+    "/v2/verify-email": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["token"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQU1EMFJLNkFDNkFLWU1SMzY5VCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNBUFM3NFBXVDdERkMwSDY4NkhEIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NSwiZXhwIjoxNTQwOTgzODQ1fQ._plrENs2WMZHu0lGwZVEwx8LG57GClSbrvWGcNvtMb8"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "verify email",
+        "tags": ["authenticate"]
+      }
+    },
+    "/v2/login": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQVhFUkNOVE1NTUI5Nlc2TUc4QSIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNCME02WTNGWUZXV0VaVDRYRkNLIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NiwiZXhwIjoxNTQwOTgzODQ2fQ.q8VojTR_4dcrQQ0N6sjPEbPJdGun9Afi8R1xvdq4SVM"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "login",
+        "tags": ["authenticate"]
+      }
+    },
+    "/v2/request-password": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "request new password",
+        "tags": ["authenticate"]
+      }
+    },
+    "/v2/set-password": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["token", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQjhOQjFRNjgxRzRTQk5UTldOSCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNCQjBRWkJZWUJWUFFZUzRBU1pQIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NiwiZXhwIjoxNTQwOTgzODQ2fQ.o4rh1MdiF_iFI19Q1HsfgibPmX-W0QF8C53eb61zkMU"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "set new password",
+        "tags": ["authenticate"]
+      }
+    },
+    "/v2/set-organization": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "organizationId": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["organizationId"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQkRUNks1NE44WUdFRFE5REpNQyIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNCR0NRSEhFVlM2RkRGWTVKWUhCIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NiwiZXhwIjoxNTQwOTgzODQ2fQ.tj1Mn0HgIB9g6ZGF1mlafSUf7KysoWUu--rWpDWwb8I"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "change organization (token)",
+        "tags": ["authenticate"]
+      }
+    },
+    "/v2/accept-invite": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "locale": {
+                    "type": "object",
+                    "properties": {
+                      "timezone": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["token", "name", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQVQ3R0VKSjJKRzZXNjdaWFdHWCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNBVDBYR0hNWENQQUtYWUY3Q0haIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NSwiZXhwIjoxNTQwOTgzODQ1fQ.teSJdOV8-JwRP_28zcbclKIMqfyAsvgtkq0LStZxVeU"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "accept invite",
+        "tags": ["authenticate"]
+      }
+    },
+    "/v2/users": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMSN0V4XDVT9SJXNT06VFQ",
+                          "name": "monsterbob",
+                          "email": "email-0.6410047922195576@bob.com",
+                          "verifiedEmail": false,
+                          "locale": {},
+                          "createdAt": "2018-10-01T09:04:16.000Z",
+                          "updatedAt": "2018-10-01T09:04:16.000Z",
+                          "permissions": {
+                            "admin": true
+                          },
+                          "inviteOutstanding": false
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list users",
+        "tags": ["users"]
+      }
+    },
+    "/v2/users/me": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMSN5P3JX7A1VGP7Y3RYE4",
+                        "name": "monsterbob",
+                        "email": "email-0.6556669332593337@bob.com",
+                        "verifiedEmail": false,
+                        "locale": {},
+                        "createdAt": "2018-10-01T09:04:16.000Z",
+                        "updatedAt": "2018-10-01T09:04:16.000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "get authenticated user",
+        "tags": ["users"]
+      },
+      "patch": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "locale": {
+                    "type": "object",
+                    "properties": {
+                      "timezone": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMSN8TNP79RC6WWNQPMS8X",
+                        "name": "monsterbob",
+                        "email": "email-0.9699336195579047@bob.com",
+                        "verifiedEmail": false,
+                        "locale": {
+                          "timezone": "Europa/Amsterdam"
+                        },
+                        "createdAt": "2018-10-01T09:04:16.000Z",
+                        "updatedAt": "2018-10-01T11:04:16.508Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "update authenticated user",
+        "tags": ["users"]
+      }
+    },
+    "/v2/users/invite": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emails": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "email"
+                    }
+                  },
+                  "role": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["emails"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "invite users",
+        "tags": ["users"]
+      }
+    },
+    "/v2/organizations": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMSKSEY8WJ8BXY77FT5E4T",
+                          "name": "my organization",
+                          "createdAt": "2018-10-01T09:04:14.000Z",
+                          "updatedAt": "2018-10-01T09:04:14.000Z",
+                          "permissions": {
+                            "admin": true
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "get organizations",
+        "tags": ["organizations"]
+      },
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMSKYN91600T3W5WEYSAYY",
+                        "name": "new organization 1538391855043",
+                        "updatedAt": "2018-10-01T11:04:15.061Z",
+                        "createdAt": "2018-10-01T11:04:15.061Z",
+                        "permissions": {
+                          "admin": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "create organization",
+        "tags": ["organizations"]
+      }
+    },
+    "/v2/organizations/:organization": {
+      "parameters": [
+        {
+          "name": "organization",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "responses": {},
+        "summary": "update organization by id",
+        "tags": ["organizations"]
+      },
+      "delete": {
+        "responses": {},
+        "summary": "delete organization by id",
+        "tags": ["organizations"]
+      }
+    },
+    "/v2/channels": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMSJ4C081C7HE1SH4DC2JS",
+                          "organizationId": "01CRQMSJ3Z7MXHC0RAFRDR1WBK",
+                          "schemaId": "01CRQMSJ4C98X4ZMQMYZF4ZXPF",
+                          "name": "my project",
+                          "type": "android",
+                          "method": "",
+                          "credentials": null,
+                          "createdAt": "2018-10-01T09:04:13.000Z",
+                          "updatedAt": "2018-10-01T09:04:13.000Z",
+                          "projectIds": []
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list channels",
+        "tags": ["channels"]
+      },
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "projectIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "credentials": {
+                    "enum": [null],
+                    "type": "string"
+                  },
+                  "method": {
+                    "enum": [null],
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": ["android", "ios", "gateway"],
+                    "type": "string"
+                  },
+                  "schemaId": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["name", "type"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMSJ9XGGBZRWEF7WKBYC5H",
+                        "name": "new name",
+                        "type": "gateway",
+                        "schemaId": "01CRQMSJ8W4CNYKWNVZT7YKC7F",
+                        "organizationId": "01CRQMSJ8BGNMABJ487B5KZZ2C",
+                        "updatedAt": "2018-10-01T11:04:13.373Z",
+                        "createdAt": "2018-10-01T11:04:13.373Z",
+                        "projectIds": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "create channel",
+        "tags": ["channels"]
+      }
+    },
+    "/v2/channels/:channel": {
+      "parameters": [
+        {
+          "name": "channel",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "projectIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "credentials": {
+                    "enum": [null],
+                    "type": "string"
+                  },
+                  "method": {
+                    "enum": [null],
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": ["android", "ios", "gateway"],
+                    "type": "string"
+                  },
+                  "schemaId": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {},
+        "summary": "update channel by id",
+        "tags": ["channels"]
+      },
+      "delete": {
+        "responses": {},
+        "summary": "delete channel by id",
+        "tags": ["channels"]
+      }
+    },
+    "/v2/channels/:channel/api-keys": {
+      "parameters": [
+        {
+          "name": "channel",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "responses": {},
+        "summary": "get api keys for a channel",
+        "tags": ["channels"]
+      },
+      "post": {
+        "responses": {},
+        "summary": "create api keys for a channel",
+        "tags": ["channels"]
+      }
+    },
+    "/v2/channels/:channel/api-keys/:apiKey/enable": {
+      "parameters": [
+        {
+          "name": "channel",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "apiKey",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "responses": {},
+        "summary": "enable api key",
+        "tags": ["channels"]
+      }
+    },
+    "/v2/channels/:channel/api-keys/:apiKey/disable": {
+      "parameters": [
+        {
+          "name": "channel",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "apiKey",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "responses": {},
+        "summary": "disable api key",
+        "tags": ["channels"]
+      }
+    },
+    "/v2/channels/:channel/api-keys/:apiKey": {
+      "parameters": [
+        {
+          "name": "channel",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "apiKey",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "delete": {
+        "responses": {},
+        "summary": "delete api key",
+        "tags": ["channels"]
+      }
+    },
+    "/v2/schemas": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMSEHHY2R6QR3W6E1PM1AM",
+                          "organizationId": "01CRQMSEH5DHK0TQ89TM0CEXQH",
+                          "name": "some name",
+                          "format": "json",
+                          "type": "default",
+                          "fields": [
+                            {
+                              "id": "path",
+                              "type": "string",
+                              "isArray": true
+                            }
+                          ],
+                          "createdAt": "2018-10-01T09:04:09.000Z",
+                          "updatedAt": "2018-10-01T09:04:09.000Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list schemas",
+        "tags": ["schemas"]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMSEEB2JNVNX533AKMQ9V6",
+                        "type": "default",
+                        "organizationId": "01CRQMSED4QX5FX70RZ1QVRBQT",
+                        "name": "name 1538391849398",
+                        "format": "json",
+                        "fields": [
+                          {
+                            "id": "path",
+                            "type": "string"
+                          }
+                        ],
+                        "updatedAt": "2018-10-01T11:04:09.419Z",
+                        "createdAt": "2018-10-01T11:04:09.419Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "create schema",
+        "tags": ["schemas"]
+      }
+    },
+    "/v2/schemas/:schema": {
+      "parameters": [
+        {
+          "name": "schema",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "responses": {},
+        "summary": "update schema by id",
+        "tags": ["schemas"]
+      },
+      "get": {
+        "responses": {},
+        "summary": "get schema by id",
+        "tags": ["schemas"]
+      },
+      "delete": {
+        "responses": {},
+        "summary": "delete schema by id",
+        "tags": ["schemas"]
+      }
+    },
+    "/v2/projects": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMSK1576WF3BDA8ZTYXZAA",
+                          "organizationId": "01CRQMSK0JS8RWCBBERF7B6386",
+                          "name": "my project",
+                          "createdAt": "2018-10-01T09:04:14.000Z",
+                          "updatedAt": "2018-10-01T09:04:14.000Z",
+                          "channelIds": ["01CRQMSK1BYNH9NZTTCDYSGRW5"]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list projects",
+        "tags": ["projects"]
+      },
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "channelIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMSK629MEX7NA9GZ8WQWAZ",
+                        "name": "new project",
+                        "organizationId": "01CRQMSK59CKAPBGD6HF64RAWQ",
+                        "updatedAt": "2018-10-01T11:04:14.274Z",
+                        "createdAt": "2018-10-01T11:04:14.274Z",
+                        "channelIds": ["01CRQMSK5H85GCMT9MYCDHYNST"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "create project",
+        "tags": ["projects"]
+      }
+    },
+    "/v2/projects/:project": {
+      "parameters": [
+        {
+          "name": "project",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "channelIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {},
+        "summary": "update project by id",
+        "tags": ["projects"]
+      },
+      "delete": {
+        "responses": {},
+        "summary": "delete project by id",
+        "tags": ["projects"]
+      }
+    },
+    "/v2/rules": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMS9AP0H4N9Z1ARQ99A3FX",
+                          "projectId": "01CRQMS9AK2GAQ1QTEF4M2Q5QH",
+                          "name": "rule",
+                          "type": "cloud",
+                          "description": "",
+                          "actions": [],
+                          "conditionsAndActions": [],
+                          "conditions": "event.path == 1",
+                          "gatewayIds": [],
+                          "channelIds": [],
+                          "createdAt": "2018-10-01T09:04:04.000Z",
+                          "updatedAt": "2018-10-01T09:04:04.000Z",
+                          "generator": "custom",
+                          "enabled": true
+                        }
+                      ],
+                      "meta": {
+                        "count": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list rules",
+        "tags": ["rules"]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMS9QGRN2M0Z64H1HP9R7K",
+                        "conditionsAndActions": [],
+                        "gatewayIds": [],
+                        "channelIds": [],
+                        "generator": "custom",
+                        "name": "somename",
+                        "type": "cloud",
+                        "projectId": "01CRQMS9PYN4083WBZN085YE2P",
+                        "conditionsObject": [
+                          {
+                            "type": "and",
+                            "items": [
+                              {
+                                "type": "schedule",
+                                "date": {
+                                  "from": "2018-09-05T06:11:24.000Z"
+                                },
+                                "timeOfDay": {
+                                  "from": 1,
+                                  "to": 100
+                                }
+                              },
+                              {
+                                "type": "and",
+                                "items": [
+                                  {
+                                    "type": "matchAttribute",
+                                    "channelId": "someid",
+                                    "attribute": "event.name",
+                                    "operator": "==",
+                                    "value": "monster",
+                                    "description": "When event (event.name) from \"unknown channel someid\" is equal to monster"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "actions": [
+                          {
+                            "type": "sms",
+                            "message": "hello world",
+                            "recipients": {
+                              "reflect": true,
+                              "telephoneNumbers": ["12342323"]
+                            }
+                          }
+                        ],
+                        "enabled": true,
+                        "properties": {},
+                        "conditions": "(timeOfDay('<', 1) && timeOfDay('>', 100) && date('<', '2018-09-05T06:11:24.000Z') && event.channelId == 'someid' && event.name == 'monster')",
+                        "updatedAt": "2018-10-01T11:04:04.593Z",
+                        "createdAt": "2018-10-01T11:04:04.593Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "create rules",
+        "tags": ["rules"]
+      }
+    },
+    "/v2/rules/:rule": {
+      "parameters": [
+        {
+          "name": "rule",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "responses": {},
+        "summary": "get rule by id",
+        "tags": ["rules"]
+      },
+      "patch": {
+        "responses": {},
+        "summary": "update rule by id",
+        "tags": ["rules"]
+      },
+      "delete": {
+        "responses": {},
+        "summary": "delete rule by id",
+        "tags": ["rules"]
+      }
+    },
+    "/v2/rules/validate-conditions": {
+      "post": {
+        "responses": {},
+        "summary": "validate condition string",
+        "tags": ["rules"]
+      }
+    },
+    "/v2/devices/:id": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "responses": {},
+        "summary": "get device by id",
+        "tags": ["devices"]
+      }
+    },
+    "/v2/devices/alias-lookup": {
+      "post": {
+        "summary": "look up device by alias",
+        "tags": ["devices"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "enum": ["tel"],
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["type", "value"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": "device id"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/devices/search": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "channelId": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "filter": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  },
+                  "limit": {
+                    "default": 20,
+                    "type": "number"
+                  },
+                  "offset": {
+                    "type": "number"
+                  },
+                  "sort": {
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "default": "createdAt",
+                        "type": "string"
+                      },
+                      "order": {
+                        "default": "desc",
+                        "enum": ["desc", "asc"],
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMSD70PV9JJ5PKGZFQH567",
+                          "sensors": "",
+                          "channelId": "01CRQMSCG2E7JTTPQVBKJMB43S",
+                          "organizationId": "01CRQMSCFTRWK73XCPEBDP0R16",
+                          "tags": ["working"],
+                          "updatedAt": "2018-10-01T11:04:08.160Z",
+                          "createdAt": "2018-10-01T11:04:08.160Z"
+                        }
+                      ],
+                      "meta": {
+                        "filteredTotal": 2,
+                        "total": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list devices",
+        "tags": ["devices"]
+      }
+    },
+    "/v2/devices": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "channelId": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["channelId"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMSDD1WSNBDHZ8YEKGRX2T",
+                        "sensors": "",
+                        "channelId": "01CRQMSDCFGZ0STH6W3QNEYGE7",
+                        "organizationId": "01CRQMSDC7K76NT4BVY7GN9AZ1",
+                        "updatedAt": "2018-10-01T11:04:08.353Z",
+                        "createdAt": "2018-10-01T11:04:08.353Z",
+                        "tags": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "create device",
+        "tags": ["devices"]
+      }
+    },
+    "/v2/devices/:device": {
+      "parameters": [
+        {
+          "name": "device",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {},
+        "summary": "update device by id",
+        "tags": ["devices"]
+      },
+      "delete": {
+        "responses": {},
+        "summary": "delete device by id",
+        "tags": ["devices"]
+      }
+    },
+    "/v2/landmarks/search": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "limit": {
+                    "default": 20,
+                    "type": "number"
+                  },
+                  "offset": {
+                    "type": "number"
+                  },
+                  "sort": {
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "default": "createdAt",
+                        "type": "string"
+                      },
+                      "order": {
+                        "default": "desc",
+                        "enum": ["desc", "asc"],
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "filter": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMS7NQBMB69FK94QE31G4W",
+                          "name": "landmarkA",
+                          "projectId": "01CRQMS7NMNE99JAF72ZQ2TRX1",
+                          "type": "geometry",
+                          "model": {
+                            "type": "circle",
+                            "geometry": {
+                              "lat": 45.6361321,
+                              "lon": 13.061487599999964,
+                              "radius": 1
+                            }
+                          },
+                          "createdAt": 0,
+                          "organizationId": "01CRQMS7NCG57YV1MYG4S0WMH0"
+                        },
+                        {
+                          "id": "01CRQMS7QC7Q2XYXRBYAGX3XC5",
+                          "name": "landmarkB",
+                          "projectId": "01CRQMS7NMNE99JAF72ZQ2TRX1",
+                          "type": "geometry",
+                          "model": {
+                            "type": "polygon",
+                            "geometry": {
+                              "points": [
+                                {
+                                  "lat": 45.6361321,
+                                  "lon": 13.061487599999964
+                                },
+                                {
+                                  "lat": 45.6361321,
+                                  "lon": 13.061487599999964
+                                },
+                                {
+                                  "lat": 45.6361321,
+                                  "lon": 13.061487599999964
+                                }
+                              ]
+                            }
+                          },
+                          "createdAt": 10,
+                          "organizationId": "01CRQMS7NCG57YV1MYG4S0WMH0"
+                        }
+                      ],
+                      "meta": {
+                        "filteredTotal": 2,
+                        "total": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list landmarks",
+        "tags": ["landmark"]
+      }
+    },
+    "/v2/landmarks": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "geometry",
+                    "enum": ["geometry"],
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "enum": ["polygon", "rectangle", "circle"],
+                            "type": "string"
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "points": {
+                                "type": "array",
+                                "minItems": 3,
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "lat": {
+                                      "type": "number"
+                                    },
+                                    "lon": {
+                                      "type": "number"
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": ["lat", "lon"]
+                                }
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": ["type", "geometry"]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "enum": ["polygon", "rectangle", "circle"],
+                            "type": "string"
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "nw": {
+                                "type": "object",
+                                "properties": {
+                                  "lat": {
+                                    "type": "number"
+                                  },
+                                  "lon": {
+                                    "type": "number"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": ["lat", "lon"]
+                              },
+                              "se": {
+                                "type": "object",
+                                "properties": {
+                                  "lat": {
+                                    "type": "number"
+                                  },
+                                  "lon": {
+                                    "type": "number"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": ["lat", "lon"]
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": ["nw", "se"]
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": ["type", "geometry"]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "enum": ["polygon", "rectangle", "circle"],
+                            "type": "string"
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "center": {
+                                "type": "object",
+                                "properties": {
+                                  "lat": {
+                                    "type": "number"
+                                  },
+                                  "lon": {
+                                    "type": "number"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": ["lat", "lon"]
+                              },
+                              "radius": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": ["radius"]
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": ["type", "geometry"]
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["projectId", "name", "model"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": {
+                        "id": "01CRQMS88ZJT0G9Q3QWRSAYCSM",
+                        "name": "landmark",
+                        "projectId": "01CRQMS8830Y2XD3MD0N48M3TR",
+                        "type": "geometry",
+                        "model": {
+                          "type": "rectangle",
+                          "geometry": {
+                            "se": {
+                              "lat": 45.6361321,
+                              "lon": 13.061487599999964
+                            },
+                            "nw": {
+                              "lat": 90,
+                              "lon": 80
+                            }
+                          }
+                        },
+                        "updatedAt": "2018-10-01T11:04:03.103Z",
+                        "createdAt": "2018-10-01T11:04:03.103Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "create landmark",
+        "tags": ["landmark"]
+      }
+    },
+    "/v2/landmarks/:landmark": {
+      "parameters": [
+        {
+          "name": "landmark",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "responses": {},
+        "summary": "get landmark by id",
+        "tags": ["landmark"]
+      },
+      "patch": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "geometry",
+                    "enum": ["geometry"],
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "enum": ["polygon", "rectangle", "circle"],
+                            "type": "string"
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "points": {
+                                "type": "array",
+                                "minItems": 3,
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "lat": {
+                                      "type": "number"
+                                    },
+                                    "lon": {
+                                      "type": "number"
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": ["lat", "lon"]
+                                }
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": ["type", "geometry"]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "enum": ["polygon", "rectangle", "circle"],
+                            "type": "string"
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "nw": {
+                                "type": "object",
+                                "properties": {
+                                  "lat": {
+                                    "type": "number"
+                                  },
+                                  "lon": {
+                                    "type": "number"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": ["lat", "lon"]
+                              },
+                              "se": {
+                                "type": "object",
+                                "properties": {
+                                  "lat": {
+                                    "type": "number"
+                                  },
+                                  "lon": {
+                                    "type": "number"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": ["lat", "lon"]
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": ["nw", "se"]
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": ["type", "geometry"]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "enum": ["polygon", "rectangle", "circle"],
+                            "type": "string"
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "center": {
+                                "type": "object",
+                                "properties": {
+                                  "lat": {
+                                    "type": "number"
+                                  },
+                                  "lon": {
+                                    "type": "number"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": ["lat", "lon"]
+                              },
+                              "radius": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": ["radius"]
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": ["type", "geometry"]
+                      }
+                    ]
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {},
+        "summary": "update landmark by id",
+        "tags": ["landmark"]
+      },
+      "delete": {
+        "responses": {},
+        "summary": "delete landmark by id",
+        "tags": ["landmark"]
+      }
+    },
+    "/v2/events": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deviceId": {
+                    "type": "string"
+                  },
+                  "channelId": {
+                    "type": "string"
+                  },
+                  "datePath": {
+                    "default": "serverReceivedAt",
+                    "type": "string"
+                  },
+                  "to": {
+                    "default": 1538391861921,
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "from": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "limit": {
+                    "default": 100,
+                    "type": "number"
+                  },
+                  "sinceId": {
+                    "type": "number"
+                  },
+                  "sort": {
+                    "default": {
+                      "field": "serverReceivedAt",
+                      "order": "desc"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "default": "serverReceivedAt",
+                        "type": "string"
+                      },
+                      "order": {
+                        "default": "desc",
+                        "enum": ["desc", "asc"],
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "filter": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMSGDH9VFT6W7SK0HYEKEQ",
+                          "organizationId": "01CRQMSGD5EFSRNSQNN1NJ2PYN",
+                          "channelId": "01CRQMSGDDDKV3AKR1EBYGZXDR",
+                          "deviceId": "01CRQMSGDH91KZ36PAKMK7Y4NP",
+                          "serverReceivedAt": "2018-09-30T01:48:19.883Z",
+                          "payload": {
+                            "tempC": 23
+                          }
+                        }
+                      ],
+                      "meta": {
+                        "filteredTotal": 1,
+                        "total": 3
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list events",
+        "tags": ["events"]
+      }
+    },
+    "/v2/events/metrics": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "channelId": {
+                    "type": "string"
+                  },
+                  "from": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "to": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "interval": {
+                    "default": "1d",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "enum": [false],
+                        "type": "boolean"
+                      }
+                    ]
+                  },
+                  "metricPath": {
+                    "type": "string"
+                  },
+                  "datePath": {
+                    "default": "serverReceivedAt",
+                    "type": "string"
+                  },
+                  "operation": {
+                    "default": "avg",
+                    "type": "string"
+                  },
+                  "timezone": {
+                    "type": "string"
+                  },
+                  "filter": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["channelId", "timezone"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "value": 20,
+                          "count": 3,
+                          "ts": "2018-09-26T22:00:00.000Z"
+                        },
+                        {
+                          "value": null,
+                          "count": 0,
+                          "ts": "2018-09-27T22:00:00.000Z"
+                        },
+                        {
+                          "value": null,
+                          "count": 0,
+                          "ts": "2018-09-28T22:00:00.000Z"
+                        },
+                        {
+                          "value": 20,
+                          "count": 3,
+                          "ts": "2018-09-29T22:00:00.000Z"
+                        }
+                      ],
+                      "meta": {
+                        "filteredTotal": 6,
+                        "total": 6
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "returns event metric results",
+        "tags": ["events"]
+      }
+    },
+    "/v2/gateways": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "value": {
+                      "data": [
+                        {
+                          "id": "01CRQMSP0WZ4R9TEDF8PST93T1",
+                          "organizationId": "01CRQMSP0HDAXDFGWR0T7X7DCV",
+                          "name": "my gateway",
+                          "createdAt": "2018-10-01T09:04:17.000Z",
+                          "updatedAt": "2018-10-01T09:04:17.000Z",
+                          "syncedAt": "2018-10-01T09:04:17.000Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "list gateways",
+        "tags": ["gateways"]
+      }
+    },
+    "/v2/gateways/:gateway": {
+      "parameters": [
+        {
+          "name": "gateway",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "patch": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "syncedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {},
+        "summary": "update gateway by id",
+        "tags": ["gateways"]
+      },
+      "delete": {
+        "responses": {},
+        "summary": "delete gateway by id",
+        "tags": ["gateways"]
+      }
+    }
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ingress Api",
+    "version": "1.0.0",
+    "description": "The Ingress API allows devices to register with and send data to the Sixgill Sense platform. Currently, the API is is compatible with mobile (iOS, Android) and generic IoT devices, and it supports both JSON and Protobuf formatted data. \n\nThe API is separated into two endpoints: mobile and IoT. The mobile endpoint is intended to be used by the Sixgill Reach SDKs for iOS and Android. The IoT endpoint is intended to ingest generic JSON data. IoT channels require a schema to be configured before data is sent over Ingress. See the [Schemas](/guides/channels/schemas) guide for more information.\n"
+  },
+  "paths": {
+    "/v1/registration": {
+      "post": {
+        "summary": "Register devices",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "apiKey"
+                ],
+                "properties": {
+                  "apiKey": {
+                    "example": "12345ABCDEF",
+                    "type": "string"
+                  },
+                  "properties": {
+                    "example": {
+                      "model": "iPhone",
+                      "type": "iOS"
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Register"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "description": "jwt token"
+                    },
+                    "deviceId": {
+                      "type": "string",
+                      "description": "device ID"
+                    },
+                    "organizationId": {
+                      "type": "string",
+                      "description": "device ID"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/mobile/events": {
+      "post": {
+        "summary": "Send sensor data from mobile devices using the SDK",
+        "description": "Mobile devices can create “events” that fire on a cadence specified in their configuration. Events send information on a device’s location, power and activity state, as well as timestamped readings of nearby beacons and wifis. Since events fire “updates” in FIFO order, downstream data processing can assume that each new update is the most recent. Updates do not include event configuration, device properties or user attributes unless one of them has changed since the last update. NOTE: timestamp is specified in milliseconds",
+        "tags": [
+          "Mobile"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "timestamp": 1529462707,
+                  "locations": [
+                    {
+                      "timestamp": 1529462707,
+                      "latitude": 43.09569324585551,
+                      "longitude": -77.5658711003336,
+                      "velocity": 12.2,
+                      "course": 77.9,
+                      "accuracy": 10.4
+                    }
+                  ],
+                  "wifis": [
+                    {
+                      "timestamp": 123456789,
+                      "mac": "FF:FF:FF:FF:FF:FF",
+                      "ssid": "Sixgill Wifi",
+                      "rssi": -20
+                    }
+                  ],
+                  "ibeacons": [
+                    {
+                      "timestamp": 123456789,
+                      "uuid": "123e4567-e89b-12d3-a456-426655440000",
+                      "rssi": -20,
+                      "major": 123,
+                      "minor": 124,
+                      "proximity": "near",
+                      "accuracy": 10
+                    }
+                  ],
+                  "powers": [
+                    {
+                      "timestamp": 123456789,
+                      "charging": false,
+                      "batteryLevel": 91
+                    }
+                  ],
+                  "activities": [
+                    {
+                      "timestamp": 123456789,
+                      "type": "walking",
+                      "confidenceLevel": "low",
+                      "confidencePercentage": 62
+                    }
+                  ],
+                  "configuration": {
+                    "enabled": true,
+                    "cadence": 60000,
+                    "useSensors": [
+                      "location",
+                      "wifi",
+                      "beacon",
+                      "power",
+                      "activity"
+                    ],
+                    "eventTTL": 6000000,
+                    "maxStorage": 6000000
+                  },
+                  "properties": {
+                    "timestamp": 1529462707,
+                    "manufacturer": "Apple",
+                    "model": "iPhone X",
+                    "os": "iOS",
+                    "osVersion": "11.0.0",
+                    "softwareVersion": "ReachSDK-v1.2.3",
+                    "type": "iOS",
+                    "sensors": [
+                      "location",
+                      "wifi",
+                      "beacon",
+                      "power",
+                      "activity"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "no content"
+          }
+        }
+      }
+    },
+    "/v1/mobile/configuration": {
+      "get": {
+        "summary": "Get the device's configuration",
+        "description": "The Ingress API assigns every mobile device a configuration. This configuration specifies whether or not the device’s SDK should be enabled; how often the device should send data, or its collection cadence; what type of sensors it should use; and how long its local data should persist, or its event TTL.",
+        "tags": [
+          "Mobile"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "description": "whether or not this device is enabled"
+                    },
+                    "cadence": {
+                      "type": "integer",
+                      "example": 30000,
+                      "description": "interval between each sensor update in milliseconds"
+                    },
+                    "sensors": {
+                      "type": "string",
+                      "example": [
+                        "location",
+                        "wifi",
+                        "iBeacon",
+                        "power",
+                        "activity"
+                      ]
+                    },
+                    "eventTTL": {
+                      "type": "integer",
+                      "example": 6000000,
+                      "description": "time to live for each event, in milliseconds"
+                    },
+                    "maxStorage": {
+                      "type": "integer",
+                      "example": 6000000,
+                      "description": "how long the local event data should persist, in milliseconds"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/mobile/ibeacons": {
+      "get": {
+        "summary": "Get the device's configuration",
+        "description": "The beacons endpoint returns the beacons to be whitelisted for the device. The limit of beacons to return can be specified using the ‘count’ query string parameter. *In order to listen for beacon UUIDs, iOS requires that the beacons be whitelisted.*",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "count",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The max number of beacons to retrieve"
+          }
+        ],
+        "tags": [
+          "Mobile"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ibeacons": {
+                      "type": "object",
+                      "description": "whether or not this device is enabled",
+                      "example": [
+                        {
+                          "uuid": "123e4567-e89b-12d3-a456-426655440000",
+                          "rssi": -20,
+                          "major": 123,
+                          "minor": 124
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/iot/events": {
+      "post": {
+        "summary": "Send sensor data from IoT devices",
+        "description": "IoT devices can send sensor data events to this endpoint for ingestion into the Sense pipeline.",
+        "tags": [
+          "Mobile"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "data": {
+                    "tempF": 52,
+                    "humidity": 23
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "no content"
+          },
+          "401": {
+            "description": "Unauthorized. Payload does not match the schema for this channel."
+          }
+        }
+      }
+    }
+  }
+}
