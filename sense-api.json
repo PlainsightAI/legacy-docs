@@ -2,11 +2,19 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Sense Api",
-    "version": "0.1.1",
-    "description": "\n# Introduction\nThe Sense API is a RESTful JSON API that allows developers to access the majority of the Sense platform’s functionality, such as:\n\n- Creating and managing user accounts within the organization\n- Configuring data channels and projects to organize rules and collections of data streams\n- Defining landmarks around areas of interest for geographical-based triggers\n- Specifying additional data attributes or time constraints for evaluation\n- Building rules around these various conditions and the corresponding actions to be executed\n\n# Authenticate\nThe Sense API authenticates requests with a user-specific JSON web token through Bearer authentication.\n\nTo get this token, the user makes a POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) request with their email and password combination. _These are the same credentials used to log into your account on the dashboard._\n"
+    "version": "2.0.0",
+    "description": "# Introduction\nThe Sense API is a RESTful JSON API that allows developers to access the majority of the Sense platform’s functionality, such as:\n\n- Creating and managing user accounts within the organization\n- Configuring data channels and projects to organize rules and collections of data streams\n- Defining landmarks around areas of interest for geographical-based triggers\n- Specifying additional data attributes or time constraints for evaluation\n- Building rules around these various conditions and the corresponding actions to be executed\n\n# Authenticate\nThe Sense API authenticates requests with a user-specific JSON web token through Bearer authentication.\n\nTo get this token, the user makes a POST [/v2/login](/apis/sense-api#/Authenticate/post_v2_login) request with their email and password combination. _These are the same credentials used to log into your account on the dashboard._\n"
   },
   "paths": {
+    "": {
+      "operationId": "get",
+      "get": {
+        "responses": {},
+        "summary": "api version"
+      }
+    },
     "/v2/signup": {
+      "operationId": "post-v2-signup",
       "post": {
         "requestBody": {
           "required": true,
@@ -49,15 +57,10 @@
         },
         "responses": {
           "204": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "default": {
-                    "value": {}
-                  }
-                }
-              }
-            }
+            "description": "success"
+          },
+          "409": {
+            "description": "user already exists"
           }
         },
         "summary": "signup user",
@@ -65,6 +68,7 @@
       }
     },
     "/v2/verify-email": {
+      "operationId": "post-v2-verify-email",
       "post": {
         "requestBody": {
           "required": true,
@@ -90,12 +94,15 @@
                 "examples": {
                   "default": {
                     "value": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQU1EMFJLNkFDNkFLWU1SMzY5VCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNBUFM3NFBXVDdERkMwSDY4NkhEIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NSwiZXhwIjoxNTQwOTgzODQ1fQ._plrENs2WMZHu0lGwZVEwx8LG57GClSbrvWGcNvtMb8"
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXN1JDTjdOUEcySFZCTVdEUTRFRCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc3VFQzRlIzTTIzNlNISzQ1VE1NIiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NSwiZXhwIjoxNTQwOTk1NDc1fQ.UXq6DwRLOw9A_SWeldXKn5JsuHA7knx6T7Gyqf6d3BY"
                     }
                   }
                 }
               }
             }
+          },
+          "500": {
+            "description": "user does not exists"
           }
         },
         "summary": "verify email",
@@ -103,6 +110,7 @@
       }
     },
     "/v2/login": {
+      "operationId": "post-v2-login",
       "post": {
         "requestBody": {
           "required": true,
@@ -131,12 +139,18 @@
                 "examples": {
                   "default": {
                     "value": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQVhFUkNOVE1NTUI5Nlc2TUc4QSIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNCME02WTNGWUZXV0VaVDRYRkNLIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NiwiZXhwIjoxNTQwOTgzODQ2fQ.q8VojTR_4dcrQQ0N6sjPEbPJdGun9Afi8R1xvdq4SVM"
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXODFCOEQyQzVTVzJGMzg1Q0RCVyIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc4NDVITkU0TkI3NjFZUkgwWDQ2Iiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NSwiZXhwIjoxNTQwOTk1NDc1fQ.lJXF8PnBxd5vMMosLhdG5Bmmg5Nw3Qh7DMCRdYu7GCo"
                     }
                   }
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid authorization credentials"
+          },
+          "403": {
+            "description": "you need to verify your email"
           }
         },
         "summary": "login",
@@ -144,6 +158,7 @@
       }
     },
     "/v2/request-password": {
+      "operationId": "post-v2-request-password",
       "post": {
         "requestBody": {
           "required": true,
@@ -165,15 +180,7 @@
         },
         "responses": {
           "204": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "default": {
-                    "value": {}
-                  }
-                }
-              }
-            }
+            "description": "success"
           }
         },
         "summary": "request new password",
@@ -181,6 +188,7 @@
       }
     },
     "/v2/set-password": {
+      "operationId": "post-v2-set-password",
       "post": {
         "requestBody": {
           "required": true,
@@ -210,13 +218,16 @@
                   "default": {
                     "value": {
                       "data": {
-                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQjhOQjFRNjgxRzRTQk5UTldOSCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNCQjBRWkJZWUJWUFFZUzRBU1pQIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NiwiZXhwIjoxNTQwOTgzODQ2fQ.o4rh1MdiF_iFI19Q1HsfgibPmX-W0QF8C53eb61zkMU"
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXOEI4Q1E5N1A3WVlBVFlCU1M2TSIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc4RTE4VlI5WjJWRFdOVktGNjNCIiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NiwiZXhwIjoxNTQwOTk1NDc2fQ.bo7YGjqX2wzsxQmGu9uRKsVuEcppddEPDTFcVAhgubU"
                       }
                     }
                   }
                 }
               }
             }
+          },
+          "409": {
+            "description": "user does not exists"
           }
         },
         "summary": "set new password",
@@ -224,6 +235,7 @@
       }
     },
     "/v2/set-organization": {
+      "operationId": "post-v2-set-organization",
       "post": {
         "requestBody": {
           "required": true,
@@ -249,12 +261,15 @@
                 "examples": {
                   "default": {
                     "value": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQkRUNks1NE44WUdFRFE5REpNQyIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNCR0NRSEhFVlM2RkRGWTVKWUhCIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NiwiZXhwIjoxNTQwOTgzODQ2fQ.tj1Mn0HgIB9g6ZGF1mlafSUf7KysoWUu--rWpDWwb8I"
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXOEhEV0NBSzVQNUZUNVNEWDJGWCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc4TTFaRlJUN1lCNlRBQVMwQ1NaIiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NiwiZXhwIjoxNTQwOTk1NDc2fQ.DbN7v31ib_Sj8Oex6njfa578_ZMFbXEdlV-KyFoNCT0"
                     }
                   }
                 }
               }
             }
+          },
+          "403": {
+            "description": "you don't have access to the organiation by that id"
           }
         },
         "summary": "change organization (token)",
@@ -262,6 +277,7 @@
       }
     },
     "/v2/accept-invite": {
+      "operationId": "post-v2-accept-invite",
       "post": {
         "requestBody": {
           "required": true,
@@ -303,12 +319,18 @@
                 "examples": {
                   "default": {
                     "value": {
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUU1TQVQ3R0VKSjJKRzZXNjdaWFdHWCIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRTVNBVDBYR0hNWENQQUtYWUY3Q0haIiwia2lkIjoidXNlciIsImlhdCI6MTUzODM5MTg0NSwiZXhwIjoxNTQwOTgzODQ1fQ.teSJdOV8-JwRP_28zcbclKIMqfyAsvgtkq0LStZxVeU"
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUNSUVpXN1k4RDlaSEhNSlNIQ1pZWVo1NSIsInR5cGUiOiJhY2Nlc3MiLCJvcmdhbml6YXRpb25JZCI6IjAxQ1JRWlc3WTJQOTlKUTM4QTE3TUNNOTlLIiwia2lkIjoidXNlciIsImlhdCI6MTUzODQwMzQ3NSwiZXhwIjoxNTQwOTk1NDc1fQ.stELbiZusV7qARu2O6J2PvTW9Y6LhaLNOGYrp2d6f-g"
                     }
                   }
                 }
               }
             }
+          },
+          "400": {
+            "description": "inviteOrganizationId does not match an organization"
+          },
+          "401": {
+            "description": "invite has been revoked"
           }
         },
         "summary": "accept invite",
@@ -316,6 +338,7 @@
       }
     },
     "/v2/users": {
+      "operationId": "get-v2-users",
       "get": {
         "responses": {
           "200": {
@@ -326,13 +349,13 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMSN0V4XDVT9SJXNT06VFQ",
+                          "id": "01CRQZWGQFFT30CPC7YP7C58K3",
                           "name": "monsterbob",
-                          "email": "email-0.6410047922195576@bob.com",
+                          "email": "email-0.19786380989951313@bob.com",
                           "verifiedEmail": false,
                           "locale": {},
-                          "createdAt": "2018-10-01T09:04:16.000Z",
-                          "updatedAt": "2018-10-01T09:04:16.000Z",
+                          "createdAt": "2018-10-01T12:18:04.000Z",
+                          "updatedAt": "2018-10-01T12:18:04.000Z",
                           "permissions": {
                             "admin": true
                           },
@@ -351,6 +374,7 @@
       }
     },
     "/v2/users/me": {
+      "operationId": "patch-v2-users-me",
       "get": {
         "responses": {
           "200": {
@@ -360,13 +384,13 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMSN5P3JX7A1VGP7Y3RYE4",
+                        "id": "01CRQZWGW890801DSG6QJ2NDEM",
                         "name": "monsterbob",
-                        "email": "email-0.6556669332593337@bob.com",
+                        "email": "email-0.7088081702728637@bob.com",
                         "verifiedEmail": false,
                         "locale": {},
-                        "createdAt": "2018-10-01T09:04:16.000Z",
-                        "updatedAt": "2018-10-01T09:04:16.000Z"
+                        "createdAt": "2018-10-01T12:18:04.000Z",
+                        "updatedAt": "2018-10-01T12:18:04.000Z"
                       }
                     }
                   }
@@ -412,15 +436,15 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMSN8TNP79RC6WWNQPMS8X",
+                        "id": "01CRQZWGZQNMBQV625658KGE3R",
                         "name": "monsterbob",
-                        "email": "email-0.9699336195579047@bob.com",
+                        "email": "email-0.515096486078674@bob.com",
                         "verifiedEmail": false,
                         "locale": {
                           "timezone": "Europa/Amsterdam"
                         },
-                        "createdAt": "2018-10-01T09:04:16.000Z",
-                        "updatedAt": "2018-10-01T11:04:16.508Z"
+                        "createdAt": "2018-10-01T12:18:04.000Z",
+                        "updatedAt": "2018-10-01T14:18:04.761Z"
                       }
                     }
                   }
@@ -434,6 +458,7 @@
       }
     },
     "/v2/users/invite": {
+      "operationId": "post-v2-users-invite",
       "post": {
         "requestBody": {
           "required": true,
@@ -461,15 +486,10 @@
         },
         "responses": {
           "204": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "default": {
-                    "value": {}
-                  }
-                }
-              }
-            }
+            "description": "success"
+          },
+          "401": {
+            "description": "only organization admins can invite users"
           }
         },
         "summary": "invite users",
@@ -477,6 +497,7 @@
       }
     },
     "/v2/organizations": {
+      "operationId": "post-v2-organizations",
       "get": {
         "responses": {
           "200": {
@@ -487,10 +508,10 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMSKSEY8WJ8BXY77FT5E4T",
+                          "id": "01CRQZWHNXKZYPT5KEW98YE8B1",
                           "name": "my organization",
-                          "createdAt": "2018-10-01T09:04:14.000Z",
-                          "updatedAt": "2018-10-01T09:04:14.000Z",
+                          "createdAt": "2018-10-01T12:18:05.000Z",
+                          "updatedAt": "2018-10-01T12:18:05.000Z",
                           "permissions": {
                             "admin": true
                           }
@@ -531,10 +552,10 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMSKYN91600T3W5WEYSAYY",
-                        "name": "new organization 1538391855043",
-                        "updatedAt": "2018-10-01T11:04:15.061Z",
-                        "createdAt": "2018-10-01T11:04:15.061Z",
+                        "id": "01CRQZWHT1BTJTQ0S2XQK011GK",
+                        "name": "new organization 1538403485494",
+                        "updatedAt": "2018-10-01T14:18:05.505Z",
+                        "createdAt": "2018-10-01T14:18:05.505Z",
                         "permissions": {
                           "admin": true
                         }
@@ -561,6 +582,7 @@
           }
         }
       ],
+      "operationId": "delete-v2-organizations-:organization",
       "patch": {
         "responses": {},
         "summary": "update organization by id",
@@ -573,6 +595,7 @@
       }
     },
     "/v2/channels": {
+      "operationId": "post-v2-channels",
       "get": {
         "responses": {
           "200": {
@@ -583,15 +606,15 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMSJ4C081C7HE1SH4DC2JS",
-                          "organizationId": "01CRQMSJ3Z7MXHC0RAFRDR1WBK",
-                          "schemaId": "01CRQMSJ4C98X4ZMQMYZF4ZXPF",
+                          "id": "01CRQZWF4KVHRJNV6SKE680T3D",
+                          "organizationId": "01CRQZWF428EYCFSSVNWQBYHJ4",
+                          "schemaId": "01CRQZWF4KE8Z0X48VYHFYS6RK",
                           "name": "my project",
                           "type": "android",
                           "method": "",
                           "credentials": null,
-                          "createdAt": "2018-10-01T09:04:13.000Z",
-                          "updatedAt": "2018-10-01T09:04:13.000Z",
+                          "createdAt": "2018-10-01T12:18:02.000Z",
+                          "updatedAt": "2018-10-01T12:18:02.000Z",
                           "projectIds": []
                         }
                       ]
@@ -652,13 +675,13 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMSJ9XGGBZRWEF7WKBYC5H",
+                        "id": "01CRQZWF9NVD66QXET37KH1SE6",
                         "name": "new name",
                         "type": "gateway",
-                        "schemaId": "01CRQMSJ8W4CNYKWNVZT7YKC7F",
-                        "organizationId": "01CRQMSJ8BGNMABJ487B5KZZ2C",
-                        "updatedAt": "2018-10-01T11:04:13.373Z",
-                        "createdAt": "2018-10-01T11:04:13.373Z",
+                        "schemaId": "01CRQZWF8VGVFEFVNCY2BJS0X9",
+                        "organizationId": "01CRQZWF8CBKE403FDS643ADWZ",
+                        "updatedAt": "2018-10-01T14:18:02.933Z",
+                        "createdAt": "2018-10-01T14:18:02.933Z",
                         "projectIds": []
                       }
                     }
@@ -666,6 +689,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "bad schemaId"
           }
         },
         "summary": "create channel",
@@ -683,6 +709,7 @@
           }
         }
       ],
+      "operationId": "delete-v2-channels-:channel",
       "patch": {
         "requestBody": {
           "required": true,
@@ -756,6 +783,7 @@
           }
         }
       ],
+      "operationId": "post-v2-channels-:channel-api-keys",
       "get": {
         "responses": {},
         "summary": "get api keys for a channel",
@@ -786,6 +814,7 @@
           }
         }
       ],
+      "operationId": "post-v2-channels-:channel-api-keys-:apiKey-enable",
       "post": {
         "responses": {},
         "summary": "enable api key",
@@ -811,6 +840,7 @@
           }
         }
       ],
+      "operationId": "post-v2-channels-:channel-api-keys-:apiKey-disable",
       "post": {
         "responses": {},
         "summary": "disable api key",
@@ -836,6 +866,7 @@
           }
         }
       ],
+      "operationId": "delete-v2-channels-:channel-api-keys-:apiKey",
       "delete": {
         "responses": {},
         "summary": "delete api key",
@@ -843,6 +874,7 @@
       }
     },
     "/v2/schemas": {
+      "operationId": "post-v2-schemas",
       "get": {
         "responses": {
           "200": {
@@ -853,8 +885,8 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMSEHHY2R6QR3W6E1PM1AM",
-                          "organizationId": "01CRQMSEH5DHK0TQ89TM0CEXQH",
+                          "id": "01CRQZW99NXCNPNCWQ32E2WR7F",
+                          "organizationId": "01CRQZW998HSPEZ7BQX3PM48DH",
                           "name": "some name",
                           "format": "json",
                           "type": "default",
@@ -865,8 +897,8 @@
                               "isArray": true
                             }
                           ],
-                          "createdAt": "2018-10-01T09:04:09.000Z",
-                          "updatedAt": "2018-10-01T09:04:09.000Z"
+                          "createdAt": "2018-10-01T12:17:56.000Z",
+                          "updatedAt": "2018-10-01T12:17:56.000Z"
                         }
                       ]
                     }
@@ -888,10 +920,10 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMSEEB2JNVNX533AKMQ9V6",
+                        "id": "01CRQZW95PMSBBXTQSY59NW3VY",
                         "type": "default",
-                        "organizationId": "01CRQMSED4QX5FX70RZ1QVRBQT",
-                        "name": "name 1538391849398",
+                        "organizationId": "01CRQZW94HSGTSM0WREYXYTJS5",
+                        "name": "name 1538403476637",
                         "format": "json",
                         "fields": [
                           {
@@ -899,8 +931,8 @@
                             "type": "string"
                           }
                         ],
-                        "updatedAt": "2018-10-01T11:04:09.419Z",
-                        "createdAt": "2018-10-01T11:04:09.419Z"
+                        "updatedAt": "2018-10-01T14:17:56.662Z",
+                        "createdAt": "2018-10-01T14:17:56.662Z"
                       }
                     }
                   }
@@ -924,6 +956,7 @@
           }
         }
       ],
+      "operationId": "delete-v2-schemas-:schema",
       "patch": {
         "responses": {},
         "summary": "update schema by id",
@@ -941,6 +974,7 @@
       }
     },
     "/v2/projects": {
+      "operationId": "post-v2-projects",
       "get": {
         "responses": {
           "200": {
@@ -951,12 +985,12 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMSK1576WF3BDA8ZTYXZAA",
-                          "organizationId": "01CRQMSK0JS8RWCBBERF7B6386",
+                          "id": "01CRQZWG0HB94SJ9DVCKDZKA6F",
+                          "organizationId": "01CRQZWG00NPGRWNW0F5C7EP5V",
                           "name": "my project",
-                          "createdAt": "2018-10-01T09:04:14.000Z",
-                          "updatedAt": "2018-10-01T09:04:14.000Z",
-                          "channelIds": ["01CRQMSK1BYNH9NZTTCDYSGRW5"]
+                          "createdAt": "2018-10-01T12:18:03.000Z",
+                          "updatedAt": "2018-10-01T12:18:03.000Z",
+                          "channelIds": ["01CRQZWG0PSYXFJQ5PWNAP5VVF"]
                         }
                       ]
                     }
@@ -1001,12 +1035,12 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMSK629MEX7NA9GZ8WQWAZ",
+                        "id": "01CRQZWG6231ZMFN8S9245E966",
                         "name": "new project",
-                        "organizationId": "01CRQMSK59CKAPBGD6HF64RAWQ",
-                        "updatedAt": "2018-10-01T11:04:14.274Z",
-                        "createdAt": "2018-10-01T11:04:14.274Z",
-                        "channelIds": ["01CRQMSK5H85GCMT9MYCDHYNST"]
+                        "organizationId": "01CRQZWG51Z1WZBKK32BG1KZ82",
+                        "updatedAt": "2018-10-01T14:18:03.842Z",
+                        "createdAt": "2018-10-01T14:18:03.842Z",
+                        "channelIds": ["01CRQZWG5C4ZSB7SEKYQS9DC2M"]
                       }
                     }
                   }
@@ -1030,6 +1064,7 @@
           }
         }
       ],
+      "operationId": "delete-v2-projects-:project",
       "patch": {
         "requestBody": {
           "required": true,
@@ -1078,6 +1113,7 @@
       }
     },
     "/v2/rules": {
+      "operationId": "post-v2-rules",
       "get": {
         "responses": {
           "200": {
@@ -1088,8 +1124,8 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMS9AP0H4N9Z1ARQ99A3FX",
-                          "projectId": "01CRQMS9AK2GAQ1QTEF4M2Q5QH",
+                          "id": "01CRQZWCEQ59W29VYSE165E9KM",
+                          "projectId": "01CRQZWCEJ31SM9RCHWA3NQ3TH",
                           "name": "rule",
                           "type": "cloud",
                           "description": "",
@@ -1098,8 +1134,8 @@
                           "conditions": "event.path == 1",
                           "gatewayIds": [],
                           "channelIds": [],
-                          "createdAt": "2018-10-01T09:04:04.000Z",
-                          "updatedAt": "2018-10-01T09:04:04.000Z",
+                          "createdAt": "2018-10-01T12:18:00.000Z",
+                          "updatedAt": "2018-10-01T12:18:00.000Z",
                           "generator": "custom",
                           "enabled": true
                         }
@@ -1126,14 +1162,14 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMS9QGRN2M0Z64H1HP9R7K",
+                        "id": "01CRQZWD0TQQ4SYEG866QB74GY",
                         "conditionsAndActions": [],
                         "gatewayIds": [],
                         "channelIds": [],
                         "generator": "custom",
                         "name": "somename",
                         "type": "cloud",
-                        "projectId": "01CRQMS9PYN4083WBZN085YE2P",
+                        "projectId": "01CRQZWD01K2WAEXK3ATDXYRC9",
                         "conditionsObject": [
                           {
                             "type": "and",
@@ -1177,14 +1213,17 @@
                         "enabled": true,
                         "properties": {},
                         "conditions": "(timeOfDay('<', 1) && timeOfDay('>', 100) && date('<', '2018-09-05T06:11:24.000Z') && event.channelId == 'someid' && event.name == 'monster')",
-                        "updatedAt": "2018-10-01T11:04:04.593Z",
-                        "createdAt": "2018-10-01T11:04:04.593Z"
+                        "updatedAt": "2018-10-01T14:18:00.603Z",
+                        "createdAt": "2018-10-01T14:18:00.603Z"
                       }
                     }
                   }
                 }
               }
             }
+          },
+          "401": {
+            "description": "you dont have access to this project"
           }
         },
         "summary": "create rules",
@@ -1202,13 +1241,18 @@
           }
         }
       ],
+      "operationId": "delete-v2-rules-:rule",
       "get": {
         "responses": {},
         "summary": "get rule by id",
         "tags": ["rules"]
       },
       "patch": {
-        "responses": {},
+        "responses": {
+          "500": {
+            "description": "failed to convert to valid conditions"
+          }
+        },
         "summary": "update rule by id",
         "tags": ["rules"]
       },
@@ -1219,6 +1263,7 @@
       }
     },
     "/v2/rules/validate-conditions": {
+      "operationId": "post-v2-rules-validate-conditions",
       "post": {
         "responses": {},
         "summary": "validate condition string",
@@ -1236,6 +1281,7 @@
           }
         }
       ],
+      "operationId": "get-v2-devices-:id",
       "get": {
         "responses": {},
         "summary": "get device by id",
@@ -1243,9 +1289,8 @@
       }
     },
     "/v2/devices/alias-lookup": {
+      "operationId": "post-v2-devices-alias-lookup",
       "post": {
-        "summary": "look up device by alias",
-        "tags": ["devices"],
         "requestBody": {
           "required": true,
           "content": {
@@ -1281,10 +1326,13 @@
               }
             }
           }
-        }
+        },
+        "summary": "look up device by alias",
+        "tags": ["devices"]
       }
     },
     "/v2/devices/search": {
+      "operationId": "post-v2-devices-search",
       "post": {
         "requestBody": {
           "required": true,
@@ -1341,13 +1389,13 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMSD70PV9JJ5PKGZFQH567",
+                          "id": "01CRQZWE3V4DEJSXEBB78G6Y6H",
                           "sensors": "",
-                          "channelId": "01CRQMSCG2E7JTTPQVBKJMB43S",
-                          "organizationId": "01CRQMSCFTRWK73XCPEBDP0R16",
+                          "channelId": "01CRQZWE2VNTHSBSFRAPCR6G1W",
+                          "organizationId": "01CRQZWE2JJXPK7MAW8H91QGE0",
                           "tags": ["working"],
-                          "updatedAt": "2018-10-01T11:04:08.160Z",
-                          "createdAt": "2018-10-01T11:04:08.160Z"
+                          "updatedAt": "2018-10-01T14:18:01.723Z",
+                          "createdAt": "2018-10-01T14:18:01.723Z"
                         }
                       ],
                       "meta": {
@@ -1366,6 +1414,7 @@
       }
     },
     "/v2/devices": {
+      "operationId": "post-v2-devices",
       "post": {
         "requestBody": {
           "required": true,
@@ -1407,12 +1456,12 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMSDD1WSNBDHZ8YEKGRX2T",
+                        "id": "01CRQZWE9JA4R02JS6BWNJZACT",
                         "sensors": "",
-                        "channelId": "01CRQMSDCFGZ0STH6W3QNEYGE7",
-                        "organizationId": "01CRQMSDC7K76NT4BVY7GN9AZ1",
-                        "updatedAt": "2018-10-01T11:04:08.353Z",
-                        "createdAt": "2018-10-01T11:04:08.353Z",
+                        "channelId": "01CRQZWE8Q3Q5KYAME2VCASHS1",
+                        "organizationId": "01CRQZWE8BSRM10QABGWZBDR3C",
+                        "updatedAt": "2018-10-01T14:18:01.907Z",
+                        "createdAt": "2018-10-01T14:18:01.907Z",
                         "tags": []
                       }
                     }
@@ -1437,6 +1486,7 @@
           }
         }
       ],
+      "operationId": "delete-v2-devices-:device",
       "patch": {
         "requestBody": {
           "required": true,
@@ -1477,6 +1527,7 @@
       }
     },
     "/v2/landmarks/search": {
+      "operationId": "post-v2-landmarks-search",
       "post": {
         "requestBody": {
           "required": true,
@@ -1530,9 +1581,9 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMS7NQBMB69FK94QE31G4W",
+                          "id": "01CRQZW6GV06KJ45PZT3X6Z5DV",
                           "name": "landmarkA",
-                          "projectId": "01CRQMS7NMNE99JAF72ZQ2TRX1",
+                          "projectId": "01CRQZW6GRY4N0YRGZPTS6GKD0",
                           "type": "geometry",
                           "model": {
                             "type": "circle",
@@ -1543,12 +1594,12 @@
                             }
                           },
                           "createdAt": 0,
-                          "organizationId": "01CRQMS7NCG57YV1MYG4S0WMH0"
+                          "organizationId": "01CRQZW6GFMX0XP5JE3VK13WM7"
                         },
                         {
-                          "id": "01CRQMS7QC7Q2XYXRBYAGX3XC5",
+                          "id": "01CRQZW6H82CJ25XT30915BY1F",
                           "name": "landmarkB",
-                          "projectId": "01CRQMS7NMNE99JAF72ZQ2TRX1",
+                          "projectId": "01CRQZW6GRY4N0YRGZPTS6GKD0",
                           "type": "geometry",
                           "model": {
                             "type": "polygon",
@@ -1570,7 +1621,7 @@
                             }
                           },
                           "createdAt": 10,
-                          "organizationId": "01CRQMS7NCG57YV1MYG4S0WMH0"
+                          "organizationId": "01CRQZW6GFMX0XP5JE3VK13WM7"
                         }
                       ],
                       "meta": {
@@ -1589,6 +1640,7 @@
       }
     },
     "/v2/landmarks": {
+      "operationId": "post-v2-landmarks",
       "post": {
         "requestBody": {
           "required": true,
@@ -1748,9 +1800,9 @@
                   "default": {
                     "value": {
                       "data": {
-                        "id": "01CRQMS88ZJT0G9Q3QWRSAYCSM",
+                        "id": "01CRQZW6XGQV569FKDSX9W7VCK",
                         "name": "landmark",
-                        "projectId": "01CRQMS8830Y2XD3MD0N48M3TR",
+                        "projectId": "01CRQZW6WXHGX84XJE5PAK1HV1",
                         "type": "geometry",
                         "model": {
                           "type": "rectangle",
@@ -1765,8 +1817,8 @@
                             }
                           }
                         },
-                        "updatedAt": "2018-10-01T11:04:03.103Z",
-                        "createdAt": "2018-10-01T11:04:03.103Z"
+                        "updatedAt": "2018-10-01T14:17:54.352Z",
+                        "createdAt": "2018-10-01T14:17:54.352Z"
                       }
                     }
                   }
@@ -1790,6 +1842,7 @@
           }
         }
       ],
+      "operationId": "delete-v2-landmarks-:landmark",
       "get": {
         "responses": {},
         "summary": "get landmark by id",
@@ -1967,6 +2020,7 @@
       }
     },
     "/v2/events": {
+      "operationId": "post-v2-events",
       "post": {
         "requestBody": {
           "required": true,
@@ -1986,7 +2040,7 @@
                     "type": "string"
                   },
                   "to": {
-                    "default": 1538391861921,
+                    "default": 1538403490032,
                     "oneOf": [
                       {
                         "type": "string"
@@ -2052,11 +2106,11 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMSGDH9VFT6W7SK0HYEKEQ",
-                          "organizationId": "01CRQMSGD5EFSRNSQNN1NJ2PYN",
-                          "channelId": "01CRQMSGDDDKV3AKR1EBYGZXDR",
-                          "deviceId": "01CRQMSGDH91KZ36PAKMK7Y4NP",
-                          "serverReceivedAt": "2018-09-30T01:48:19.883Z",
+                          "id": "01CRQZWB131JPG03SYMSR65X15",
+                          "organizationId": "01CRQZWB0QMW2QPKGVFX94GPZ7",
+                          "channelId": "01CRQZWB0ZH5RY9A5JXHJ5YW5Q",
+                          "deviceId": "01CRQZWB12KHWQ6F2PH7BJNDFY",
+                          "serverReceivedAt": "2018-09-30T11:12:20.172Z",
                           "payload": {
                             "tempC": 23
                           }
@@ -2071,6 +2125,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "you dont have access to this channel"
           }
         },
         "summary": "list events",
@@ -2078,6 +2135,7 @@
       }
     },
     "/v2/events/metrics": {
+      "operationId": "post-v2-events-metrics",
       "post": {
         "requestBody": {
           "required": true,
@@ -2185,6 +2243,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "you dont have access to this channel"
           }
         },
         "summary": "returns event metric results",
@@ -2192,6 +2253,7 @@
       }
     },
     "/v2/gateways": {
+      "operationId": "get-v2-gateways",
       "get": {
         "responses": {
           "200": {
@@ -2202,12 +2264,12 @@
                     "value": {
                       "data": [
                         {
-                          "id": "01CRQMSP0WZ4R9TEDF8PST93T1",
-                          "organizationId": "01CRQMSP0HDAXDFGWR0T7X7DCV",
+                          "id": "01CRQZWJHGMJK79BKJQRVX9KDC",
+                          "organizationId": "01CRQZWJH6MQFCSCHP6SAD7WMS",
                           "name": "my gateway",
-                          "createdAt": "2018-10-01T09:04:17.000Z",
-                          "updatedAt": "2018-10-01T09:04:17.000Z",
-                          "syncedAt": "2018-10-01T09:04:17.000Z"
+                          "createdAt": "2018-10-01T12:18:06.000Z",
+                          "updatedAt": "2018-10-01T12:18:06.000Z",
+                          "syncedAt": "2018-10-01T12:18:06.000Z"
                         }
                       ]
                     }
@@ -2232,6 +2294,7 @@
           }
         }
       ],
+      "operationId": "delete-v2-gateways-:gateway",
       "patch": {
         "requestBody": {
           "required": true,
