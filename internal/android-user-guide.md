@@ -7,7 +7,7 @@ Sixgill's Reach SDK can be installed by manually downloading and including an An
 
 **Manual**
 
-Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.1.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
+Download the [latest Reach Android Archive](https://raw.githubusercontent.com/sixgill/docs/update-usr-guide/android/reach-android-1.2.3.aar) and [integrate it into your project](https://developer.android.com/studio/projects/android-library.html#AddDependency).
 
 Once added as your app's dependency, add the following dependencies to your app level build file-
 ```
@@ -19,6 +19,8 @@ Once added as your app's dependency, add the following dependencies to your app 
     implementation 'com.google.android.gms:play-services-gcm:11.8.0'
     implementation 'com.google.android.gms:play-services-location:11.8.0'
     implementation "android.arch.persistence.room:runtime:1.0.0"
+    implementation 'com.google.android.gms:play-services-fitness:15.0.1'
+    implementation 'com.google.android.gms:play-services-auth:16.0.0'
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
     androidTestImplementation "android.arch.persistence.room:testing:1.0.0"
 ```
@@ -302,6 +304,27 @@ To perform actions based on Push Notifications:
 */
 Reach.processCommand(remoteMessage, context)
 ```
+
+To get FitnessOtions used by Reach
+```java
+/**
+    returns fitness optiopns with read permissions for DataType.TYPE_STEP_COUNT_DELTA and DataType.TYPE_DISTANCE_DELTA
+    for details, refer to https://developers.google.com/android/reference/com/google/android/gms/fitness/data/DataType
+*/
+Reach.fitnessOptions()
+```
+
+To acquire fitness permissions from user's google account with oAuth
+```java
+/**
+* @param requestingActivity {@link android.app.Activity}
+* the activity requesting fitness permissions, should overide onActivityResult to catch the success and cancel cases
+* the request code will be Reach.FITNESS_REQUEST and success result shold resolve with Activity.RESULT_OK in case of success
+*/
+Reach.getFitnessPermissions(requestingActivity)
+```
+> Note: To use Reach SDK with Google Fitness API, you need to register an OAUTH 2.0 client and sign your debug and release builds accordingly. For details on step by step integration, please refer to https://developers.google.com/fit/android/get-api-key
+
 
 To listen to push notifications from SixGill, register broadcast listeners with `IntentFilter` of `Reach.PUSH_BROADCAST`
 
